@@ -5,8 +5,8 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "http://turn.turn.lv/",
-  // base: "/astro-turn",
+  site: "https://balsutalka.lv/",
+
   integrations: [
     astroI18next(),
     image({
