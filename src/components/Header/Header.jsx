@@ -2,6 +2,7 @@ const Header = (props) => {
   console.log("Header");
   return (
     <>
+      <img src="/public/assets/images/svg/Logo.svg"></img>
       <div style={{ display: "flex" }}>
         <div>
           <p>Balsu talka – ieguldījums atvērtā latviešu valodas runas bankā</p>

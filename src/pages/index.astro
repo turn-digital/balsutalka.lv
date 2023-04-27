@@ -5,6 +5,8 @@ import Header from "~components/Header/Header";
 import Section1 from "~components/Section1/Section1";
 import Section2 from "~components/Section2/Section2";
 import Accordion from "~components/Accordion/Accordion";
+import Footer from "~components/Footer/Footer";
+import Implementers from "~components/Implementers/Implementers";
 import { t, changeLanguage } from "i18next";
 
 changeLanguage("lv");
@@ -15,6 +17,31 @@ changeLanguage("lv");
     <Header />
     <Section1 />
     <Section2 />
-    <Accordion client:load />
+    <Accordion
+      client:load
+      defaultState={true}
+      title={"Kāpēc vajag reģistrēties"}
+      content={`Lai dotu savu ieguldījumu, nav obligāti jāveido profils, bet, ja to izveidosiet, varēsiet gūt šādus ieguvumus:
+      Uzlabojiet savus iesniegtos datus, sniedzot anonīmus demogrāfiskos datus, kas padarīs tos kvalitatīvākus.
+      Profila informācija palīdzēs uzlabot audio ierakstu datus, ko izmantos runas atpazīšanas precizitātes apmācībā.
+      Sekojiet līdzi savam progresam un datiem dažādās valodās.
+      Salīdziniet savu progresu ar citiem ieguldītājiem no visas pasaules.
+      Pārskatiet savu progresu attiecībā uz personiskajiem un projekta mērķiem.
+      Ja vēlaties, pievienojieties mūsu e-pasta sarakstam, lai saņemtu projekta jaunumus un informāciju.`}
+    />
+    <Accordion
+      client:load
+      defaultState={false}
+      title={"Kas būs publiski pieejams?"}
+      content={`Lai dotu savu ieguldījumu, nav obligāti jāveido profils, bet, ja to izveidosiet, varēsiet gūt šādus ieguvumus:
+      Uzlabojiet savus iesniegtos datus, sniedzot anonīmus demogrāfiskos datus, kas padarīs tos kvalitatīvākus.
+      Profila informācija palīdzēs uzlabot audio ierakstu datus, ko izmantos runas atpazīšanas precizitātes apmācībā.
+      Sekojiet līdzi savam progresam un datiem dažādās valodās.
+      Salīdziniet savu progresu ar citiem ieguldītājiem no visas pasaules.
+      Pārskatiet savu progresu attiecībā uz personiskajiem un projekta mērķiem.
+      Ja vēlaties, pievienojieties mūsu e-pasta sarakstam, lai saņemtu projekta jaunumus un informāciju.`}
+    />
+    <Implementers />
+    <Footer />
   </main>
 </Layout>

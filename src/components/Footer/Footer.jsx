@@ -3,7 +3,8 @@ const Footer = (props) => {
   return (
     <>
       <div>
-        © balsutalka.lv, 2023. Visas tiesības aizsargātas
+        <img src="/public/assets/images/svg/Logo.svg"></img>© balsutalka.lv,
+        2023. Visas tiesības aizsargātas
         <p></p>
       </div>
     </>

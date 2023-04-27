@@ -3,7 +3,7 @@ const Implementers = (props) => {
   return (
     <>
       <div>
-        <h1>Implementers</h1>
+        <h1>Projekta īstenotāji</h1>
         <div>here is 4 images</div>
       </div>
     </>
