@@ -13,6 +13,7 @@
 }
 
 body {
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
 
@@ -91,6 +92,7 @@ main {
 }
 
 .title {
+  font-family: "Zilla Slab", sans-serif;
   color: $color-primary;
   font-size: 32px;
   line-height: 40px;
@@ -102,6 +104,7 @@ main {
 }
 
 .subtitle {
+  font-family: "Zilla Slab", sans-serif;
   color: $color-primary;
   font-size: 24px;
   line-height: 32px;
@@ -122,6 +125,7 @@ main {
       background-color: $color-white;
       border-radius: 16px;
       border: none;
+      font-family: "Zilla Slab", sans-serif;
       color: $color-primary;
       cursor: pointer;
       font-size: 20px;
