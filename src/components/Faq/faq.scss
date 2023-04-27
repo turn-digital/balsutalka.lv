@@ -1,0 +1,19 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.faq {
+  padding: 32px 0;
+  background-color: $color-snow;
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  @include size-laptop() {
+    padding: 64px 0;
+
+    &__title {
+      margin-bottom: 32px;
+    }
+  }
+}

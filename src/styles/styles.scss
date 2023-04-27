@@ -3,6 +3,7 @@
 @use "variables" as *;
 @use "../components/Graph/graph";
 @use "../components/Header/header";
+@use "../components/Faq/faq.scss";
 @use "../components/Footer/footer";
 @use "../components/Implementers/implementers";
 @use "../components/Hero/hero";
@@ -34,6 +35,60 @@ main {
       margin-top: 16px;
     }
   }
+
+  ul,
+  ol {
+    list-style-type: initial;
+    margin-top: 12px;
+
+    li {
+      color: $color-cave;
+      font-size: 16px;
+      line-height: 32px;
+
+      &::marker {
+        color: $color-cave;
+        font-size: 20px;
+      }
+    }
+
+    & + p {
+      margin-top: 16x;
+    }
+  }
+
+  ol {
+    list-style-type: auto;
+
+    li {
+      &::marker {
+        font-size: 15px;
+      }
+
+      ol {
+        margin-bottom: 12px;
+        margin-left: 35px;
+
+        li::before {
+          left: -35px;
+        }
+      }
+    }
+  }
+
+  ol {
+    counter-reset: item;
+
+    li {
+      display: block;
+      position: relative;
+      &::before {
+        content: counters(item, ".") ".";
+        counter-increment: item;
+        margin-right: 2px;
+      }
+    }
+  }
 }
 
 .title {
@@ -55,5 +110,100 @@ main {
   @include size-laptop() {
     font-size: 32px;
     line-height: 40px;
+  }
+}
+
+// override acc
+.cc-acc {
+  .accordion {
+    &__header {
+      @include transition-fast;
+      position: relative;
+      padding: 24px 48px 24px 28px;
+      background-color: $color-white;
+      border-radius: 16px;
+      border: none;
+      color: $color-primary;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 24px;
+
+      svg {
+        display: none;
+      }
+
+      &:after {
+        @include transition-fast;
+        position: relative;
+        right: -20px;
+        content: "";
+        background-image: url("/assets/images/svg/iconChevron.svg");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+        display: block;
+      }
+    }
+
+    &__panel {
+      background-color: $color-white;
+      border-radius: 0 0 16px 16px;
+      border: none;
+    }
+
+    .panel__inner {
+      padding: 0 24px 24px;
+
+      .text-editor {
+        padding-top: 24px;
+        border-top: 1px solid $color-snow;
+      }
+    }
+
+    &__item {
+      &:only-of-type,
+      &:last-of-type {
+        .accordion__header,
+        .accordion__panel {
+          border: none;
+        }
+      }
+
+      & + .accordion__item {
+        margin-top: 16px;
+      }
+
+      &.is-active {
+        .accordion {
+          &__header {
+            border: none;
+            border-radius: 16px 16px 0 0;
+
+            &:after {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+
+      .accordion__header {
+        &:focus {
+          outline-offset: 0;
+          box-shadow: none;
+        }
+
+        &:focus-visible {
+          box-shadow: inset 0 0 0 2px $color-primary;
+          outline: none;
+        }
+
+        &:hover {
+          background-color: $color-snow;
+          box-shadow: inset 0 0 0 2px $color-primary;
+        }
+      }
+    }
   }
 }
