@@ -1,6 +1,7 @@
 @use "reset";
 @use "mixins" as *;
 @use "variables" as *;
+@use "../components/Graph/graph";
 @use "../components/Header/header";
 @use "../components/Hero/hero";
 @use "../components/Future/future";

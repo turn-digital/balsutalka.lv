@@ -1,0 +1,107 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.graph {
+  padding: 32px 0;
+  background-color: $color-primary;
+  color: $color-white;
+
+  &__title {
+    max-width: 600px;
+    margin: 0 auto 24px;
+
+    &.title {
+      color: $color-green;
+      text-align: center;
+    }
+  }
+
+  &__info {
+    font-size: 24px;
+    line-height: 32px;
+
+    span {
+      display: block;
+      color: $color-green;
+      font-size: 16px;
+      line-height: 32px;
+    }
+  }
+
+  &__col {
+    & + .graph__col {
+      margin-top: 16px;
+    }
+  }
+
+  &__row {
+    & + .graph__row {
+      margin-top: 16px;
+    }
+  }
+
+  &__stat {
+    span {
+      display: block;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__table {
+    max-width: 500px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  @include size-laptop() {
+    padding: 64px 0 100px;
+
+    &__title {
+      margin-bottom: 40px;
+    }
+
+    &__info {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    &__box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+    }
+
+    &__col {
+      & + .graph__col {
+        margin-top: 0;
+      }
+    }
+
+    &__table {
+      max-width: inherit;
+    }
+
+    &__stat {
+      flex: 1;
+    }
+
+    &__row {
+      display: flex;
+
+      img {
+        width: 500px;
+      }
+
+      //   FIXME need fix image size
+      &:nth-of-type(2) {
+        img {
+          width: 502px;
+        }
+      }
+    }
+  }
+}
