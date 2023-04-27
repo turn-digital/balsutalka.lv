@@ -1,3 +1,5 @@
+import Icons from "~components/Icons/Icons";
+
 const Future = (props) => {
   return (
     <section className="future">
@@ -12,6 +14,7 @@ const Future = (props) => {
               target="_blank"
               rel="noopener"
               title="Atvērt runā saiti"
+              className="future__link"
             ></a>
             <h3 className="future__subtitle subtitle">Runā</h3>
             <div className="future__box">
@@ -22,8 +25,11 @@ const Future = (props) => {
                   izdosies attīstīt runas tehnoloģijas latviešu valodā!
                 </p>
               </div>
-              <img src="/assets/images/svg/mic.svg"></img>
+              <Icons type={"mic"} />
             </div>
+            <span className="future__out">
+              <Icons type={"outsource"} />
+            </span>
           </div>
           <div className="future__card">
             <a
@@ -31,6 +37,7 @@ const Future = (props) => {
               target="_blank"
               rel="noopener"
               title="Atvērt klausies saiti"
+              className="future__link"
             ></a>
             <h3 className="future__subtitle subtitle">Klausies</h3>
             <div className="future__box">
@@ -41,8 +48,11 @@ const Future = (props) => {
                   datus.
                 </p>
               </div>
-              <img src="/assets/images/svg/listen.svg"></img>
+              <Icons type={"listen"} />
             </div>
+            <span className="future__out">
+              <Icons type={"outsource"} />
+            </span>
           </div>
         </div>
       </div>
