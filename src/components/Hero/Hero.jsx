@@ -17,9 +17,8 @@ const Hero = (props) => {
             <div className="hero__video">
               <iframe
                 src="https://www.youtube.com/embed/651zYF2EFK8"
-                frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope;"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
 
