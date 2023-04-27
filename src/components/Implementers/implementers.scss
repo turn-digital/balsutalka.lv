@@ -1,0 +1,41 @@
+@use "../../styles/variables" as *;
+.container {
+  display: flex;
+  width: 90%;
+  margin-left: 120px;
+  justify-content: space-between;
+}
+
+.title {
+  margin-left: 120px;
+  padding-top: 64px;
+  padding-bottom: 30px;
+}
+.container {
+  margin-left: 100px;
+}
+.image {
+  padding-bottom: 64px;
+}
+/* Mobile view */
+@media only screen and (max-width: 767px) {
+  .container {
+    display: flex;
+    width: 390px;
+    margin-left: 5px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .title {
+    padding-top: 0px;
+    margin-left: 80px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .image {
+    padding-bottom: 15px;
+    width: 135px;
+    height: 80x;
+  }
+}
