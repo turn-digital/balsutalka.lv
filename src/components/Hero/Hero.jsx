@@ -1,4 +1,11 @@
+import React, { useState } from "react";
 const Hero = (props) => {
+  const [showMore, setShowMore] = useState(false);
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  };
+
   return (
     <div className="hero">
       <div className="wrapper">
@@ -9,7 +16,7 @@ const Hero = (props) => {
           <div className="hero__col">
             <div className="hero__video">
               <iframe
-                src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                src="https://www.youtube.com/embed/651zYF2EFK8"
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope;"
                 allowfullscreen
@@ -33,25 +40,48 @@ const Hero = (props) => {
                 runas datu kopu, mēs aicinām kopīgiem spēkiem ierunāt vismaz 100
                 stundas.
               </p>
-              <p>
-                Kaut arī runas tehnoloģijas šobrīd strauji attīstās, tomēr
-                aizvien daudzas iekārtas latviešu valodu saprot slikti.
-                Piemēram, mēs nevaram latviski dot balss komandas televizoriem,
-                automašīnām vai telefoniem. Video zvanos nav iespējams
-                automātiski un bez maksas izmantot latviešu valodas subtitrus
-                labā kvalitātē. Ir arī maz lietotņu, kurās latviski varētu
-                rakstīt , izmantojot balsi, nevis tastatūru. Tas ir tāpēc, ka
-                nav pieejami atvērti un brīvi lietojami latviešu valodas runas
-                dati. Tas kavē jaunu ideju attīstību un rada grūtības pasaules
-                uzņēmumiem un zinātniekiem iekļaut latviešu valodu savās
-                tehnoloģijās un runas atpazīšanas pētījumos.
-              </p>
-              <p>
-                Balsu paraugu vākšanai izmantojam Mozilla Common Voice
-                platformu, kur savāktie balsu dati ir pieejami ikvienam. Bet jo
-                sevišķi svarīgi tie ir uzņēmumiem tehnoloģisko risinājumu
-                attīstīšanai un valodas pētniekiem visā pasaulē.
-              </p>
+              {!showMore && (
+                <p
+                  style={{
+                    WebkitMaskImage:
+                      "linear-gradient(to bottom, black 70%, transparent 100%)",
+                    maskImage:
+                      "linear-gradient(to bottom, black 70%, transparent 100%)",
+                    opacity: "1",
+                  }}
+                >
+                  Kaut arī runas tehnoloģijas šobrīd strauji attīstās, tomēr
+                  aizvien daudzas iekārtas latviešu valodu saprot slikti.
+                  Piemēram, mēs nevaram latviski dot balss komandas
+                </p>
+              )}
+              {showMore && (
+                <>
+                  <p>
+                    Kaut arī runas tehnoloģijas šobrīd strauji attīstās, tomēr
+                    aizvien daudzas iekārtas latviešu valodu saprot slikti.
+                    Piemēram, mēs nevaram latviski dot balss komandas
+                    televizoriem, automašīnām vai telefoniem. Video zvanos nav
+                    iespējams automātiski un bez maksas izmantot latviešu
+                    valodas subtitrus labā kvalitātē. Ir arī maz lietotņu, kurās
+                    latviski varētu rakstīt , izmantojot balsi, nevis tastatūru.
+                    Tas ir tāpēc, ka nav pieejami atvērti un brīvi lietojami
+                    latviešu valodas runas dati. Tas kavē jaunu ideju attīstību
+                    un rada grūtības pasaules uzņēmumiem un zinātniekiem iekļaut
+                    latviešu valodu savās tehnoloģijās un runas atpazīšanas
+                    pētījumos.
+                  </p>
+                  <p>
+                    Balsu paraugu vākšanai izmantojam Mozilla Common Voice
+                    platformu, kur savāktie balsu dati ir pieejami ikvienam. Bet
+                    jo sevišķi svarīgi tie ir uzņēmumiem tehnoloģisko risinājumu
+                    attīstīšanai un valodas pētniekiem visā pasaulē.
+                  </p>
+                </>
+              )}
+              {!showMore && (
+                <button onClick={toggleShowMore}>Parādīt visu tekstu</button>
+              )}
             </div>
           </div>
         </div>
