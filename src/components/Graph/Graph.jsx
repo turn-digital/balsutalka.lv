@@ -1,4 +1,4 @@
-const Section2 = (props) => {
+const Graph = (props) => {
   console.log("Section1");
   return (
     <>
@@ -30,4 +30,4 @@ const Section2 = (props) => {
   );
 };
 
-export default Section2;
+export default Graph;
