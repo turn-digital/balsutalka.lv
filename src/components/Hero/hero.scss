@@ -38,6 +38,28 @@
     }
   }
 
+  .showMoreButton {
+    background: none;
+    border: none;
+    color: #164460;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    height: 24px;
+    font-family: "Zilla Slab";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 40px;
+  }
+
+  .gradienText {
+    background: linear-gradient(to bottom, black 0%, #ffffff 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   @include size-laptop() {
     &__title {
       padding: 40px 0 56px;
@@ -57,6 +79,24 @@
       & + .hero__col {
         margin-top: 0;
       }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .showMoreButton {
+      background: none;
+      border: none;
+      color: #164460;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+      height: 24px;
+      font-family: "Zilla Slab";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      margin-top: -20px;
     }
   }
 }

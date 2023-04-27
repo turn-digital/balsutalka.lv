@@ -40,18 +40,10 @@ const Hero = (props) => {
                 stundas.
               </p>
               {!showMore && (
-                <p
-                  style={{
-                    WebkitMaskImage:
-                      "linear-gradient(to bottom, black 70%, transparent 100%)",
-                    maskImage:
-                      "linear-gradient(to bottom, black 70%, transparent 100%)",
-                    opacity: "1",
-                  }}
-                >
+                <p className="gradienText">
                   Kaut arī runas tehnoloģijas šobrīd strauji attīstās, tomēr
                   aizvien daudzas iekārtas latviešu valodu saprot slikti.
-                  Piemēram, mēs nevaram latviski dot balss komandas
+                  Piemēram, mēs nevaram latviski dot
                 </p>
               )}
               {showMore && (
@@ -79,7 +71,9 @@ const Hero = (props) => {
                 </>
               )}
               {!showMore && (
-                <button onClick={toggleShowMore}>Parādīt visu tekstu</button>
+                <button className="showMoreButton" onClick={toggleShowMore}>
+                  Parādīt visu tekstu
+                </button>
               )}
             </div>
           </div>
