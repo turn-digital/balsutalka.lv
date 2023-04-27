@@ -2,7 +2,7 @@ const Header = (props) => {
   return (
     <header className="header">
       <div className="wrapper">
-        <img src="/public/assets/images/svg/Logo.svg"></img>
+        <img src="/assets/images/svg/logo.svg"></img>
       </div>
     </header>
   );
