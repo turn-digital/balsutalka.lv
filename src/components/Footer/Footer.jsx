@@ -5,7 +5,7 @@ const Footer = (props) => {
       <div className="footer">
         <img
           className="footer_logo"
-          src="/public/assets/images/svg/LogoFooter.svg"
+          src="/assets/images/svg/LogoFooter.svg"
         ></img>
         <p className="footer_text">
           © balsutalka.lv, 2023. Visas tiesības aizsargātas
