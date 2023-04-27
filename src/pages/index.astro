@@ -1,0 +1,20 @@
+---
+import "~styles/styles.scss";
+import Layout from "../layouts/Layout.astro";
+import Header from "~components/Header/Header";
+import Section1 from "~components/Section1/Section1";
+import Section2 from "~components/Section2/Section2";
+import Accordion from "~components/Accordion/Accordion";
+import { t, changeLanguage } from "i18next";
+
+changeLanguage("lv");
+---
+
+<Layout title={t("global.metaTitle")} desc={t("index.metaDesc")}>
+  <main>
+    <Header />
+    <Section1 />
+    <Section2 />
+    <Accordion client:load />
+  </main>
+</Layout>
