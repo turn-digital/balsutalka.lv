@@ -2,22 +2,26 @@ const Section2 = (props) => {
   console.log("Section1");
   return (
     <>
-      <div>
+      <div
+        style={{
+          background: "#164460",
+        }}
+      >
         <h1>Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!</h1>
         <div style={{ display: "flex" }}>
           <div>
             <p>Izaicinājums</p>
-            <h3>Ierunāsim 100 stundas 4. maijā! </h3>
+            <h2>Ierunāsim 100 stundas 4. maijā!</h2>
           </div>
           <div>
             <p>
-              Latviešu<span> BORDER </span>18 stundas
+              Latviešu <img src="/public/assets/images/svg/latvija.svg"></img>
             </p>
             <p>
-              Igauņu<span> BORDER </span>56 stundas
+              Igauņu<img src="/public/assets/images/svg/igaunu.svg"></img>
             </p>
             <p>
-              Lietuviešu<span> BORDER </span>54 stundas
+              Lietuviešu<img src="/public/assets/images/svg/lietuva.svg"></img>
             </p>
           </div>
         </div>

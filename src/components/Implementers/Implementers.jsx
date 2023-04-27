@@ -4,7 +4,12 @@ const Implementers = (props) => {
     <>
       <div>
         <h1>Projekta īstenotāji</h1>
-        <div>here is 4 images</div>
+        <div style={{ display: "flex" }}>
+          <img src="/public/assets/images/LATA.png"></img>
+          <img src="/public/assets/images/LULFMI.png"></img>
+          <img src="/public/assets/images/LUMII.png"></img>
+          <img src="/public/assets/images/UnescoLV.png"></img>
+        </div>
       </div>
     </>
   );

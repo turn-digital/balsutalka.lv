@@ -12,6 +12,7 @@ const Section1 = (props) => {
               daudzveidīgāki būs balsu paraugi, jo ātrāk un veiksmīgāk izdosies
               attīstīt runas tehnoloģijas latviešu valodā!
             </p>
+            <img src="/public/assets/images/svg/mic.svg"></img>
           </div>
           <div>
             <h1>Klausies</h1>
@@ -19,6 +20,7 @@ const Section1 = (props) => {
               Palīdzi novērtēt, kā ierunājuši citi! Ierakstu apstiprināšana ir
               vienlīdz svarīga, lai radītu kvalitatīvus un atvērtus runas datus.
             </p>
+            <img src="/public/assets/images/svg/listen.svg"></img>
           </div>
         </div>
       </div>
