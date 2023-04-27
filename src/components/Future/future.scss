@@ -1,0 +1,46 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.future {
+  margin-top: 32px;
+
+  &__card {
+    padding: 48px 48px 24px;
+    background-color: $color-snow;
+    border-radius: 32px;
+
+    & + .future__card {
+      margin-top: 16px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+  }
+
+  @include size-laptop() {
+    &__title {
+      margin-bottom: 56px;
+    }
+
+    &__subtitle {
+      margin-bottom: 24px;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+    }
+
+    &__card {
+      & + .future__card {
+        margin-top: 0;
+      }
+    }
+  }
+}

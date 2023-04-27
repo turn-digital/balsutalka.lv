@@ -3,6 +3,7 @@
 @use "variables" as *;
 @use "../components/Header/header";
 @use "../components/Hero/hero";
+@use "../components/Future/future";
 
 .wrapper {
   @include container();
@@ -40,5 +41,16 @@ main {
   @include size-laptop() {
     font-size: 48px;
     line-height: 64px;
+  }
+}
+
+.subtitle {
+  color: $color-primary;
+  font-size: 24px;
+  line-height: 32px;
+
+  @include size-laptop() {
+    font-size: 32px;
+    line-height: 40px;
   }
 }
