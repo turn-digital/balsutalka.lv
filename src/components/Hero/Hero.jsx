@@ -2,7 +2,7 @@ const Hero = (props) => {
   return (
     <div className="hero">
       <div className="wrapper">
-        <h2 className="hero__title">
+        <h2 className="hero__title title">
           Balsu talka – ieguldījums atvērtā latviešu valodas runas bankā
         </h2>
         <div className="hero__content">

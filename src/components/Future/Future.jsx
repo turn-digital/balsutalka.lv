@@ -1,7 +1,6 @@
-const Section1 = (props) => {
-  console.log("Section1");
+const Future = (props) => {
   return (
-    <>
+    <section className="future">
       <div>
         <h1>Ieguldi latviešu valodas nākotnē!</h1>
         <div style={{ display: "flex" }}>
@@ -22,8 +21,8 @@ const Section1 = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
-export default Section1;
+export default Future;

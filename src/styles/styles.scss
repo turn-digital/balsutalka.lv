@@ -31,3 +31,14 @@ main {
     }
   }
 }
+
+.title {
+  color: $color-primary;
+  font-size: 32px;
+  line-height: 40px;
+
+  @include size-laptop() {
+    font-size: 48px;
+    line-height: 64px;
+  }
+}
