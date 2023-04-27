@@ -1,11 +1,15 @@
 const Footer = (props) => {
-  console.log("Section1");
+  console.log("footer1");
   return (
     <>
-      <div style={{ background: "#164460" }}>
-        <img src="/public/assets/images/svg/LogoFooter.svg"></img>©
-        balsutalka.lv, 2023. Visas tiesības aizsargātas
-        <p></p>
+      <div className="footer">
+        <img
+          className="footer_logo"
+          src="/public/assets/images/svg/LogoFooter.svg"
+        ></img>
+        <p className="footer_text">
+          © balsutalka.lv, 2023. Visas tiesības aizsargātas
+        </p>
       </div>
     </>
   );
