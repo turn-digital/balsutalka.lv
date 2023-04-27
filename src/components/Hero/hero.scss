@@ -1,0 +1,72 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.hero {
+  &__title {
+    padding: 16px 0;
+    color: $color-primary;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  &__video {
+    position: relative;
+    padding-bottom: 56.25%;
+    border-radius: 16px;
+    overflow: hidden;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__tags {
+    margin-top: 16px;
+    color: $color-stone;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+    color: $color-primary;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  &__col {
+    & + .hero__col {
+      margin-top: 16px;
+    }
+  }
+
+  @include size-laptop() {
+    &__title {
+      padding: 40px 0 56px;
+      font-size: 48px;
+      line-height: 64px;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 72px;
+    }
+
+    &__subtitle {
+      margin-bottom: 32px;
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    &__col {
+      & + .hero__col {
+        margin-top: 0;
+      }
+    }
+  }
+}

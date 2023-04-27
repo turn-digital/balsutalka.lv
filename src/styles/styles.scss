@@ -1,20 +1,15 @@
 @use "reset";
-// @use "variables";
 @use "mixins" as *;
-
-// @use "../pages/index.scss";
+@use "variables" as *;
+@use "../components/Header/header";
+@use "../components/Hero/hero";
 
 .wrapper {
   @include container();
 }
 
 body {
-  // font-family: $font-primary;
   font-weight: 400;
-
-  &.modal-is-active {
-    overflow: hidden;
-  }
 }
 
 html {
@@ -25,14 +20,14 @@ main {
   overflow: hidden;
 }
 
-.icon__slash {
-  width: 32px;
-  height: 32px;
-  vertical-align: sub;
+.text-editor {
+  p {
+    color: $color-cave;
+    font-size: 16px;
+    line-height: 32px;
 
-  @include size-laptop() {
-    width: 40px;
-    height: 40px;
-    margin-right: 14px;
+    & + p {
+      margin-top: 16px;
+    }
   }
 }

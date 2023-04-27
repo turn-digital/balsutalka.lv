@@ -1,19 +1,9 @@
-$default-width: 1120px;
+$default-width: 1172px;
 
 $screen-mobileS: 320px;
 $screen-tablet: 768px;
-$screen-laptop: 1024px;
-$screen-laptopM: 1200px;
-$screen-laptopL: 1400px;
+$screen-laptop: 1200px;
 $screen-4k: 2560px;
-
-// if using display: grid
-$grid-column-gap: 42px;
-$grid-row-gap: 16px;
-$grid-row-gapS: 6px;
-$grid-row-gapM: 12px;
-$grid-row-gapL: 20px;
-$grid-row-gapXL: 36px;
 
 // media grid points, call example : @include size-laptop()
 @mixin size-mobileS {
@@ -30,24 +20,6 @@ $grid-row-gapXL: 36px;
 
 @mixin size-laptop {
   @media (min-width: $screen-laptop) {
-    @content;
-  }
-}
-
-@mixin size-laptopM {
-  @media (min-width: $screen-laptopM) {
-    @content;
-  }
-}
-
-@mixin size-laptopL {
-  @media (min-width: $screen-laptopL) {
-    @content;
-  }
-}
-
-@mixin size-4k {
-  @media (min-width: $screen-laptopL) {
     @content;
   }
 }
@@ -72,9 +44,9 @@ $grid-row-gapXL: 36px;
     padding-right: 40px;
   }
 
-  @include size-laptopL() {
-    padding-left: 20px;
-    padding-right: 20px;
+  @include size-laptop() {
+    padding-left: 0;
+    padding-right: 0;
     max-width: $default-width;
   }
 }
