@@ -19,6 +19,7 @@ const Hero = (props) => {
                 src="https://www.youtube.com/embed/651zYF2EFK8"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope;"
                 allowFullScreen
+                title="Balsu talka video"
               ></iframe>
             </div>
 
