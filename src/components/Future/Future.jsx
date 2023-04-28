@@ -10,7 +10,7 @@ const Future = (props) => {
         <div className="future__content">
           <div className="future__card">
             <a
-              href="#"
+              href="https://commonvoice.mozilla.org/lv/speak"
               target="_blank"
               rel="noopener"
               title="Atvērt runā saiti"
@@ -33,7 +33,7 @@ const Future = (props) => {
           </div>
           <div className="future__card">
             <a
-              href="#"
+              href="https://commonvoice.mozilla.org/lv/listen"
               target="_blank"
               rel="noopener"
               title="Atvērt klausies saiti"
