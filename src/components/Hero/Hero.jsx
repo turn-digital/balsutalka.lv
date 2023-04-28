@@ -24,7 +24,7 @@ const Hero = (props) => {
             </div>
 
             <p className="hero__tags">
-              #valodasTehnoloģija, #balssAsistents, #subtitri, #siri,
+              #BalsuTalka #valodasTehnoloģija, #balssAsistents, #subtitri, #siri,
               #mākslīgaisIntelekts, #balssAI, #rakstītArBalsi
             </p>
           </div>
