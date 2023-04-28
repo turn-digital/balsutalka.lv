@@ -11,6 +11,14 @@ import Implementers from "~components/Implementers/Implementers";
 import { t, changeLanguage } from "i18next";
 
 changeLanguage("lv");
+
+const lvHours = await fetch('https://commonvoice.mozilla.org/api/v1/lv/clips/stats')
+  .then(response => response.json())
+  // item id 4 is the most recent data
+  .then(data => Math.round(data[4].total/(60*60)))
+  // fallback, last known value if we did not get ant data from CommonVoice
+  .catch(()=> 18);
+
 ---
 
 <Layout title={t("global.metaTitle")} desc={t("index.metaDesc")}>
@@ -18,7 +26,7 @@ changeLanguage("lv");
     <Header />
     <Hero client:load />
     <Future />
-    <Graph />
+    <Graph lvHours={lvHours} />
     <Faq />
     <Implementers />
     <Footer />

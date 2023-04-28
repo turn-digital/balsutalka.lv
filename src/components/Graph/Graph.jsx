@@ -1,4 +1,6 @@
-const Graph = (props) => {
+import ProgressSvg from "~components/ProgressSvg/ProgressSvg";
+
+const Graph = ({ lvHours }) => {
   return (
     <section className="graph">
       <div className="wrapper">
@@ -16,38 +18,23 @@ const Graph = (props) => {
               <div className="graph__row">
                 <div className="graph__stat">
                   <span>Latviešu</span>
-                  <span>18/100 h</span>
+                  <span>{lvHours}/100 h</span>
                 </div>
-                <img
-                  src="/assets/images/svg/latvija.svg"
-                  alt="Latvijai ir 18h attēlots stabiņu diagrammā"
-                  height="40px"
-                  width="500px"
-                />
+                <ProgressSvg hours={lvHours} />
               </div>
               <div className="graph__row">
                 <div className="graph__stat">
                   <span>Igauņu</span>
                   <span>56/100 h</span>
                 </div>
-                <img
-                  src="/assets/images/svg/igaunu.svg"
-                  alt="Igaunijai ir 56h attēlots stabiņu diagrammā"
-                  height="40px"
-                  width="500px"
-                />
+                <ProgressSvg hours="56" />
               </div>
               <div className="graph__row">
                 <div className="graph__stat">
                   <span>Lietuviešu</span>
-                  <span>54/100 h</span>
+                  <span>25/100 h</span>
                 </div>
-                <img
-                  src="/assets/images/svg/lietuva.svg"
-                  alt="Lietuvai ir 54h attēlots stabiņu diagrammā"
-                  height="40px"
-                  width="500px"
-                />
+                <ProgressSvg hours="25" />
               </div>
             </div>
           </div>
