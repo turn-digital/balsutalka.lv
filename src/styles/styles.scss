@@ -81,12 +81,15 @@ main {
     counter-reset: item;
 
     li {
-      display: block;
+      display: inline-flex;
       position: relative;
+      padding-left: 10px;
       &::before {
         content: counters(item, ".") ".";
         counter-increment: item;
         margin-right: 2px;
+        position: relative;
+        left: -5px;
       }
     }
   }
