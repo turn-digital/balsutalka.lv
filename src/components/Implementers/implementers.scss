@@ -1,41 +1,36 @@
 @use "../../styles/variables" as *;
-.container {
-  display: flex;
-  width: 90%;
-  margin-left: 120px;
-  justify-content: space-between;
-}
+@use "../../styles/mixins" as *;
 
-.title {
-  margin-left: 120px;
-  padding-top: 64px;
-  padding-bottom: 30px;
-}
-.container {
-  margin-left: 100px;
-}
-.image {
-  padding-bottom: 64px;
-}
-/* Mobile view */
-@media only screen and (max-width: 767px) {
-  .container {
+.implementers {
+  padding: 32px 0 16px;
+
+  &__logos {
+    margin: 0 -32px;
     display: flex;
-    width: 390px;
-    margin-left: 5px;
     flex-wrap: wrap;
     justify-content: space-around;
+
+    img {
+      margin: 0 16px 16px 16px;
+      width: calc(50% - 32px);
+      max-width: 240px;
+      display: block;
+    }
   }
-  .title {
-    padding-top: 0px;
-    margin-left: 80px;
-    margin-top: 20px;
+
+  &__title {
     padding-bottom: 10px;
   }
 
-  .image {
-    padding-bottom: 15px;
-    width: 135px;
-    height: 80x;
+  @include size-laptop() {
+    padding: 64px 0 56px;
+
+    &__logos {
+      justify-content: space-between;
+    }
+
+    &__title {
+      padding-bottom: 30px;
+    }
   }
 }

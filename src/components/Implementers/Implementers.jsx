@@ -1,17 +1,16 @@
 const Implementers = (props) => {
-  console.log("Section1");
   return (
-    <>
-      <div>
-        <p className="title">Projekta īstenotāji</p>
-        <div className="container">
-          <img src="/assets/images/LUMII.png" className="image"></img>
-          <img src="/assets/images/LATA.png" className="image"></img>
-          <img src="/assets/images/LULFMI.png" className="image"></img>
-          <img src="/assets/images/UnescoLV.png" className="image"></img>
+    <section className="implementers">
+      <div className="wrapper">
+        <p className="implementers__title title">Projekta īstenotāji</p>
+        <div className="implementers__logos">
+          <img src="/assets/images/LUMII.png" alt="LUMII logo"></img>
+          <img src="/assets/images/LATA.png" alt="LATA logo"></img>
+          <img src="/assets/images/LULFMI.png" alt="LULFMI logo"></img>
+          <img src="/assets/images/UnescoLV.png" alt="UnescoLV logo"></img>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

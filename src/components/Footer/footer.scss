@@ -1,58 +1,26 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
-/* Desktop view */
 .footer {
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 184px;
-  background-color: #164460;
-  flex: none;
-  order: 7;
-  align-self: stretch;
-  flex-grow: 0;
-}
+  padding: 16px 0;
+  background-color: $color-primary;
 
-.footer_logo {
-  margin-top: 50px;
-
-  margin-left: 120px;
-}
-
-.footer_text {
-  margin-top: 50px;
-  margin-left: 120px;
-  color: #ffffff;
-}
-
-/* Mobile view */
-@media only screen and (max-width: 767px) {
-  .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    width: 390px;
-    height: 158.12px;
-    background-color: #164460;
-    flex: none;
-    order: 7;
-    align-self: stretch;
-    flex-grow: 0;
-    color: #ffffff;
+  &__image {
+    display: inline-block;
   }
 
-  .footer_logo {
-    padding-left: 16px;
-    margin-left: 0;
-    margin-top: 30px;
+  &__text {
+    margin-top: 24px;
+    color: $color-white;
+    font-size: 16px;
+    line-height: 24px;
   }
 
-  .footer_text {
-    padding-left: 16px;
-    margin-top: 0;
-    margin-left: 0px;
-    width: 170px;
-    line-height: 20px;
+  @include size-laptop() {
+    padding: 32px 0;
+
+    &__text {
+      margin-top: 40px;
+    }
   }
 }
