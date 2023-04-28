@@ -12,11 +12,18 @@ const { title, desc } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script defer data-domain="balsutalka.lv" src="https://plausible.io/js/script.js"></script>
+    <script defer data-domain="balsutalka.lv" src="https://plausible.io/js/script.outbound-links.js"></script>
     <link rel="icon" type="image/svg+xml" href="/Favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Balsutalka</title>
+    <title>Balsu talka – ieguldījums atvērtā latviešu valodas runas bankā</title>
     <meta name="description" content={desc} />
+    <meta property="og:url" content="https://balsutalka.lv/" />
+    <meta property="og:type" content="article" />
+<meta property="og:title"              content="Balsu talka – ieguldījums atvērtā latviešu valodas runas bankā" />
+<meta property="og:description"        content="Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!" />
+<meta property="og:image"              content="https://balsutalka.lv/fb_cover.png" />
+    
+    
   </head>
   <body>
     <slot />

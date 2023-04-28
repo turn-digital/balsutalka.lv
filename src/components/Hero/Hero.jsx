@@ -16,7 +16,7 @@ const Hero = (props) => {
           <div className="hero__col">
             <div className="hero__video">
               <iframe
-                src="https://www.youtube.com/embed/651zYF2EFK8"
+                src="https://www.youtube-nocookie.com/embed/651zYF2EFK8"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope;"
                 allowFullScreen
                 title="Balsu talka video"
