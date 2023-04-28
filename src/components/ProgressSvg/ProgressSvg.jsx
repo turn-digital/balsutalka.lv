@@ -3,7 +3,7 @@ const ProgressSvg = ({ hours }) => {
 
   return(
     <svg width="501" height="48" viewBox="0 0 501 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="40" height="500" transform="translate(500 3.00002) rotate(90)" fill="white" fill-opacity="0.25" />
+      <rect width="40" height="500" transform="translate(500 3.00002) rotate(90)" fill="white" fillOpacity="0.25" />
       <rect x="0" y="3" width={ progressWidth } height="40" fill="#58C8B2" />
       <text x={ progressWidth - 25 } y="29" fontSize="14px" fill="white">{ hours }</text>
       {/*Default is 18*/}
