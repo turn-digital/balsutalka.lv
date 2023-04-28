@@ -9,6 +9,10 @@
     display: inline-block;
   }
 
+  &__logo {
+    height: auto;
+  }
+
   &__text {
     margin-top: 24px;
     color: $color-white;

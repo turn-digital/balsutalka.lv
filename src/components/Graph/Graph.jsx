@@ -21,7 +21,9 @@ const Graph = (props) => {
                 <img
                   src="/assets/images/svg/latvija.svg"
                   alt="Latvijai ir 18h attēlots stabiņu diagrammā"
-                ></img>
+                  height="40px"
+                  width="500px"
+                />
               </div>
               <div className="graph__row">
                 <div className="graph__stat">
@@ -31,7 +33,9 @@ const Graph = (props) => {
                 <img
                   src="/assets/images/svg/igaunu.svg"
                   alt="Igaunijai ir 56h attēlots stabiņu diagrammā"
-                ></img>
+                  height="40px"
+                  width="500px"
+                />
               </div>
               <div className="graph__row">
                 <div className="graph__stat">
@@ -41,7 +45,9 @@ const Graph = (props) => {
                 <img
                   src="/assets/images/svg/lietuva.svg"
                   alt="Lietuvai ir 54h attēlots stabiņu diagrammā"
-                ></img>
+                  height="40px"
+                  width="500px"
+                />
               </div>
             </div>
           </div>
