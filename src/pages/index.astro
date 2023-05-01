@@ -15,7 +15,7 @@ changeLanguage("lv");
 const lvHours = await fetch('https://commonvoice.mozilla.org/api/v1/lv/clips/stats')
   .then(response => response.json())
   // item id 4 is the most recent data
-  .then(data => Math.round(data[4].total/(60*60)))
+  .then(data => Math.floor(data[4].total/(60*60)))
   // fallback, last known value if we did not get ant data from CommonVoice
   .catch(()=> 18);
 
