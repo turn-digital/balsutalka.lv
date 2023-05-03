@@ -2,6 +2,7 @@ $default-width: 1200px;
 
 $screen-mobileS: 320px;
 $screen-tablet: 768px;
+$screen-laptopS: 1024px;
 $screen-laptop: 1240px;
 $screen-4k: 2560px;
 
@@ -24,6 +25,12 @@ $screen-4k: 2560px;
   }
 }
 
+@mixin size-laptopS {
+  @media (min-width: $screen-laptopS) {
+    @content;
+  }
+}
+
 @mixin clearfix {
   &::after {
     clear: both;
@@ -32,7 +39,7 @@ $screen-4k: 2560px;
   }
 }
 
-// main defailt container, using by wrapper class
+// main default container, using by wrapper class
 @mixin container {
   position: relative;
   margin: 0 auto;
