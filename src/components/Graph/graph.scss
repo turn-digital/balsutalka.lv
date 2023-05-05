@@ -52,6 +52,12 @@
 
   &__table {
     max-width: 500px;
+
+    svg {
+      width: 100%;
+      max-width: 501px;
+      height: auto;
+    }
   }
 
   img {
