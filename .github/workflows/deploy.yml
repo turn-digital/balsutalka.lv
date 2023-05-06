@@ -9,7 +9,7 @@ on:
   schedule:
     # * is a special character in YAML, so you have to quote this string
     # Common Voice caches refresh at ~23:00 Riga time
-    - cron: "35 1,13 * * *"
+    - cron: "35 2,14 * * *"
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
