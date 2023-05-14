@@ -10,31 +10,24 @@ const Graph = ({ lvHours }) => {
         <div className="graph__box">
           <div className="graph__col">
             <p className="graph__info">
-              <span>Izaicinājums</span>Ierunāsim 100 stundas 4. maijā!
+              <span>Izaicinājums</span>Ierunāsim 200 stundas šovasar!
             </p>
           </div>
           <div className="graph__col">
             <div className="graph__table">
               <div className="graph__row">
                 <div className="graph__stat">
-                  <span>Latviešu</span>
-                  <span>{lvHours}/100 h</span>
+                  <span>Ierunāts</span>
+                  <span>{lvHours.total}/200 h</span>
                 </div>
-                <ProgressSvg hours={lvHours} />
+                <ProgressSvg hours={lvHours.total} />
               </div>
               <div className="graph__row">
                 <div className="graph__stat">
-                  <span>Igauņu</span>
-                  <span>56/100 h</span>
+                  <span>Pārbaudīts</span>
+                  <span>{lvHours.valid}/200 h</span>
                 </div>
-                <ProgressSvg hours="56" />
-              </div>
-              <div className="graph__row">
-                <div className="graph__stat">
-                  <span>Lietuviešu</span>
-                  <span>25/100 h</span>
-                </div>
-                <ProgressSvg hours="25" />
+                <ProgressSvg hours={lvHours.valid} />
               </div>
             </div>
           </div>
