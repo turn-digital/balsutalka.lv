@@ -10,7 +10,7 @@ const Hero = (props) => {
     <div className="hero">
       <div className="wrapper">
         <h2 className="hero__title title">
-          Balsu talka - palīdzi attīstīt tehnoloģijas latviešu valodā
+          Balsu talka – palīdzi attīstīt tehnoloģijas latviešu valodā
         </h2>
         <div className="hero__content">
           <div className="hero__col">
@@ -38,7 +38,7 @@ const Hero = (props) => {
                 ir nodrošināt latviešu valodas pieejamību tehnoloģiju
                 attīstībai. To iespējams panākt, savācot balsu paraugus. Lai
                 izveidotu daudzveidīgu, atvērtu un ikvienam pieejamu latviešu
-                runas datu kopu, mēs aicinām kopīgiem spēkiem ierunāt vismaz 100
+                runas datu kopu, mēs aicinām kopīgiem spēkiem ierunāt vismaz 1000
                 stundas.
               </p>
               {!showMore && (
@@ -57,7 +57,7 @@ const Hero = (props) => {
                     televizoriem, automašīnām vai telefoniem. Video zvanos nav
                     iespējams automātiski un bez maksas izmantot latviešu
                     valodas subtitrus labā kvalitātē. Ir arī maz lietotņu, kurās
-                    latviski varētu rakstīt , izmantojot balsi, nevis tastatūru.
+                    latviski varētu rakstīt, izmantojot balsi, nevis tastatūru.
                     Tas ir tāpēc, ka nav pieejami atvērti un brīvi lietojami
                     latviešu valodas runas dati. Tas kavē jaunu ideju attīstību
                     un rada grūtības pasaules uzņēmumiem un zinātniekiem iekļaut
