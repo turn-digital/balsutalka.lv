@@ -9,6 +9,19 @@
     margin-bottom: 16px;
   }
 
+  a {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+
+  .text-editor ul {
+    margin-top: 0;
+  }
+
+  .accordion__item .accordion__header {
+    text-align: left;
+  }
+
   @include size-laptop() {
     padding: 64px 0;
 
