@@ -22,8 +22,6 @@ const Implementers = (props) => {
             width="282px"
             height="160px"
           />
-        {/*</div>*/}
-        {/*<div className="implementers__logos">*/}
           <img
             src="/assets/images/UnescoLV.png"
             alt="UnescoLV logo"
@@ -37,7 +35,7 @@ const Implementers = (props) => {
             height="160px"
           />
           <img
-            src="/assets/images/svg/LNKC.svg"
+            src="/assets/images/LNKC.png"
             alt="LNKC logo"
             width="282px"
             height="160px"
