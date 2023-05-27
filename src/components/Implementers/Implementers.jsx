@@ -46,7 +46,7 @@ const Implementers = (props) => {
             height="160"
           />
 
-          <div className="implementers__logos-es_logo">
+          <div className="es-logo">
             <img
               src="/assets/images/svg/ESLogo.svg"
               width="220"
