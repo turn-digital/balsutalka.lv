@@ -9,12 +9,38 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
+    &-es_logo {
+      display: flex;
+      width: 540px;
+      margin-top: 40px;
+
+      img {
+        padding-right: 15px;
+      }
+      span {
+        margin: auto;
+      }
+    }
+
     img {
-      margin: 0 16px 0 16px;
+      margin: 0 5px;
       width: calc(50% - 32px);
       max-width: 240px;
       height: auto;
       display: block;
+
+      @include size-tablet() {
+        margin: 0 40px;
+      }
+
+      @include size-laptopS() {
+        margin: 0;
+        max-width: 235px;
+      }
+
+      @include size-laptop() {
+        max-width: 240px;
+      }
     }
   }
 
@@ -24,14 +50,6 @@
 
   @include size-laptopS() {
     padding: 64px 0 56px;
-
-    &__logos {
-      justify-content: space-between;
-
-      img {
-        margin: 0 32px 0 32px;
-      }
-    }
 
     &__title {
       padding-bottom: 30px;

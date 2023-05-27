@@ -22,24 +22,14 @@
     &.right {
       display: flex;
       flex-direction: column;
-      margin-top: 24px;
-
-      @include size-tablet() {
-        flex-direction: row;
-      }
-
-      @include size-laptopS() {
-        margin-top: 0;
-      }
 
       .footer__text {
         margin-top: 24px;
         margin-left: 0;
 
-        @include size-tablet() {
+        @include size-laptopS() {
           margin-top: 0;
           margin-left: 20px;
-
         }
       }
     }
