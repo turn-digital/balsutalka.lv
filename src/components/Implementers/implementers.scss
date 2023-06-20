@@ -16,6 +16,10 @@
 
       img {
         padding-right: 15px;
+
+        @include size-tablet() {
+          width: 240px;
+        }
       }
 
       span {
