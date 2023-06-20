@@ -45,7 +45,12 @@ const Implementers = (props) => {
             width="282"
             height="160"
           />
-
+          <img
+            src="/assets/images/VPP.png"
+            alt="VPP logo"
+            width="282"
+            height="160"
+          />
           <div className="es-logo">
             <img
               src="/assets/images/svg/ESLogo.svg"
