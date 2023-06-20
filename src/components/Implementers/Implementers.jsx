@@ -51,7 +51,7 @@ const Implementers = (props) => {
             width="282"
             height="160"
           />
-          <span>"Mūsdienu latviešu valodas izpēte un valodas tehnoloģiju attīstība" Nr. VPP-LETONIKA-2021/1-0006</span>
+          
           <div className="es-logo">
             <img
               src="/assets/images/svg/ESLogo.svg"
