@@ -45,13 +45,18 @@ const Implementers = (props) => {
             width="282"
             height="160"
           />
-          <img
-            src="/assets/images/VPP.png"
-            alt="VPP logo"
-            width="282"
-            height="160"
-          />
-          
+          <div className="vpp-logo">
+            <img
+              src="/assets/images/VPP.png"
+              alt="VPP logo"
+              width="282"
+              height="160"
+            />
+            <span>
+              "Mūsdienu latviešu valodas izpēte un valodas tehnoloģiju attīstība"<br/>
+              Nr. VPP-LETONIKA-2021/1-0006
+            </span>
+          </div>
           <div className="es-logo">
             <img
               src="/assets/images/svg/ESLogo.svg"

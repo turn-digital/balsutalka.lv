@@ -9,6 +9,29 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
+    .vpp-logo {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        width: 100%;
+      }
+
+      span {
+        font-size: 12px;
+        text-align: center;
+        max-width: 240px;
+
+        @include size-tablet() {
+          max-width: 315px;
+        }
+
+        @include size-laptopS() {
+          max-width: 240px;
+        }
+      }
+    }
+
     .es-logo {
       display: flex;
       width: 540px;
