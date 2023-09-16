@@ -32,8 +32,8 @@ const lvHours = await fetch('https://commonvoice.mozilla.org/api/v1/lv/clips/sta
 <Layout title={t("global.metaTitle")} desc={t("index.metaDesc")}>
   <main>
     <Header />
-    <Hero client:load />
     <Future />
+    <Hero client:load />
     <Graph lvHours={lvHours} />
     <Faq />
     <Implementers />

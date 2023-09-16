@@ -2,6 +2,8 @@
 @use "../../styles/mixins" as *;
 
 .hero {
+  padding-bottom: 64px;
+
   &__title {
     padding: 16px 0;
   }
@@ -63,7 +65,7 @@
 
   @include size-laptop() {
     &__title {
-      padding: 40px 0 56px;
+      padding: 0 0 56px;
     }
 
     &__content {

@@ -8,9 +8,13 @@
 
   &__card {
     position: relative;
-    padding: 48px 48px 24px;
+    padding: 32px 48px 24px;
     background-color: $color-snow;
     border-radius: 32px;
+
+    @include size-laptop() {
+      padding-top: 48px;
+    }
 
     & + .future__card {
       margin-top: 16px;
@@ -69,7 +73,7 @@
   }
 
   @include size-laptop() {
-    margin-top: 104px;
+    margin-top: 48px;
     padding-bottom: 64px;
 
     &__title {
