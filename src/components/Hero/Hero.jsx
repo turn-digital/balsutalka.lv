@@ -34,41 +34,20 @@ const Hero = (props) => {
             <h3 className="hero__subtitle">Kas tas ir un kā strādā?</h3>
             <div className="hero__text text-editor">
               <p>
-                “Balsu talka” ir projekts latviešu valodas nākotnei. Tā mērķis
-                ir nodrošināt latviešu valodas pieejamību tehnoloģiju
-                attīstībai. To iespējams panākt, savācot balsu paraugus. Lai
-                izveidotu daudzveidīgu, atvērtu un ikvienam pieejamu latviešu
-                runas datu kopu, mēs aicinām kopīgiem spēkiem ierunāt vismaz 1000
-                stundas.
+                “Balsu talka” ir projekts latviešu valodas nākotnei. Tā mērķis ir iemūžināt mūsdienās runāto latviešu valodu un nodrošināt latviešu valodas pieejamību tehnoloģiju attīstībai. Šo mērķi varam sasniegt tikai kopīgiem spēkiem, tāpēc aicinām katru ierunāt vismaz piecus teikumus, lai savāktu pēc iespējas vairāk runas paraugu un izveidotu daudzveidīgu, atvērtu un ikvienam pieejamu latviešu runas datu kopu.
               </p>
               {!showMore && (
                 <p className="gradienText">
-                  Kaut arī runas tehnoloģijas šobrīd strauji attīstās, tomēr
-                  aizvien daudzas iekārtas latviešu valodu saprot slikti.
-                  Piemēram, mēs nevaram latviski dot
+                  Runas tehnoloģijas šobrīd strauji attīstās, tomēr daudzas iekārtas latviešu valodu joprojām saprot slikti. Piemēram, mēs nevaram latviski dot balss
                 </p>
               )}
               {showMore && (
                 <>
                   <p>
-                    Kaut arī runas tehnoloģijas šobrīd strauji attīstās, tomēr
-                    aizvien daudzas iekārtas latviešu valodu saprot slikti.
-                    Piemēram, mēs nevaram latviski dot balss komandas
-                    televizoriem, automašīnām vai telefoniem. Video zvanos nav
-                    iespējams automātiski un bez maksas izmantot latviešu
-                    valodas subtitrus labā kvalitātē. Ir arī maz lietotņu, kurās
-                    latviski varētu rakstīt, izmantojot balsi, nevis tastatūru.
-                    Tas ir tāpēc, ka nav pieejami atvērti un brīvi lietojami
-                    latviešu valodas runas dati. Tas kavē jaunu ideju attīstību
-                    un rada grūtības pasaules uzņēmumiem un zinātniekiem iekļaut
-                    latviešu valodu savās tehnoloģijās un runas atpazīšanas
-                    pētījumos.
+                    Runas tehnoloģijas šobrīd strauji attīstās, tomēr daudzas iekārtas latviešu valodu joprojām saprot slikti. Piemēram, mēs nevaram latviski dot balss komandas televizoriem, automašīnām vai telefoniem. Video zvanos nav iespējams automātiski un bez maksas izmantot latviešu valodas subtitrus labā kvalitātē. Ir arī maz lietotņu, kurās latviski varētu rakstīt, izmantojot balsi, nevis tastatūru. Tas ir tāpēc, ka nav pieejami atvērti un brīvi lietojami latviešu valodas runas dati. Tas kavē jaunu ideju attīstību un rada grūtības pasaules uzņēmumiem un zinātniekiem iekļaut latviešu valodu savās tehnoloģijās un runas atpazīšanas pētījumos.
                   </p>
                   <p>
-                    Balsu paraugu vākšanai izmantojam Mozilla Common Voice
-                    platformu, kur savāktie balsu dati ir pieejami ikvienam. Bet
-                    jo sevišķi svarīgi tie ir uzņēmumiem tehnoloģisko risinājumu
-                    attīstīšanai un valodas pētniekiem visā pasaulē.
+                    Balsu paraugu vākšanai izmantojam Mozilla Common Voice platformu, kur savāktie runas dati ir pieejami ikvienam. Bet jo sevišķi svarīgi tie ir uzņēmumiem runas tehnoloģiju izpētei un valodas pētniekiem visā pasaulē.
                   </p>
                 </>
               )}
