@@ -20,9 +20,7 @@ const Future = (props) => {
             <div className="future__box">
               <div className="future__text text-editor">
                 <p>
-                  Ziedo savu balsi līdzās tūkstošiem citu! Jo vairāk un
-                  daudzveidīgāki būs balsu paraugi, jo ātrāk un veiksmīgāk
-                  izdosies attīstīt runas tehnoloģijas latviešu valodā!
+                  Ierunā dažus teikumus un palīdzi attīstīt runas tehnoloģijas latviešu valodā!
                 </p>
               </div>
               <Icons type={"mic"} />
@@ -43,9 +41,7 @@ const Future = (props) => {
             <div className="future__box">
               <div className="future__text text-editor">
                 <p>
-                  Palīdzi novērtēt, kā ierunājuši citi! Ierakstu apstiprināšana
-                  ir vienlīdz svarīga, lai radītu kvalitatīvus un atvērtus runas
-                  datus.
+                  Palīdzi novērtēt, kā ierunājuši citi! Ierakstu pārbaude ir vienlīdz svarīga.
                 </p>
               </div>
               <Icons type={"listen"} />
