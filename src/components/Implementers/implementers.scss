@@ -9,6 +9,10 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
+    @include size-laptopS() {
+      column-gap: 100px;
+    }
+
     .vpp-logo {
       display: flex;
       flex-direction: column;

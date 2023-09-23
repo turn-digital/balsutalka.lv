@@ -23,6 +23,12 @@ const Implementers = (props) => {
             height="160"
           />
           <img
+            src="/assets/images/RTA.png"
+            alt="RTA logo"
+            width="282"
+            height="160"
+          />
+          <img
             src="/assets/images/UnescoLV.png"
             alt="UnescoLV logo"
             width="282"
@@ -45,6 +51,12 @@ const Implementers = (props) => {
             width="282"
             height="160"
           />
+          <img
+            src="/assets/images/voluda.png"
+            alt="LNKC logo"
+            width="282"
+            height="160"
+          />
           <div className="vpp-logo">
             <img
               src="/assets/images/VPP.png"
@@ -55,6 +67,18 @@ const Implementers = (props) => {
             <span>
               "Mūsdienu latviešu valodas izpēte un valodas tehnoloģiju attīstība"<br/>
               Nr. VPP-LETONIKA-2021/1-0006
+            </span>
+          </div>
+          <div className="vpp-logo">
+            <img
+              src="/assets/images/VPP.png"
+              alt="VPP logo"
+              width="282"
+              height="160"
+            />
+            <span>
+              Atvērtas un FAIR principiem atbilstīgas digitālo humanitāro zinātņu ekosistēmas attīstība Latvijā (DHELI)"<br/>
+              Nr: VPP-IZM-DH-2022/1-0002
             </span>
           </div>
           <div className="es-logo">
