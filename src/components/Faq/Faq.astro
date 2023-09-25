@@ -1,72 +1,70 @@
 ---
 import { Accordion, AccordionItem } from "accessible-astro-components";
+import { t } from "i18next";
 ---
 
 <section class="faq">
   <div class="wrapper">
-    <h2 class="faq__title title">Biežāk uzdotie jautājumi</h2>
+    <h2 class="faq__title title">
+      {t("index.faqTitle")}
+    </h2>
 
     <div class="faq__acc cc-acc">
       <Accordion>
-        <AccordionItem header="Vai balss ierakstus var veikt anonīmi?">
+        <AccordionItem header={t("index.faqQuestion1")}>
           <div class="text-editor">
             <p>
-              Jā, lai piedalītos talkā, nav jāreģistrējas Mozilla Common Voice platformā - balss ierakstus var veikt anonīmi, neatstājot nekādus datus par sevi. Reģistrēšanās aktīvākajiem dalībniekiem ļauj sekot līdzi savai statistikai un salīdzināt veikumu ar citiem dalībniekiem visā pasaulē.
+              {t("index.faqAnswer1p")}
             </p>
           </div>
         </AccordionItem>
-        <AccordionItem header="Kāda informācija būs publiski pieejama?">
+        <AccordionItem header={t("index.faqQuestion1")}>
           <div class="text-editor">
             <ol>
               <li>
-                Publiski būs pieejams veikto ierakstu skaits un informācija par to, kādā valodā tie ierunāti.
+                {t("index.faqAnswer2li1")}
               </li>
               <li>
-                Ja izveidosiet profilu, varēsiet izvēlēties, vai lietotājvārds ir publisks vai anonīms.
+                {t("index.faqAnswer2li2")}
               </li>
               <li>
-                Jūsu iesniegtie demogrāfiskie dati (piemēram, vecums, dzimums vai valoda) nekad netiks publiskoti jūsu profilā un netiks sasaistīti ar jūsu kontu datu kopā. Atsevišķi balsu ieraksti tiks saistīti ar demogrāfiskajiem datiem, lai veiktu precīzāku analīzi. Piemēram, pētnieks var vēlēties pētīt kādas noteiktas vecuma grupas (jauniešu, senioru) valodu.
+                {t("index.faqAnswer2li3")}
               </li>
               <li>
-                Jūsu lietotājvārds un e-pasts netiks piesaistīts publicētajiem datiem.
+                {t("index.faqAnswer2li4")}
               </li>
               <li>
-                E-pasta adrese, ko izmantojat Mozilla Common Voice platformā, publiski pieejama nebūs.
+                {t("index.faqAnswer2li5")}
               </li>
             </ol>
           </div>
         </AccordionItem>
-        <AccordionItem header="Kas ir svarīgāks – ierakstīšana vai pārbaudīšana?">
+        <AccordionItem header={t("index.faqQuestion3")}>
           <div class="text-editor">
             <p>
-              Abas aktivitātes ir vienlīdz svarīgas. Jaunajiem balsu talkas dalībniekiem ieteicamāk ir fokusēties uz
-              ierakstīšanu, lai mēs iegūtu pēc iespējas plašāku un daudzveidīgāku ierakstu kopu.
+              {t("index.faqAnswer3p1")}
             </p>
             <p>
-              Savukārt tos, kas jau ierakstījuši 100 vai vairāk teikumu, aicinām pārbaudīt citu ierakstīto. Precīzu un
-              kvalitatīvu runas tehnoloģiju izstrādē ir svarīgi, lai ierunātajos teikumos nav kļūdu, tāpēc šobrīd
-              lielākais ieguvums no aktīvo dalībnieku ieguldītā laika būs tieši ierakstu pārbaude, jo nepārbaudītos
-              ierakstus ir grūti izmantot pētniecībā un runas tehnoloģijās.
+              {t("index.faqAnswer3p2")}
             </p>
           </div>
         </AccordionItem>
-        <AccordionItem header="Vai ir pieejama Balsu talkas lietotne?">
+        <AccordionItem header={t("index.faqQuestion4")}>
           <div class="text-editor">
             <p>
-              Mozilla Common Voice lapā teikumus var ierakstīt un pārbaudīt arī no mobilajām ierīcēm.
+              {t("index.faqAnswer4p1")}
               <br>
-              Android lietotājiem ir pieejama arī neoficiāla kopienas izstrādāta lietotne - <b>Donate your voice: CV Project</b>.
-              Lietotne ir pieejama <a href="https://play.google.com/store/apps/details?id=org.commonvoice.saverio">Google Play</a>.
+              {t("index.faqAnswer4p2")} <b>Donate your voice: CV Project</b>.
+              {t("index.faqAnswer4p3")} <a href="https://play.google.com/store/apps/details?id=org.commonvoice.saverio">Google Play</a>.
               <br/>
-              Šī lietotne piedāvā vairākas papildu iespējas:
+              {t("index.faqAnswer4p4")}
             </p>
             <ul>
-              <li>Iespēja ierakstīt un pārbaudīt bez interneta savienojuma</li>
-              <li>Papildu iestatījumi, kas ierakstu pārbaudi padara ātrāku</li>
+              <li>{t("index.faqAnswer4li1")}</li>
+              <li>{t("index.faqAnswer4li2")}</li>
             </ul>
             <p>
-              Lietotnē ir reklāmas, bet tās var izslēgt iestatījumu sadaļā.
-              Iestatījumi -> Citi -> Papildu iestatījumi.
+              {t("index.faqAnswer4p5")}
             </p>
           </div>
         </AccordionItem>

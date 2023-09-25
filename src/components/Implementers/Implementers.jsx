@@ -1,8 +1,12 @@
+import { t } from "i18next";
+
 const Implementers = (props) => {
   return (
     <section className="implementers">
       <div className="wrapper">
-        <p className="implementers__title title">Projekta īstenotāji</p>
+        <p className="implementers__title title">
+          {t("index.implementersImplementers")}
+        </p>
         <div className="implementers__logos">
           <img
             src="/assets/images/LUMII.png"
@@ -37,7 +41,9 @@ const Implementers = (props) => {
         </div>
       </div>
       <div className="wrapper">
-        <p className="implementers__title title">Projekta atbalstītāji</p>
+        <p className="implementers__title title">
+          {t("index.implementersSupporters")}
+        </p>
         <div className="implementers__logos">
           <img
             src="/assets/images/svg/DzDsv.svg"

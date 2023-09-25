@@ -1,33 +1,35 @@
 import ProgressSvg from "~components/ProgressSvg/ProgressSvg";
+import { t } from "i18next";
 
-const Graph = ({ lvHours }) => {
+const Graph = ({ hours }) => {
   return (
     <section className="graph">
       <div className="wrapper">
         <h2 className="graph__title title">
-          Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!
+          {t("index.graphTitle")}
         </h2>
         <div className="graph__box">
           <div className="graph__col">
             <p className="graph__info">
-              <span>Izaicinājums</span>Ierunāsim 200 stundas šovasar!
+              <span>{t("index.graphChallengeTitle")}</span>
+              {t("index.graphChallenge")}
             </p>
           </div>
           <div className="graph__col">
             <div className="graph__table">
               <div className="graph__row">
                 <div className="graph__stat">
-                  <span>Ierunāts</span>
-                  <span>{lvHours.total}/200 h</span>
+                  <span>{t("index.graphRecorded")}</span>
+                  <span>{hours.total}/{t("index.graphGoal")} h</span>
                 </div>
-                <ProgressSvg hours={lvHours.total} />
+                <ProgressSvg hours={hours.total} />
               </div>
               <div className="graph__row">
                 <div className="graph__stat">
-                  <span>Pārbaudīts</span>
-                  <span>{lvHours.valid}/200 h</span>
+                  <span>{t("index.graphValidated")}</span>
+                  <span>{hours.valid}/{t("index.graphGoal")} h</span>
                 </div>
-                <ProgressSvg hours={lvHours.valid} />
+                <ProgressSvg hours={hours.valid} />
               </div>
             </div>
           </div>

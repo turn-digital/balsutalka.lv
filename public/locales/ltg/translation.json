@@ -1,0 +1,66 @@
+{
+  "index": {
+    "metaDesc": "Paleidzi latgalīšu volūdys reitdīnai!",
+    "headerLinkUrl": "/",
+    "headerLink": "Latviešu",
+
+    "futureTitle": "Paleidzi latgalīšu volūdys reitdīnai!",
+    "futureSpeakUrl": "https://commonvoice.mozilla.org/ltg/speak",
+    "futureSpeak": "Runoj",
+    "futureSpeakExplanation": "Īrunoj puors teikumu! Tu paleidziesi saglobuot myusu dīnu latgalīšu volūdu i atteisteit runys tehnologejis.",
+    "futureListenUrl": "https://commonvoice.mozilla.org/ltg/listen",
+    "futureListen": "Klausīs",
+    "futureListenExplanation": "Paleidzi nūviertēt, kai teikumus īrunuojuši cyti! Īrokstu puorbaude ir cīši svareiga.",
+
+    "heroTitle":"Bolsu tolka – paleidzi atteisteit tehnologejis latgalīšu volūdā",
+    "heroTags":"#BalsuTalka #valodasTehnoloģija, #balssAsistents, #subtitri, #siri, #mākslīgaisIntelekts, #balssAI, #rakstītArBalsi",
+    "heroSubtitle":"Kas tys ir i kai struodoj?",
+    "heroIntro":"“Bolsu tolka” ir projekts latgalīšu i latvīšu volūdys nuokūtnei. Juo mierkis ir saglobuot myusu dīnu latgalīšu runu i padareit volūdu pīejamu tehnologeju atteisteibai. Tū var dabuot, salosūt bolsu paraugus. Lai sataiseit daudzveideigu, valeju i sevkuram daīmamu latgalīšu runys datu kūpu, mes aicynojam kūpeigim spākim īrunuot vysmoz 100 stuņžu.",
+    "heroIntroFadeout":"Latgalīšu volūdys atteisteiba ir nasaraunamai saisteita ar latvīšu volūdys nuokūtni i juos īsakļaušonu globalajā runys tehnologeju atteisteibys",
+    "heroIntroFull1":"Latgalīšu volūdys atteisteiba ir nasaraunamai saisteita ar latvīšu volūdys nuokūtni i juos īsakļaušonu globalajā runys tehnologeju atteisteibys procesā. Lai ari pasaulī runys tehnologejis itūšaļt atsateista mudri, vysleidza i niu daudz īkuortu latvīšu i tymā skaitā latgalīšu volūdu saprūt švaki. Par pīmāru, mes navarim latvyski dūt komandys televizorim, mašynom voi telefonim. Video zvonūs navar automatiski i bez moksys lītuot subtitrus latvīšu volūdā lobā kvalitatē, seviški svareigi tys byutu runai latgaliski, kū na vysi runuotā veidā var breivi saprast. Ir moz lītuotņu, kuruos latvyski varātu raksteit ar bolsu, na tastaturu. Tys ir deļtuo, ka nav valeju i breivi lītojamu latvīšu i latgalīšu runys datu. Tys maisa jaunu ideju atteisteibai i pasauļa uzjāmumim i zynuotnīkim ir gryuts īkļaut latvīšu volūdu sovuos tehnologejuos i runys atpazeišonys pietejumūs.",
+    "heroIntroFull2":"Bolsu paraugu vuokšonai lītojam Mozilla Common Voice platformu, kur savuoktī bolsu dati ir daīmami sevkuram. Eipaši svareigi jī ir uzjāmumim tehnologiskūs rysynuojumu atteisteišonai i volūdys pietnīkiem vysā pasaulī.",
+    "heroShowAll":"Paruodeit vysu tekstu",
+
+    "graphDataUrl": "https://commonvoice.mozilla.org/api/v1/ltg/clips/stats",
+    "graphGoal": "10",
+    "graphFallbackRecorded": "0",
+    "graphFallbackValidated": "0",
+    "graphTitle": "Paleidzi atteisteit latgalīšu volūdys tehnologejis ar sovu bolsu!",
+    "graphChallengeTitle": "Izaicynuojums",
+    "graphChallenge": "Īrunuosim 10 stuņdis jau itū rudiņ!",
+    "graphRecorded": "Īrunuots",
+    "graphValidated": "Puorbaudeits",
+
+    "faqTitle": "Bīžuok aizdūtī vaicuojumi",
+    "faqQuestion1": "Voi bolsu var īraksteit anonimi?",
+    "faqAnswer1p": "Nui, lai pīsadaleitu tolkā, nav obligati juosaregistrej Mozilla Common Voice platformā - bolsu var īraksteit anonimi, napamatūt par sevi nikaidu datu. Registriešonuos aktivuokajim dalinīkim ļaun sekuot leidza sovai statistikai i saleidzynuot padareitū ar cytim dalinīkim vysā pasaulī.",
+
+    "faqQuestion2": "Kaida informaceja byus radzama publiski?",
+    "faqAnswer2li1": "Publiski byus radzams īrokstu skaits i informaceja par tū, kaidā volūdā jī īrunuoti.",
+    "faqAnswer2li2": "Jius varit izavielēt, voi lītuotuoja vuords ir publiskys voi anonims.",
+    "faqAnswer2li3": "Jiusu īsnāgtī demografiskī dati (par pīmāru, vacums, dzymums, volūda, izlūkšņu īzeimis voi akcents) nikod natiks paruodeiti jiusu profilā i sasaisteiti ar jū datu kūpā. Atseviški bolsu īroksti tiks saisteiti ar demografiskajim datim, lai veiktu precizuoku analizi. Par pīmāru, pietnīks var gribēt pieteit kaidys nūsaceitys vacuma grupys (jaunīšu, senioru) volūdu.",
+    "faqAnswer2li4": "Jiusu lītuotuoja vuords i e-posts natiks pīsaisteits publicātajim datim.",
+    "faqAnswer2li5": "E-posta adrese, kū lītojat Mozilla Common Voice platformā, publiski daīmama nabyus.",
+
+    "faqQuestion3": "Kas ir svareiguoks – īraksteišona voi puorbaudeišona?",
+    "faqAnswer3p1": "Obejis aktivitatis ir cīši svareigys. Jaunajim bolsu tolkys dalinīkim mes īsokam suokt ar īraksteišonu, lai mes dabuotu piec īspiejis plotuoku i daudzveideiguoku īrokstu kūpu.",
+    "faqAnswer3p2": "Sovpus tūs, kas jau īrakstejuši 100 voi vaira teikumu, aicynojam puorbaudeit cytu īraksteitū. Precizu i kvalitativu runys tehnologeju izstruodē ir svareigi, lai īrunuotajūs teikumūs nav klaidu, deļtuo itūšaļt leluokais īgivums nu aktivūs dalinīku īguļdeituo laika byus tīši īrokstu puorbaude, partū ka napuorbaudeitūs īrokstus ir gryuts lītuot pietnīceibā i runys tehnologejuos.",
+
+    "faqQuestion4": "Voi pastuov Bolsu tolkys lītuotne?",
+    "faqAnswer4p1": "Mozilla Common Voice lopā teikumus var īraksteit i puorbaudeit ari nu mobilūs īreiču.",
+    "faqAnswer4p2": "Android lītuotuojim ir daīmama ari neoficiala kūpīnys sataiseita lītuotne -",
+    "faqAnswer4p3": "Lītuotni var atrast",
+    "faqAnswer4p4": "Itei lītuotne pīduovoj vairuokys papyldu vareibys:",
+    "faqAnswer4li1": "Īraksteit i puorbaudeit bez škārsteikla savīnuojuma",
+    "faqAnswer4li2": "Papyldu īstatejumi, kas īrokstus ļaun puorbaudeit mudruok",
+    "faqAnswer4p5": "Lītuotnē ir reklamys, bet juos var izslēgt īstatejumu sadaļā. Iestatījumi -> Citi -> Papildu iestatījumi.",
+
+    "implementersImplementers": "Projekta eistynuotuoji",
+    "implementersSupporters": "Projekta atbaļsteituoji",
+    "footerDevelopedBy": "Bolsu tolkys lopa sataiseita",
+    "footerContact": "Sasazynuošonai: balsutalka@lumii.lv"
+  },
+  "global": {
+    "metaTitle": "Paleidzi atteisteit latgalīšu volūdys tehnologejis ar sovu bolsu!"
+  }
+}

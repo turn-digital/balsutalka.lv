@@ -1,5 +1,9 @@
+import { t } from "i18next";
+
 const ProgressSvg = ({ hours }) => {
-  const progressWidth = Math.min(hours, 200) / 200 * 501;
+  const goal = Number(t("index.graphGoal"))
+  // 485 - progress bar image width
+  const progressWidth = Math.min(hours, goal) / goal * 485;
 
   return(
     <svg width="501" height="48" viewBox="0 0 501 48" fill="none" xmlns="http://www.w3.org/2000/svg">
