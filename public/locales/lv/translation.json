@@ -1,166 +1,66 @@
 {
   "index": {
     "metaDesc": "Ieguldi latviešu valodas nākotnē!",
-    "heroTitle": "<span>We’ll get it done.</span><span>Together.</span>",
-    "heroButton": "Show me how",
-    "ctaTag": "Things we are good at",
-    "ctaTitle": "Designing a culture of continuous improvement",
-    "ctaContent": "We are dedicated to helping organizations conceive their value adding opportunities and create their own digital transformation success stories.",
+    "headerLinkUrl": "/ltg",
+    "headerLink": "Latgaliešu",
 
-    "serviceTag": "Services",
-    "serviceTitle": "Ways we help you </br> to achieve your goals",
-    "serviceSubtitle": "Practical results",
-    "serviceContent": "We deliver practical results quickly thanks to our in-house team of UX & UI designers and programmers. By having all the necessary skill set and expertise under one roof, we streamline the development process and get your projects off the ground fast.",
+    "futureTitle": "Ieguldi latviešu valodas nākotnē!",
+    "futureSpeakUrl": "https://commonvoice.mozilla.org/lv/speak",
+    "futureSpeak": "Runā",
+    "futureSpeakExplanation": "Ierunā dažus teikumus un palīdzi attīstīt runas tehnoloģijas latviešu valodā!",
+    "futureListenUrl": "https://commonvoice.mozilla.org/lv/listen",
+    "futureListen": "Klausies",
+    "futureListenExplanation": "Palīdzi novērtēt, kā ierunājuši citi! Ierakstu pārbaude ir vienlīdz svarīga.",
 
-    "cardTitle1": "Digital product and service development",
-    "cardTitle2": "System redesign",
-    "cardTitle3": "WP expertise",
-    "cardTitle4": "WEB Accessibility",
+    "heroTitle":"Balsu talka – palīdzi attīstīt tehnoloģijas latviešu valodā",
+    "heroTags":"#BalsuTalka #valodasTehnoloģija, #balssAsistents, #subtitri, #siri, #mākslīgaisIntelekts, #balssAI, #rakstītArBalsi",
+    "heroSubtitle":"Kas tas ir un kā strādā?",
+    "heroIntro":"“Balsu talka” ir projekts latviešu valodas nākotnei. Tā mērķis ir iemūžināt mūsdienās runāto latviešu valodu un nodrošināt latviešu valodas pieejamību tehnoloģiju attīstībai. Šo mērķi varam sasniegt tikai kopīgiem spēkiem, tāpēc aicinām katru ierunāt vismaz piecus teikumus, lai savāktu pēc iespējas vairāk runas paraugu un izveidotu daudzveidīgu, atvērtu un ikvienam pieejamu latviešu runas datu kopu.",
+    "heroIntroFadeout":"Runas tehnoloģijas šobrīd strauji attīstās, tomēr daudzas iekārtas latviešu valodu joprojām saprot slikti. Piemēram, mēs nevaram latviski dot balss",
+    "heroIntroFull1":"Runas tehnoloģijas šobrīd strauji attīstās, tomēr daudzas iekārtas latviešu valodu joprojām saprot slikti. Piemēram, mēs nevaram latviski dot balss komandas televizoriem, automašīnām vai telefoniem. Video zvanos nav iespējams automātiski un bez maksas izmantot latviešu valodas subtitrus labā kvalitātē. Ir arī maz lietotņu, kurās latviski varētu rakstīt, izmantojot balsi, nevis tastatūru. Tas ir tāpēc, ka nav pieejami atvērti un brīvi lietojami latviešu valodas runas dati. Tas kavē jaunu ideju attīstību un rada grūtības pasaules uzņēmumiem un zinātniekiem iekļaut latviešu valodu savās tehnoloģijās un runas atpazīšanas pētījumos.",
+    "heroIntroFull2":"Balsu paraugu vākšanai izmantojam Mozilla Common Voice platformu, kur savāktie runas dati ir pieejami ikvienam. Bet jo sevišķi svarīgi tie ir uzņēmumiem runas tehnoloģiju izpētei un valodas pētniekiem visā pasaulē.",
+    "heroShowAll":"Parādīt visu tekstu",
 
-    "cardTitleContent1": "We establish clarity by outlining and pinning down business processes to be digitalized, we prioritize by listing all the important requirements, we visualize the whole solution by creating flowcharts, wireframes, mock-ups and prototypes. And when the framework is ready, we build the project.",
-    "cardTitleContent2": "From a simple facelift to a full-scale re-do of an IT system, we provide guidance on best practices and approaches to kick-off the project and lead it to a successful ending. We are always happy to organize and facilitate inclusive design workshops involving customer, product owner and delivery team.",
-    "cardTitleContent3": "We are proficient in creating complex platforms using WordPress, we have skills and knowledge for developing custom WP plugins to meet the specific needs of our clients and we know what should be done to successfully support and maintain WP-based solutions lastingly.",
-    "cardTitleContent4": "We can teach you about web accessibility requirements, practices and implementation. We can help you to gain understanding of how your products and services can be made more profitable and sustainable simultaneously.",
+    "graphDataUrl": "https://commonvoice.mozilla.org/api/v1/lv/clips/stats",
+    "graphGoal": "200",
+    "graphFallbackRecorded": "145",
+    "graphFallbackValidated": "73",
+    "graphTitle": "Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!",
+    "graphChallengeTitle": "Izaicinājums",
+    "graphChallenge": "Ierunāsim 200 stundas šoruden!",
+    "graphRecorded": "Ierunāts",
+    "graphValidated": "Pārbaudīts",
 
-    "cardTitleTags1": "prototyping, training, facilitating",
-    "cardTitleTags2": "UX,API,Research,Front-End",
-    "cardTitleTags3": "consulting,implementing,plugins",
-    "cardTitleTags4": "audit, training, accessible coding",
+    "faqTitle": "Biežāk uzdotie jautājumi",
+    "faqQuestion1": "Vai balss ierakstus var veikt anonīmi?",
+    "faqAnswer1p": "Jā, lai piedalītos talkā, nav jāreģistrējas Mozilla Common Voice platformā - balss ierakstus var veikt anonīmi, neatstājot nekādus datus par sevi. Reģistrēšanās aktīvākajiem dalībniekiem ļauj sekot līdzi savai statistikai un salīdzināt veikumu ar citiem dalībniekiem visā pasaulē.",
 
-    "storiesTag": "Experience",
-    "storiesTitle": "Stories we are proud of",
-    "storyTitle1": "Digital transformation in a traditional institution on a tight schedule",
-    "storyTitle2": "Introducing user-centric approach in a financial institution",
-    "storyTitle3": "Unusual website redesign",
-    "storyContent1": "We are eager to work on projects that requires a remarkable shift of the status-quo in a short period of time. We have had honour to participate in several such projects, but the most recognisable is the development and implementation of “e-Saeima”, making the parliament of Latvia one of the first parliaments in the world that could fully shift to remote work.",
-    "storyContent2": "One of our core values is people. We put strong focus and effort on making digital services and products easily accessible, usable and comprehensible for everyone. ",
-    "storyContent3": "We like to be innovative and play. We use different practices and tools to plan and prepare for existing business system or website redesigns. One of our recent projects was the website redesign for the Ombudsman of the Republic of Latvia. ",
-    "storiesBtnText": "View story",
+    "faqQuestion2": "Kāda informācija būs publiski pieejama?",
+    "faqAnswer2li1": "Publiski būs pieejams veikto ierakstu skaits un informācija par to, kādā valodā tie ierunāti.",
+    "faqAnswer2li2": "Ja izveidosiet profilu, varēsiet izvēlēties, vai lietotājvārds ir publisks vai anonīms.",
+    "faqAnswer2li3": "Jūsu iesniegtie demogrāfiskie dati (piemēram, vecums, dzimums vai valoda) nekad netiks publiskoti jūsu profilā un netiks sasaistīti ar jūsu kontu datu kopā. Atsevišķi balsu ieraksti tiks saistīti ar demogrāfiskajiem datiem, lai veiktu precīzāku analīzi. Piemēram, pētnieks var vēlēties pētīt kādas noteiktas vecuma grupas (jauniešu, senioru) valodu.",
+    "faqAnswer2li4": "Jūsu lietotājvārds un e-pasts netiks piesaistīts publicētajiem datiem.",
+    "faqAnswer2li5": "E-pasta adrese, ko izmantojat Mozilla Common Voice platformā, publiski pieejama nebūs.",
 
-    "careInfoTag": "Our sustainability initiatives",
-    "careInfoTitle": "What we care about",
-    "careCard1Content": "Website for every school effortlessly.",
-    "careCard2Content": "An inclusive digital environment: a path to sustainable growth"
-  },
-  "digital": {
-    "metaDesc": "IT future company",
-    "storyHeader": "Digital Transformation in a Traditional Institution on a Tight Schedule: e-Saeima",
-    "mainStoryContent": "<p>We are enthusiastic about working on projects that demand a significant change in the status quo within a short timeframe. We have had the privilege of participating in several such projects, but the most notable is the development and implementation of “e-Saeima”, making the parliament of Latvia one of the first parliaments in the world that could fully shift to remote work. Thanks to the e-Saeima platform, plenary sittings can now be held remotely, with MPs participating from outside the parliament premises.</p><h3>Background</h3><p>At the time when the platform was created, the world was different, it was the start of the pandemic, Zoom or other online meeting platforms were not so commonly used as today. Every business was rushing to the online environment, ecommerce was starting to grow exponentially. Even traditional establishments as the parliament had to find a way how to continue the work in the lockdown situation. Actions needed to be taken on the spot.</p><h3>Challenges</h3><p>The parliament of Latvia consists of 100 members, youngest beeing 26 and the oldest 77 years old, with different educational and computer literacy levels. Not only computer skills, but also accessibility requreiments had to be taken into account when designing the platform.</p><p>other constraint was that Rules of Procedure of the Parliament had to be followed thoughtfully when designing the system, and these rules was created long time ago and for offline style of work of course. Business processes were quite complicated as there are several ways how voting can be executed, and even different kind of vote counting is applied in Parliament based on use case. All of this highly regulated process had to be taken into account.</p><h3>Success criteria</h3><p>One of this project’s success criteria and even critical pillar was highly involved team from the Parliament, the executive management. Those were poeple who sincerely wanted a good product to be developed and even spent their evenings devoted to the project.</p><p>We created a close-knit working process, that consisted of three components - regular progress update meetings, daily standups twice per day for the project’s task force and iterative development approach. Also user involvement was a must. Thanks to this work process we were able to deliver first prototype in 1,5 week time, as soon as it was approved by the management, interactive prototype was created and presented to end-users (the members of the Parliament) for evaluation and improvements. As soon as as the feedback was collected, changes done, the prototype was ready to be shipped to implementation. It all took just around 2 weeks calendar time.</p><p>The platform consists of 3 interfaces - 1 for end-users and 2 administrative interfaces. Due to the time restrictions all focus was set on the end-user interface, other interfaces were made just functional and more energy was put into training people to use these interfaces, not to polish them.</p><p>other success criteria was the use of ready-made design system. There was no need to design smallest elements, prototype was created based on already-made elements, just color palette and styling was applied on top of it.</p>",
+    "faqQuestion3": "Kas ir svarīgāks – ierakstīšana vai pārbaudīšana?",
+    "faqAnswer3p1": "Abas aktivitātes ir vienlīdz svarīgas. Jaunajiem balsu talkas dalībniekiem ieteicamāk ir fokusēties uz ierakstīšanu, lai mēs iegūtu pēc iespējas plašāku un daudzveidīgāku ierakstu kopu.",
+    "faqAnswer3p2": "Savukārt tos, kas jau ierakstījuši 100 vai vairāk teikumu, aicinām pārbaudīt citu ierakstīto. Precīzu un kvalitatīvu runas tehnoloģiju izstrādē ir svarīgi, lai ierunātajos teikumos nav kļūdu, tāpēc šobrīd lielākais ieguvums no aktīvo dalībnieku ieguldītā laika būs tieši ierakstu pārbaude, jo nepārbaudītos ierakstus ir grūti izmantot pētniecībā un runas tehnoloģijās.",
 
-    "resultTitle": "Result",
-    "resultContent": "<p>We are proud to say that the Parliament was still using the platform though restrictions had been lifted and work could be continued old-school way. Plenary sitting amount that was held via the platform is quite high.</p><p>Even some improvements was done to the platform later on that allowed to organize HIgh Court judge elections. If in real life this event could take full day or couple of days, the platform allowed to shorten the time spend at least twice.</p>",
+    "faqQuestion4": "Vai ir pieejama Balsu talkas lietotne?",
+    "faqAnswer4p1": "Mozilla Common Voice lapā teikumus var ierakstīt un pārbaudīt arī no mobilajām ierīcēm.",
+    "faqAnswer4p2": "Android lietotājiem ir pieejama arī neoficiāla kopienas izstrādāta lietotne -",
+    "faqAnswer4p3": "Lietotne ir pieejama",
+    "faqAnswer4p4": "Šī lietotne piedāvā vairākas papildu iespējas:",
+    "faqAnswer4li1": "Iespēja ierakstīt un pārbaudīt bez interneta savienojuma",
+    "faqAnswer4li2": "Papildu iestatījumi, kas ierakstu pārbaudi padara ātrāku",
+    "faqAnswer4p5": "Lietotnē ir reklāmas, bet tās var izslēgt iestatījumu sadaļā. Iestatījumi -> Citi -> Papildu iestatījumi.",
 
-    "workingWithTitle": "Who are we working with",
-
-    "otherStoriesTag": "Experience",
-    "otherStoriesHeader": "Other stories",
-    "otherStoriesTitle1": "Introducing User-Centric Approach in a Financial Institution",
-    "otherStoriesTitle2": "Business system redesign",
-    "otherStoriesContent1": "Teikums, kas papildina. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "otherStoriesContent2": "Teikums, kas papildina. Lorem ipsum dolor sit amet, consectetur adipiscing.Teikums, kas papildina. Lorem ipsum dolor sit amet, consectetur adipiscing.",
-
-    "otherStoriesHref1": "/user-centric-approach",
-    "otherStoriesHref2": "/website-redesign",
-
-    "StoryLogo1": "/assets/images/svg/eSaeima--mob.svg",
-    "StoryLogo2": "/assets/images/svg/tiesibsargs.svg",
-    "StoryLogo3": "/assets/images/svg/csp.svg",
-
-    "logo1AltText": "eSaeima",
-    "logo2AltText": "tiesibsargs",
-    "logo3AltText": "csp"
-  },
-  "user": {
-    "metaDesc": "IT future company",
-    "storyHeader": "User centric approach",
-    "mainStoryContent": "<p>We are eager to work on projects that requires a remarkable shift of the status-quo in a short period of time. We have had honour to participate in several such projects, but the most recognisable is the development and implementation of “e-Saeima”, making the parliament of Latvia one of the first parliaments in the world that could fully shift to remote work. Thanks to the e-Saeima platform, plenary sittings can now be held remotely, with MPs participating from outside the parliament premises.</p><h3>Background</h3><p>At the time when the platform was created, the world was different, it was the start of the pandemic, Zoom or other online meeting platforms were not so commonly used as today. Every business was rushing to the online environment, ecommerce was starting to grow exponentially. Even traditional establishments as the parliament had to find a way how to continue the work in the lockdown situation. Actions needed to be taken on the spot.</p><h3>Challenges</h3><p>The parliament of Latvia consists of 100 members, youngest beeing 26 and the oldest 77 years old, with different educational and computer literacy levels. Not only computer skills, but also accessibility requreiments had to be taken into account when designing the platform.</p><p>other constraint was that Rules of Procedure of the Parliament had to be followed thoughtfully when designing the system, and these rules was created long time ago and for offline style of work of course. Business processes were quite complicated as there are several ways how voting can be executed, and even different kind of vote counting is applied in Parliament based on use case. All of this highly regulated process had to be taken into account.</p><h3>Success criteria</h3><p>One of this project’s success criteria and even critical pillar was highly involved team from the Parliament, the executive management. Those were poeple who sincerely wanted a good product to be developed and even spent their evenings devoted to the project.</p><p>We created a close-knit working process, that consisted of three components - regular progress update meetings, daily standups twice per day for the project’s task force and iterative development approach. Also user involvement was a must. Thanks to this work process we were able to deliver first prototype in 1,5 week time, as soon as it was approved by the management, interactive prototype was created and presented to end-users (the members of the Parliament) for evaluation and improvements. As soon as as the feedback was collected, changes done, the prototype was ready to be shipped to implementation. It all took just around 2 weeks calendar time.</p><p>The platform consists of 3 interfaces - 1 for end-users and 2 administrative interfaces. Due to the time restrictions all focus was set on the end-user interface, other interfaces were made just functional and more energy was put into training people to use these interfaces, not to polish them.</p><p>other success criteria was the use of ready-made design system. There was no need to design smallest elements, prototype was created based on already-made elements, just color palette and styling was applied on top of it.</p>",
-
-    "resultTitle": "Result",
-    "resultContent": "<p>We are proud to say that the Parliament was still using the platform though restrictions had been lifted and work could be continued old-school way. Plenary sitting amount that was held via the platform is quite high.</p><p>Even some improvements was done to the platform later on that allowed to organize HIgh Court judge elections. If in real life this event could take full day or couple of days, the platform allowed to shorten the time spend at least twice.</p>",
-
-    "workingWithTitle": "Who are we working with",
-
-    "otherStoriesTag": "Experience",
-    "otherStoriesHeader": "Other stories",
-    "otherStoriesTitle1": "Digital transformation in a traditional institution on a tight schedule",
-    "otherStoriesTitle2": "Business system redesign",
-    "otherStoriesContent1": "We are eager to work on projects that requires a remarkable shift of the status-quo in a short period of time. We have had honour to participate in several such projects, but the most recognisable is the development and implementation of “e-Saeima”, making the parliament of Latvia one of the first parliaments in the world that could fully shift to remote work.",
-    "otherStoriesContent2": "We like to be innovative and play. We use different practices and tools to plan and prepare for existing business system or website redesigns. One of our recent projects was the website redesign for the Ombudsman of the Republic of Latvia.",
-
-    "otherStoriesHref1": "/digital-transformation",
-    "otherStoriesHref2": "/website-redesign",
-
-    "StoryLogo1": "/assets/images/svg/cfla.svg",
-    "StoryLogo2": "/assets/images/svg/trl.svg",
-
-    "logo1AltText": "cfla",
-    "logo2AltText": "trl"
-  },
-  "website": {
-    "metaDesc": "IT future company",
-    "storyHeader": "Website redesign",
-    "mainStoryContent": "<p>We are eager to work on projects that requires a remarkable shift of the status-quo in a short period of time. We have had honour to participate in several such projects, but the most recognisable is the development and implementation of “e-Saeima”, making the parliament of Latvia one of the first parliaments in the world that could fully shift to remote work. Thanks to the e-Saeima platform, plenary sittings can now be held remotely, with MPs participating from outside the parliament premises.</p><h3>Background</h3><p>At the time when the platform was created, the world was different, it was the start of the pandemic, Zoom or other online meeting platforms were not so commonly used as today. Every business was rushing to the online environment, ecommerce was starting to grow exponentially. Even traditional establishments as the parliament had to find a way how to continue the work in the lockdown situation. Actions needed to be taken on the spot.</p><h3>Challenges</h3><p>The parliament of Latvia consists of 100 members, youngest beeing 26 and the oldest 77 years old, with different educational and computer literacy levels. Not only computer skills, but also accessibility requreiments had to be taken into account when designing the platform.</p><p>other constraint was that Rules of Procedure of the Parliament had to be followed thoughtfully when designing the system, and these rules was created long time ago and for offline style of work of course. Business processes were quite complicated as there are several ways how voting can be executed, and even different kind of vote counting is applied in Parliament based on use case. All of this highly regulated process had to be taken into account.</p><h3>Success criteria</h3><p>One of this project’s success criteria and even critical pillar was highly involved team from the Parliament, the executive management. Those were poeple who sincerely wanted a good product to be developed and even spent their evenings devoted to the project.</p><p>We created a close-knit working process, that consisted of three components - regular progress update meetings, daily standups twice per day for the project’s task force and iterative development approach. Also user involvement was a must. Thanks to this work process we were able to deliver first prototype in 1,5 week time, as soon as it was approved by the management, interactive prototype was created and presented to end-users (the members of the Parliament) for evaluation and improvements. As soon as as the feedback was collected, changes done, the prototype was ready to be shipped to implementation. It all took just around 2 weeks calendar time.</p><p>The platform consists of 3 interfaces - 1 for end-users and 2 administrative interfaces. Due to the time restrictions all focus was set on the end-user interface, other interfaces were made just functional and more energy was put into training people to use these interfaces, not to polish them.</p><p>other success criteria was the use of ready-made design system. There was no need to design smallest elements, prototype was created based on already-made elements, just color palette and styling was applied on top of it.</p>",
-
-    "resultTitle": "Result",
-    "resultContent": "<p>We are proud to say that the Parliament was still using the platform though restrictions had been lifted and work could be continued old-school way. Plenary sitting amount that was held via the platform is quite high.</p><p>Even some improvements was done to the platform later on that allowed to organize HIgh Court judge elections. If in real life this event could take full day or couple of days, the platform allowed to shorten the time spend at least twice.</p>",
-
-    "workingWithTitle": "Who are we working with",
-
-    "otherStoriesTag": "Experience",
-    "otherStoriesHeader": "Other stories",
-    "otherStoriesTitle1": "Introducing user-centric approach in a financial institution",
-    "otherStoriesTitle2": "Digital transformation in a traditional institution on a tight schedule",
-    "otherStoriesContent1": "One of our core values is people. We put strong focus and effort on making digital services and products easily accessible, usable and comprehensible for everyone.",
-    "otherStoriesContent2": "We are eager to work on projects that requires a remarkable shift of the status-quo in a short period of time. We have had honour to participate in several such projects, but the most recognisable is the development and implementation of “e-Saeima”, making the parliament of Latvia one of the first parliaments in the world that could fully shift to remote work.",
-
-    "otherStoriesHref1": "/user-centric-approach",
-    "otherStoriesHref2": "/digital-transformation",
-
-    "StoryLogo1": "/assets/images/svg/galerijaCentrs.svg",
-    "StoryLogo2": "/assets/images/svg/eParaksts.svg",
-    "StoryLogo3": "/assets/images/svg/eSilvaMainStory.svg",
-
-    "logo1AltText": "galerijaCentrs",
-    "logo2AltText": "eParaksts",
-    "logo3AltText": "eSilva"
+    "implementersImplementers": "Projekta īstenotāji",
+    "implementersSupporters": "Projekta atbalstītāji",
+    "footerDevelopedBy": "Balsu talkas lapa izstrādāta",
+    "footerContact": "Saziņai: balsutalka@lumii.lv"
   },
   "global": {
-    "metaTitle": "Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!",
-    "errormetaDesc": "Oops! Page not found, try different page",
-    "viewStory": "View story",
-    "close": "Aizvērt",
-
-    "contactsTag": "Contacts",
-    "contactsHeader": "Get in touch",
-    "contactsContent": "<span>Have a project in mind?</span> <span>Need a wise advice?</span> <span>Want to say hi?</span> <span>We are excited to talk to you!</span>",
-    "contactsName": "Peteris Jurcenko",
-    "contactsPhone": "+371 28280185",
-    "contactsEmail": "peteris@turn.lv",
-
-    "footerInformationHeader": "Information",
-    "footerCookiePolicy": "Cookie policy",
-    "footerAvailability": "Notice of availability",
-    "footerPrivacyPolicy": "Privacy policy",
-    "footerContactsHeader": "Contacts",
-    "footerPhone": "+371 28280185",
-    "footerEmail": "info@turn.lv",
-    "footerAddress": "Riga, Latvia",
-    "footerCompanyDetailsHeader": "Company details:",
-    "footerSIA": "SIA \"Turn Digital\"",
-    "footerREG": "Reg. Nr: 40203026165",
-    "footerBANK": "Bank: Swedbank A/S,",
-    "footerSWIFT": "S.W.I.F.T.: HABALV22",
-    "footerACCOUNT": "Account: LV48HABA0551042639577",
-    "footerCopyright": "Turn Digital, Latvia",
-
-    "headerHome": "Home",
-    "headerStory": "Story",
-    "headerServices": "Services",
-    "headerContacts": "Contacts",
-
-    "errorTag": "Oops! Page not found",
-    "errorTitle": "404 error",
-    "errorText": "The page you are looking for might have been removed, had its name changed or is temporarily unavailable",
-    "errorBtn": "Go to homepage"
+    "metaTitle": "Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!"
   }
 }

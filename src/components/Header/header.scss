@@ -2,4 +2,11 @@
 
 .header {
   padding: 16px 0;
+
+  &__link {
+    //TODO Remove display: none; to enable language switcher
+    display: none;
+    float: right;
+    color: #000000;
+  }
 }
