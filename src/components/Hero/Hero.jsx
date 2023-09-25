@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { t } from "i18next";
 
+// TODO Sort out why with `client:load` translations do not load
+
 const Hero = (props) => {
   const [showMore, setShowMore] = useState(false);
 

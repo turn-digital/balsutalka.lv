@@ -1,0 +1,67 @@
+---
+import { t } from "i18next";
+---
+
+<div class="hero">
+  <div class="wrapper">
+    <h2 class="hero__title title">
+      {t("index.heroTitle")}
+    </h2>
+    <div class="hero__content">
+      <div class="hero__col">
+        <div class="hero__video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/JJc-WaZRGSI"
+            loading="lazy"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+            allowFullScreen
+            title="Balsu talka video"
+          ></iframe>
+        </div>
+
+        <p class="hero__tags">
+          {t("index.heroTags")}
+        </p>
+      </div>
+
+      <div class="hero__col">
+        <h3 class="hero__subtitle">
+          {t("index.heroSubtitle")}
+        </h3>
+        <div class="hero__text text-editor">
+          <p>
+            {t("index.heroIntro")}
+          </p>
+
+          <p id="heroGradient" class="gradienText">
+            {t("index.heroIntroFadeout")}
+          </p>
+          <p id="herofull1" style="display: none">
+            {t("index.heroIntroFull1")}
+          </p>
+          <p id="herofull2" style="display: none">
+            {t("index.heroIntroFull2")}
+          </p>
+          <script is:inline>
+            function toggleShowMore(){
+              var heroGradient = document.getElementById('heroGradient');
+              var herofull1 = document.getElementById('herofull1');
+              var herofull2 = document.getElementById('herofull2');
+              var heroShowMore = document.getElementById('heroShowMore');
+
+              heroGradient.style.display = "none";
+              herofull1.style.display = "block";
+              herofull2.style.display = "block";
+              heroShowMore.style.display = "none";
+
+              return false;
+            }
+          </script>
+          <button id="heroShowMore" class="showMoreButton" onClick="toggleShowMore()">
+            {t("index.heroShowAll")}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
