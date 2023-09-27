@@ -14,8 +14,16 @@
     text-decoration: underline;
   }
 
-  .text-editor ul {
-    margin-top: 0;
+  .text-editor {
+    ol {
+      li {
+        width: 100%;
+      }
+    }
+
+    ul {
+      margin-top: 0;
+    }
   }
 
   .accordion__item .accordion__header {
