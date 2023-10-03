@@ -1,4 +1,5 @@
 ---
+import { localizeUrl } from "astro-i18next";
 import i18next from "i18next";
 
 export interface Props {
@@ -17,12 +18,12 @@ const { title, desc } = Astro.props;
     <script defer data-domain="balsutalka.lv" src="https://plausible.io/js/script.outbound-links.js"></script>
     <link rel="icon" type="image/svg+xml" href="/Favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Balsu talka - palīdzi attīstīt tehnoloģijas latviešu valodā</title>
+    <title>{title}</title>
     <meta name="description" content={desc} />
-    <meta property="og:url" content="https://balsutalka.lv/" />
+    <meta property="og:url" content={localizeUrl("https://balsutalka.lv")} />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Balsu talka - palīdzi attīstīt tehnoloģijas latviešu valodā" />
-    <meta property="og:description" content="Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
     <meta property="og:image" content="https://balsutalka.lv/fb_cover.png" />
   </head>
   <body>
