@@ -5,9 +5,10 @@ import i18next from "i18next";
 export interface Props {
   title: string;
   desc: string;
+  ogImage: string;
 }
 
-const { title, desc } = Astro.props;
+const { title, desc, ogImage } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ const { title, desc } = Astro.props;
     <meta property="og:type" content="article" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
-    <meta property="og:image" content="https://balsutalka.lv/fb_cover.png" />
+    <meta property="og:image" content={ogImage} />
   </head>
   <body>
     <slot />

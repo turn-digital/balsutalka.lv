@@ -61,6 +61,7 @@
     "footerContact": "Saziņai: balsutalka@lumii.lv"
   },
   "global": {
-    "metaTitle": "Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!"
+    "metaTitle": "Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!",
+    "ogImage": "https://balsutalka.lv/fb_cover.png"
   }
 }

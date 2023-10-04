@@ -17,8 +17,8 @@ const hours = await fetch(t("index.graphDataUrl"))
     // item id 4 is the most recent data
     .then(data => {
     return {
-        valid: Math.floor(data[4].valid / (60 * 60)),
-        total: Math.floor(data[4].total / (60 * 60))
+        valid: Math.floor(data[4].valid / (60 * 60) * 10) / 10,
+        total: Math.floor(data[4].total / (60 * 60) * 10) / 10
     };
 })
     // fallback, last known value if we did not get ant data from CommonVoice
@@ -28,13 +28,16 @@ const hours = await fetch(t("index.graphDataUrl"))
         total: Number(t("index.graphFallbackRecorded"))
     };
 });
-
 // Cache warm recording section on Common Voice site so users do not get Timeout errors
 await fetch(`https://commonvoice.mozilla.org/api/v1/${i18next.language}/sentences?count=25`);
 await fetch(`https://commonvoice.mozilla.org/api/v1/${i18next.language}/clips`);
 ---
 
-<Layout title={t("global.metaTitle")} desc={t("index.metaDesc")}>
+<Layout
+  title={t("global.metaTitle")}
+  desc={t("index.metaDesc")}
+  ogImage={t("global.ogImage")}
+>
   <main>
     <Header />
     <Future />

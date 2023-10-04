@@ -61,6 +61,7 @@
     "footerContact": "Sasazynuošonai: balsutalka@lumii.lv"
   },
   "global": {
-    "metaTitle": "Paleidzi atteisteit latgalīšu volūdys tehnologejis ar sovu bolsu!"
+    "metaTitle": "Paleidzi atteisteit latgalīšu volūdys tehnologejis ar sovu bolsu!",
+    "ogImage": "https://balsutalka.lv/fb_cover_ltg.png"
   }
 }
