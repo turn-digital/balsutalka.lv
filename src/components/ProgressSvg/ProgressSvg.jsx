@@ -9,7 +9,9 @@ const ProgressSvg = ({ hours }) => {
     <svg width="501" height="48" viewBox="0 0 501 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="40" height="500" transform="translate(500 3.00002) rotate(90)" fill="white" fillOpacity="0.25" />
       <rect x="0" y="3" width={ progressWidth } height="40" fill="#58C8B2" />
-      <text x={ progressWidth - String(hours).length * 8 } y="29" fontSize="14px" fill="white">{ hours }</text>
+      <text x={ progressWidth - String(Number(hours).toFixed(1)).length * 8 } y="29" fontSize="14px" fill="white">
+        { Number(hours).toFixed(1) }
+      </text>
       {/*Default is 18*/}
       <mask id="path-2-inside-1_137_1828" fill="white">
         <path d="M500 0H501V48H500V0Z" />
