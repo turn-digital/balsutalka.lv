@@ -34,7 +34,7 @@
 
     "faqTitle": "Biežāk uzdotie jautājumi",
     "faqQuestion1": "Vai balss ierakstus var veikt anonīmi?",
-    "faqAnswer1p": "Jā, lai piedalītos talkā, nav jāreģistrējas Mozilla Common Voice platformā - balss ierakstus var veikt anonīmi, neatstājot nekādus datus par sevi. Reģistrēšanās aktīvākajiem dalībniekiem ļauj sekot līdzi savai statistikai un salīdzināt veikumu ar citiem dalībniekiem visā pasaulē.",
+    "faqAnswer1p": "Jā, lai piedalītos talkā, nav jāreģistrējas Mozilla Common Voice platformā - balss ierakstus var veikt anonīmi, nesniedzot nekādu informāciju par sevi. Taču reģistrēšanās ļauj sekot līdzi savai statistikai un salīdzināt veikumu ar citiem dalībniekiem visā pasaulē.",
 
     "faqQuestion2": "Kāda informācija būs publiski pieejama?",
     "faqAnswer2li1": "Publiski būs pieejams veikto ierakstu skaits un informācija par to, kādā valodā tie ierunāti.",
@@ -44,8 +44,8 @@
     "faqAnswer2li5": "E-pasta adrese, ko izmantojat Mozilla Common Voice platformā, publiski pieejama nebūs.",
 
     "faqQuestion3": "Kas ir svarīgāks – ierakstīšana vai pārbaudīšana?",
-    "faqAnswer3p1": "Abas aktivitātes ir vienlīdz svarīgas. Jaunajiem balsu talkas dalībniekiem ieteicamāk ir fokusēties uz ierakstīšanu, lai mēs iegūtu pēc iespējas plašāku un daudzveidīgāku ierakstu kopu.",
-    "faqAnswer3p2": "Savukārt tos, kas jau ierakstījuši 100 vai vairāk teikumu, aicinām pārbaudīt citu ierakstīto. Precīzu un kvalitatīvu runas tehnoloģiju izstrādē ir svarīgi, lai ierunātajos teikumos nav kļūdu, tāpēc šobrīd lielākais ieguvums no aktīvo dalībnieku ieguldītā laika būs tieši ierakstu pārbaude, jo nepārbaudītos ierakstus ir grūti izmantot pētniecībā un runas tehnoloģijās.",
+    "faqAnswer3p1": "Abas aktivitātes ir vienlīdz svarīgas. Jaunajiem Balsu talkas dalībniekiem iesakām fokusēties uz ierakstīšanu, lai mēs iegūtu pēc iespējas plašāku un daudzveidīgāku ierakstu kopu.",
+    "faqAnswer3p2": "Savukārt tos, kas jau ierakstījuši 100 vai vairāk teikumu, aicinām pārbaudīt citu ierakstīto. Precīzu un kvalitatīvu runas tehnoloģiju izstrādē ir svarīgi, lai ierunātajos teikumos nav kļūdu, tāpēc šobrīd lielākais ieguvums no aktīvo dalībnieku ieguldītā laika būs tieši ierakstu pārbaude, jo nepārbaudītos ierakstus ir grūti izmantot pētniecībā un runas tehnoloģiju attīstīšanā.",
 
     "faqQuestion4": "Vai ir pieejama Balsu talkas lietotne?",
     "faqAnswer4p1": "Mozilla Common Voice lapā teikumus var ierakstīt un pārbaudīt arī no mobilajām ierīcēm.",
@@ -57,7 +57,7 @@
     "faqAnswer4p5": "Lietotnē ir reklāmas, bet tās var izslēgt iestatījumu sadaļā. Iestatījumi -> Citi -> Papildu iestatījumi.",
 
     "faqQuestion5": "Kā atbalstīt un popularizēt Balsu talku?",
-    "faqAnswer5p1": "Viens no veidiem kā palīdzēt Balsu talkai ir pastāstot citiem par to, piemēram,  ievietojot savā lapā vai sociālo tīklu kontā ziņu par Balsu talku. Ziņām un baneriem lapās varat izmantot šos attēlus:",
+    "faqAnswer5p1": "Viens no veidiem, kā palīdzēt Balsu talkai, ir pastāstot par to citiem. Piemēram, ievietojot savā lapā vai sociālo tīklu kontā ziņu par Balsu talku. Ziņām un baneriem lapās aicinām izmantot šos attēlus:",
 
     "implementersImplementers": "Projekta īstenotāji",
     "implementersSupporters": "Projekta atbalstītāji",
