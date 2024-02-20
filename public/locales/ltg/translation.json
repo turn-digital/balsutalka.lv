@@ -23,12 +23,12 @@
     "heroShowAll":"Paruodeit vysu tekstu",
 
     "graphDataUrl": "https://commonvoice.mozilla.org/api/v1/ltg/clips/stats",
-    "graphGoal": "20",
+    "graphGoal": "30",
     "graphFallbackRecorded": "0",
     "graphFallbackValidated": "0",
     "graphTitle": "Paleidzi atteisteit latgalīšu volūdys tehnologejis ar sovu bolsu!",
     "graphChallengeTitle": "Izaicynuojums",
-    "graphChallenge": "Īrunuosim 20 stuņdis jau itū zīm!",
+    "graphChallenge": "Īrunuosim 30 stuņdis jau itū zīm!",
     "graphRecorded": "Īrunuots",
     "graphValidated": "Puorbaudeits",
 
