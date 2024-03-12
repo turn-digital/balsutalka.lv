@@ -39,6 +39,9 @@ import { t } from "i18next";
           <p id="herofull1" style="display: none">
             {t("index.heroIntroFull1")}
           </p>
+          <p id="herofull11" style="display: none">
+            {t("index.heroIntroFull11")}
+          </p>
           <p id="herofull2" style="display: none">
             {t("index.heroIntroFull2")}
           </p>
@@ -46,11 +49,13 @@ import { t } from "i18next";
             function toggleShowMore(){
               var heroGradient = document.getElementById('heroGradient');
               var herofull1 = document.getElementById('herofull1');
+              var herofull11 = document.getElementById('herofull11');
               var herofull2 = document.getElementById('herofull2');
               var heroShowMore = document.getElementById('heroShowMore');
 
               heroGradient.style.display = "none";
               herofull1.style.display = "block";
+              herofull11.style.display = "block";
               herofull2.style.display = "block";
               heroShowMore.style.display = "none";
 
