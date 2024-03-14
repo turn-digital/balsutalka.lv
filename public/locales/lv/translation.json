@@ -60,6 +60,11 @@
     "faqQuestion5": "Kā atbalstīt un popularizēt Balsu talku?",
     "faqAnswer5p1": "Viens no veidiem, kā palīdzēt Balsu talkai, ir pastāstīt par to citiem. Piemēram, ievietojot savā lapā vai sociālo tīklu kontā ziņu par Balsu talku. Ziņām un baneriem lapās aicinām izmantot šos attēlus:",
 
+    "showFaqQuestion6": false,
+    "faqQuestion6": "",
+    "faqAnswer6p1": "",
+    "faqAnswer6p2": "",
+
     "implementersImplementers": "Projekta īstenotāji",
     "implementersSupporters": "Projekta atbalstītāji",
     "footerDevelopedBy": "Balsu talkas lapa izstrādāta",

@@ -1,6 +1,6 @@
 ---
 import { Accordion, AccordionItem } from "accessible-astro-components";
-import { t } from "i18next";
+import { t, } from "i18next";
 ---
 
 <section class="faq">
@@ -76,6 +76,16 @@ import { t } from "i18next";
             </p>
           </div>
         </AccordionItem>
+        {Boolean(t("index.showFaqQuestion6")) && (
+          <AccordionItem header={t("index.faqQuestion6")}>
+            <div class="text-editor">
+              <p>
+                {t("index.faqAnswer6p1")}
+              </p>
+              <p set:html={t("index.faqAnswer6p2")}></p>
+            </div>
+          </AccordionItem>
+        ) }
       </Accordion>
     </div>
   </div>
