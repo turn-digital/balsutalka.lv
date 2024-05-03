@@ -86,6 +86,12 @@ import { t, } from "i18next";
             </div>
           </AccordionItem>
         ) }
+        {Boolean(t("index.showFaqQuestion7")) && (
+          <AccordionItem header={t("index.faqQuestion7")}>
+            <div class="text-editor" set:html={t("index.faqAnswer7")}>
+            </div>
+          </AccordionItem>
+        ) }
       </Accordion>
     </div>
   </div>
