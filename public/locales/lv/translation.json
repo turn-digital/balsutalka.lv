@@ -65,10 +65,6 @@
     "faqAnswer6p1": "",
     "faqAnswer6p2": "",
 
-    "showFaqQuestion7": true,
-    "faqQuestion7": "Kur pieejami Balsu talkas rezultāti?",
-    "faqAnswer7": "<p>Lai arī darbs pie Balsu talkas datu vākšanas un apstrādes joprojām notiek, līdz šim savāktie balsu ieraksti jau tiek izmantoti un daži rezultāti ir pieejami publiski.<p><ul><li>LU MII AiLab ir izveidojuši <a target='_blank' href='https://huggingface.co/AiLab-IMCS-UL/whisper-large-v3-lv-late-cv17'>jaudīgu runas atpazīšanas modeli</a> ar augstu atpazīšanas precizitāti runas datu analīzei un subtitru veidošanai.</li><li>Atvērtā koda kopiena ir izveidojusi ātrus runas atpazīšanas modeļus izmantošanai mazas jaudas iekārtās, piemēram, HomeAssistant gudro māju risinājumiem. Modeļus var izmēģināt <a target='_blank' href='https://huggingface.co/spaces/RaivisDejus/LatvianSpeechRecognition'>demo lapā</a>.</li></ul>",
-
     "implementersImplementers": "Projekta īstenotāji",
     "implementersSupporters": "Projekta atbalstītāji",
     "footerDevelopedBy": "Balsu talkas lapa izstrādāta",

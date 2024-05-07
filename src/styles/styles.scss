@@ -1,13 +1,14 @@
 @use "reset";
 @use "mixins" as *;
 @use "variables" as *;
-@use "../components/Graph/graph";
 @use "../components/Header/header";
-@use "../components/Faq/faq.scss";
-@use "../components/Footer/footer";
-@use "../components/Implementers/implementers";
 @use "../components/Hero/hero";
 @use "../components/Future/future";
+@use "../components/Graph/graph";
+@use "../components/Results/results.scss";
+@use "../components/Faq/faq.scss";
+@use "../components/Implementers/implementers";
+@use "../components/Footer/footer";
 
 .wrapper {
   @include container();
@@ -97,6 +98,13 @@ main {
   ul {
     li {
       margin-left: 25px;
+    }
+  }
+
+  a {
+    color: $color-primary;
+    &:hover {
+      text-decoration: none;
     }
   }
 }
