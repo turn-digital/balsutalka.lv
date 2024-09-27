@@ -26,7 +26,20 @@ const ResultsLV = (props) => {
                                                          href="https://huggingface.co/spaces/RaivisDejus/LatvianSpeechRecognition">demo
                     lapā</a>.
                 </li>
-                <li>Lingvistiskiem pētījumiem dati ir pieejami vietnē <a target="_blank" href="https://korpuss.lv/?order=dev_date">Korpuss.lv</a>: “Balsu talka” un “Bolsu tolka” korpusos. Abi korpusi ir morfoloģiski marķēti – tajos iespējams meklēt gan pēc morfoloģiskajām pazīmēm, gan pēc vārdu pamatformām, piemēram, var atrast visus 6. deklinācijas lietvārdus vai visas korpusā lietotās darbības vārda “skriet” vai “skrīt” formas un noklausīties, kā šos vārdus mēdz izrunāt. Vietnes lietošanas pamācība <a target="_blank" href="https://youtu.be/s4nQMnUrElo">pieejama šeit</a>.
+                <li>Atvērtā koda kopiena ir izveidojusi <a target="_blank" href="https://github.com/chidiwilliams/buzz">runas
+                  atpazīšanas lietotni</a>, kas ļauj veidot subtitrus un tulkot atpazīto saturu audio un video datnēs,
+                  kā arī reāla laika runā. Video pamācība <a target="_blank"
+                                                             href="https://www.youtube.com/watch?v=2ngQm06ZwmI">pieejama
+                    šeit</a>.
+                </li>
+                <li>Lingvistiskiem pētījumiem dati ir pieejami vietnē <a target="_blank"
+                                                                         href="https://korpuss.lv/?order=dev_date">Korpuss.lv</a>:
+                  “Balsu talka” un “Bolsu tolka” korpusos. Abi korpusi ir morfoloģiski marķēti – tajos iespējams meklēt
+                  gan pēc morfoloģiskajām pazīmēm, gan pēc vārdu pamatformām, piemēram, var atrast visus 6. deklinācijas
+                  lietvārdus vai visas korpusā lietotās darbības vārda “skriet” vai “skrīt” formas un noklausīties, kā
+                  šos vārdus mēdz izrunāt. Vietnes lietošanas pamācība <a target="_blank"
+                                                                          href="https://youtu.be/s4nQMnUrElo">pieejama
+                    šeit</a>.
                 </li>
               </ul>
             </p>
