@@ -23,13 +23,12 @@
     "heroIntroFull2":"Bolsu paraugu vuokšonai lītojam Mozilla Common Voice platformu, kur savuoktī bolsu dati ir daīmami sevkuram. Eipaši svareigi jī ir uzjāmumim tehnologiskūs rysynuojumu atteisteišonai i volūdys pietnīkiem vysā pasaulī.",
     "heroShowAll":"Paruodeit vysu tekstu",
 
-    "graphDataUrl": "https://commonvoice.mozilla.org/api/v1/ltg/clips/stats",
-    "graphGoal": "30",
-    "graphFallbackRecorded": "29",
-    "graphFallbackValidated": "26.1",
+    "graphGoal": "35",
+    "graphFallbackRecorded": "30",
+    "graphFallbackValidated": "27",
     "graphTitle": "Paleidzi atteisteit latgalīšu volūdys tehnologejis ar sovu bolsu!",
     "graphChallengeTitle": "Izaicynuojums",
-    "graphChallenge": "Īrunuosim 30 stuņdis jau itū god!",
+    "graphChallenge": "Īrunuosim 35 stuņdis jau itū god!",
     "graphRecorded": "Īrunuots",
     "graphValidated": "Puorbaudeits",
 

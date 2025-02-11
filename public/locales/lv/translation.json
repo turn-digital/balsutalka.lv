@@ -23,13 +23,12 @@
     "heroIntroFull2":"Balsu paraugu vākšanai izmantojam Mozilla Common Voice platformu, kur savāktie runas dati ir pieejami ikvienam. Bet jo sevišķi svarīgi tie ir uzņēmumiem runas tehnoloģiju izpētei un valodas pētniekiem visā pasaulē.",
     "heroShowAll":"Parādīt visu tekstu",
 
-    "graphDataUrl": "https://commonvoice.mozilla.org/api/v1/lv/clips/stats",
-    "graphGoal": "300",
-    "graphFallbackRecorded": "290",
-    "graphFallbackValidated": "246",
+    "graphGoal": "350",
+    "graphFallbackRecorded": "305",
+    "graphFallbackValidated": "259",
     "graphTitle": "Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!",
     "graphChallengeTitle": "Izaicinājums",
-    "graphChallenge": "Ierunāsim 300 stundas vēl šogad!",
+    "graphChallenge": "Ierunāsim 350 stundas vēl šogad!",
     "graphRecorded": "Ierunāts",
     "graphValidated": "Pārbaudīts",
 

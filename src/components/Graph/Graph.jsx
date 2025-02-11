@@ -20,14 +20,14 @@ const Graph = ({ hours }) => {
               <div className="graph__row">
                 <div className="graph__stat">
                   <span>{t("index.graphRecorded")}</span>
-                  <span>{Number(hours.total).toFixed(1)}/{t("index.graphGoal")} h</span>
+                  <span>{Number(hours.total)}/{t("index.graphGoal")} h</span>
                 </div>
                 <ProgressSvg hours={hours.total} />
               </div>
               <div className="graph__row">
                 <div className="graph__stat">
                   <span>{t("index.graphValidated")}</span>
-                  <span>{Number(hours.valid).toFixed(1)}/{t("index.graphGoal")} h</span>
+                  <span>{Number(hours.valid)}/{t("index.graphGoal")} h</span>
                 </div>
                 <ProgressSvg hours={hours.valid} />
               </div>

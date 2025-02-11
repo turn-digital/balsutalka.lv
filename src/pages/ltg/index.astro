@@ -10,31 +10,34 @@ import Footer from "~components/Footer/Footer.astro";
 import Implementers from "~components/Implementers/Implementers.jsx";
 import i18next, { t, changeLanguage } from "i18next";
 
-changeLanguage("ltg");
+const locale = "ltg";
+changeLanguage(locale);
 
-// const hours = await fetch(t("index.graphDataUrl"))
-//     .then(response => response.json())
-//     // item id 4 is the most recent data
-//     .then(data => {
-//     return {
-//         valid: Math.floor(data[4].valid / (60 * 60) * 10) / 10,
-//         total: Math.floor(data[4].total / (60 * 60) * 10) / 10
-//     };
-// })
-//     // fallback, last known value if we did not get ant data from CommonVoice
-//     .catch(() => {
-//     return {
-//         valid: Number(t("index.graphFallbackValidated")),
-//         total: Number(t("index.graphFallbackRecorded"))
-//     };
-// });
-const hours = {
-  valid: Number(t("index.graphFallbackValidated")),
-  total: Number(t("index.graphFallbackRecorded"))
-};
+const hours = await fetch("https://commonvoice.mozilla.org/api/v1/stats/languages")
+  .then(response => response.json())
+  .then(data => {
+    const matchingEntry = data.find(entry => entry.locale === locale);
+    if (matchingEntry) {
+      return {
+        valid: matchingEntry.validatedHours,
+        total: matchingEntry.recordedHours
+      };
+    } else {
+      return {
+        valid: Number(t("index.graphFallbackValidated")),
+        total: Number(t("index.graphFallbackRecorded"))
+      };
+    }
+  })
+  .catch(() => {
+    return {
+      valid: Number(t("index.graphFallbackValidated")),
+      total: Number(t("index.graphFallbackRecorded"))
+    };
+  });
 // Cache warm recording section on Common Voice site so users do not get Timeout errors
-await fetch(`https://commonvoice.mozilla.org/api/v1/${i18next.language}/sentences?count=25`);
-await fetch(`https://commonvoice.mozilla.org/api/v1/${i18next.language}/clips`);
+await fetch(`https://commonvoice.mozilla.org/api/v1/${locale}/sentences?count=25`);
+await fetch(`https://commonvoice.mozilla.org/api/v1/${locale}/clips`);
 ---
 
 <Layout
