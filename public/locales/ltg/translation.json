@@ -25,8 +25,8 @@
 
     "graphDataUrl": "https://commonvoice.mozilla.org/api/v1/ltg/clips/stats",
     "graphGoal": "30",
-    "graphFallbackRecorded": "25",
-    "graphFallbackValidated": "21",
+    "graphFallbackRecorded": "29",
+    "graphFallbackValidated": "26.1",
     "graphTitle": "Paleidzi atteisteit latgalīšu volūdys tehnologejis ar sovu bolsu!",
     "graphChallengeTitle": "Izaicynuojums",
     "graphChallenge": "Īrunuosim 30 stuņdis jau itū god!",

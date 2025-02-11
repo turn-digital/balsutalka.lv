@@ -24,12 +24,12 @@
     "heroShowAll":"Parādīt visu tekstu",
 
     "graphDataUrl": "https://commonvoice.mozilla.org/api/v1/lv/clips/stats",
-    "graphGoal": "250",
-    "graphFallbackRecorded": "203",
-    "graphFallbackValidated": "160",
+    "graphGoal": "300",
+    "graphFallbackRecorded": "290",
+    "graphFallbackValidated": "246",
     "graphTitle": "Palīdzi attīstīt latviešu valodas tehnoloģijas ar savu balsi!",
     "graphChallengeTitle": "Izaicinājums",
-    "graphChallenge": "Ierunāsim 250 stundas vēl šogad!",
+    "graphChallenge": "Ierunāsim 300 stundas vēl šogad!",
     "graphRecorded": "Ierunāts",
     "graphValidated": "Pārbaudīts",
 
