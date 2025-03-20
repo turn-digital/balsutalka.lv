@@ -1,12 +1,12 @@
 import Icons from "~components/Icons/Icons";
 import { t } from "i18next";
 
-const Future = (props) => {
+const Future = () => {
   return (
     <section className="future">
       <div className="wrapper">
         <h2 className="future__title title">
-          {t("index.futureTitle")}!
+          {t("index.futureTitle")}
         </h2>
         <div className="future__content">
           <div className="future__card">
