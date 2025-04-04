@@ -11,24 +11,20 @@ const ResultsLV = (props) => {
               jau tiek izmantoti un daži rezultāti ir pieejami publiski.
               <ul>
                 <li><a target="_blank" href="https://ailab.lv/">LU MII AiLab</a> ir izveidojuši <a target="_blank"
-                                                                                                   href="https://huggingface.co/AiLab-IMCS-UL/whisper-large-v3-lv-late-cv17">jaudīgu
+                                                                                                   href="https://huggingface.co/AiLab-IMCS-UL/whisper-large-v3-lv-late-cv19">jaudīgu
                   runas atpazīšanas modeli</a> ar salīdzinoši augstu atpazīšanas precizitāti runas datu analīzei un
-                  subtitru veidošanai. Šī modeļa iespējas var izmēģināt <a target="_blank"
-                                                                           href="https://colab.research.google.com/gist/raivisdejus/07ca2e37d1fb87f81df12e424cf9175b/latviesu-runas-atpazisana.ipynb">Google
-                    Colab vidē</a>. Lietošanas video pamācība ar video subtitru veidošanas piemēru <a target="_blank"
-                                                                                                      href="https://youtu.be/MjeawBpB5xg">pieejama
-                    šeit</a>.
+                  subtitru veidošanai. <br/>Šo modeli var izmēģināt <a target="_blank" href="https://late.ailab.lv/">late.ailab.lv</a>.
                 </li>
                 <li>Atvērtā koda kopiena ir izveidojusi <a target="_blank"
                                                            href="https://huggingface.co/RaivisDejus/whisper-small-lv">ātrus
                   runas atpazīšanas modeļus</a> izmantošanai mazas jaudas iekārtās, piemēram, Home Assistant gudro māju
-                  risinājumiem. Modeļus var izmēģināt <a target="_blank"
+                  risinājumiem. <br/>Modeļus var izmēģināt <a target="_blank"
                                                          href="https://huggingface.co/spaces/RaivisDejus/LatvianSpeechRecognition">demo
                     lapā</a>.
                 </li>
                 <li>Atvērtā koda kopiena ir izveidojusi <a target="_blank" href="https://github.com/chidiwilliams/buzz">runas
                   atpazīšanas lietotni</a>, kas ļauj veidot subtitrus un tulkot atpazīto saturu audio un video datnēs,
-                  kā arī reāla laika runā. Video pamācība <a target="_blank"
+                  kā arī reāla laika runā. <br/>Video pamācība <a target="_blank"
                                                              href="https://www.youtube.com/watch?v=2ngQm06ZwmI">pieejama
                     šeit</a>.
                 </li>
@@ -37,7 +33,7 @@ const ResultsLV = (props) => {
                   “Balsu talka” un “Bolsu tolka” korpusos. Abi korpusi ir morfoloģiski marķēti – tajos iespējams meklēt
                   gan pēc morfoloģiskajām pazīmēm, gan pēc vārdu pamatformām, piemēram, var atrast visus 6. deklinācijas
                   lietvārdus vai visas korpusā lietotās darbības vārda “skriet” vai “skrīt” formas un noklausīties, kā
-                  šos vārdus mēdz izrunāt. Vietnes lietošanas pamācība <a target="_blank"
+                  šos vārdus mēdz izrunāt. <br/>Vietnes lietošanas pamācība <a target="_blank"
                                                                           href="https://youtu.be/s4nQMnUrElo">pieejama
                     šeit</a>.
                 </li>

@@ -7,6 +7,7 @@ import Future from "~components/Future/Future.jsx";
 import Graph from "~components/Graph/Graph.jsx";
 import Faq from "~components/Faq/Faq.astro";
 import Footer from "~components/Footer/Footer.astro";
+import ResultsLTG from "~/components/Results/ResultsLTG.jsx";
 import Implementers from "~components/Implementers/Implementers.jsx";
 import i18next, { t, changeLanguage } from "i18next";
 
@@ -50,6 +51,7 @@ await fetch(`https://commonvoice.mozilla.org/api/v1/${locale}/clips`);
     <Future />
     <Hero />
     <Graph hours={hours} />
+    <ResultsLTG />
     <Faq />
     <Implementers />
     <Footer />
