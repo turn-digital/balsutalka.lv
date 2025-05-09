@@ -36,6 +36,7 @@ const hours = await fetch("https://commonvoice.mozilla.org/api/v1/stats/language
       total: Number(t("index.graphFallbackRecorded"))
     };
   });
+
 // Cache warm recording section on Common Voice site so users do not get Timeout errors
 await fetch(`https://commonvoice.mozilla.org/api/v1/${locale}/sentences?count=25`);
 await fetch(`https://commonvoice.mozilla.org/api/v1/${locale}/clips`);
