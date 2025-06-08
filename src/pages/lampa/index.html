@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>LAMPA - Izglītības skatuve</title>
+    <style>
+        :root {
+            --margin: 16px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            margin: var(--margin);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100dvh - var(--margin) * 2);
+        }
+
+        h1 {
+            font-size: 30px;
+            color: #06454d;
+            margin: 0 0 0.5em 0;
+        }
+
+        a {
+            color: #067993;
+        }
+
+        #talkTitle {
+            font-size: 18px;
+            font-weight: bold;
+            color: #067993;
+        }
+
+        #transcripts, #translations {
+            height: 100%;
+            margin-top: var(--margin);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow-y: auto;
+        }
+
+        .entry {
+            margin-bottom: calc(var(--margin) / 2);
+        }
+
+        #footer {
+            margin-top: var(--margin);
+            font-size: 12px;
+            color: #666;
+        }
+
+        #settingsButton {
+            padding: 8px 12px;
+            position: absolute;
+            right: var(--margin);
+            bottom: var(--margin);
+            background-color: #067993;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        #settingsButton:hover {
+            background-color: #078cad;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        #settingsButton:active {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            transform: translateY(1px);
+        }
+
+        #settings {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            width: fit-content;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LAMPA - Izglītības skatuve</h1>
+
+        <div id="talkTitle">
+            20. un 21. jūnijs, Cēsu pils laukums
+        </div>
+    </header>
+
+    <div id="transcripts">
+        <!--<div class="entry">Lorem ipsūm dolor siķ āmēt, consectetur ādipiscīng elīt. Drņec tempus, nībh nec rūtrūm mātņis, ērat sapīen ūllāmčorper quām, quīs mālēsūda enīm māurīs sed orši. Nūllām vīverrā porttiķor quām, āc solīcitūdīn diām vārius egēt.</div>-->
+    </div>
+
+    <div id="translations" style="display: none;">
+        <!--<div class="entry">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, nibh nec rutrum mattis, erat sapien ullamcorper quam, quis malesuada enim mauris sed orci. Nullam viverra porttitor quam, ac sollicitudin diam varius eget.</div>-->
+    </div>
+
+    <div id="footer">
+        Darbina Balsu talka.<br> Lai uzlabotu rīka kvalitāti, <a href="http://balsutalka.lv">ieraksti</a> savu balsi!
+
+        <div id="settingsButton">Rādīt ⚙</div>
+        <div id="settings">
+            <h2>Iestatījumi</h2>
+            <label class="toggle-switch">
+                <input type="checkbox" id="showTranscriptToggle" checked>
+                <span class="slider"></span>
+                <span class="toggle-label">Rādīt runāto</span>
+            </label>
+            <label class="toggle-switch">
+                <input type="checkbox" id="showTranslationToggle">
+                <span class="slider"></span>
+                <span class="toggle-label">Rādīt tulkojumu</span>
+            </label>
+            <div class="font-size-control">
+                <span class="toggle-label">Teksta izmērs</span>
+                <button id="decreaseFontSize" aria-label="Samazināt teksta izmēru">-</button>
+                <span id="currentFontSizeDisplay">18</span>
+                <button id="increaseFontSize" aria-label="Palielināt teksta izmēru">+</button>
+            </div>
+
+            <style>
+                #settings h2 {
+                    margin: var(--margin) 0 0 0;
+                }
+
+                .toggle-switch {
+                  position: relative;
+                  display: flex;
+                  align-items: center;
+                  cursor: pointer;
+                  margin: 4px 0;
+                }
+
+                .toggle-switch input {
+                  opacity: 0;
+                  width: 0;
+                  height: 0;
+                }
+
+                .slider {
+                  position: relative;
+                  display: inline-block;
+                  width: 40px;
+                  height: 20px;
+                  background-color: #ccc;
+                  border-radius: 20px;
+                  margin-right: 10px;
+                  transition: .3s;
+                }
+
+                .slider:before {
+                  position: absolute;
+                  content: "";
+                  height: 16px;
+                  width: 16px;
+                  left: 2px;
+                  bottom: 2px;
+                  background-color: white;
+                  border-radius: 50%;
+                  transition: .3s;
+                }
+
+                input:checked + .slider {
+                  background-color: #067993;
+                }
+
+                input:checked + .slider:before {
+                  transform: translateX(20px);
+                }
+
+                .toggle-label {
+                  font-size: 18px;
+                  height: 20px;
+                  line-height: 20px;
+                }
+
+                .font-size-control {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .font-size-control button {
+                    padding: 4px 10px;
+                    font-size: 18px;
+                    cursor: pointer;
+                    border: 1px solid #ccc;
+                    background-color: #f0f0f0;
+                    border-radius: 4px;
+                }
+
+                .font-size-control button:hover {
+                    background-color: #e0e0e0;
+                }
+
+                #currentFontSizeDisplay {
+                    font-size: 18px;
+                    min-width: 20px;
+                    text-align: center;
+                }
+            </style>
+            <script>
+                document.getElementById('showTranscriptToggle').addEventListener('change', function() {
+                  document.getElementById('transcripts').style.display = this.checked ? 'block' : 'none';
+                });
+
+                document.getElementById('showTranslationToggle').addEventListener('change', function() {
+                  document.getElementById('translations').style.display = this.checked ? 'block' : 'none';
+                });
+
+                let currentFontSize = 18;
+                const minFontSize = 12;
+                const maxFontSize = 32;
+                const fontSizeStep = 2;
+                const bodyElement = document.body;
+                const currentFontSizeDisplay = document.getElementById('currentFontSizeDisplay');
+
+                function updateFontSizeDisplay() {
+                    currentFontSizeDisplay.textContent = currentFontSize;
+                    bodyElement.style.fontSize = currentFontSize + 'px';
+                }
+
+                document.getElementById('increaseFontSize').addEventListener('click', () => {
+                    if (currentFontSize < maxFontSize) {
+                        currentFontSize += fontSizeStep;
+                        updateFontSizeDisplay();
+                    }
+                });
+
+                document.getElementById('decreaseFontSize').addEventListener('click', () => {
+                    if (currentFontSize > minFontSize) {
+                        currentFontSize -= fontSizeStep;
+                        updateFontSizeDisplay();
+                    }
+                });
+
+                updateFontSizeDisplay();
+            </script>
+        </div>
+    </div>
+
+    <!-- Transcript display -->
+    <script>
+        let lastTimestamp = 0;
+        const serverUrl = 'https://buzz-transcription-server.onrender.com/entries';
+
+        window.refreshInterval = setInterval(() => fetchEntries(serverUrl), 1000);
+
+        function fetchEntries(serverUrl) {
+            const url = `${serverUrl}?timestamp=${lastTimestamp}`;
+            fetch(url, {
+                headers: {
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No new transcripts or server error.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        appendEntries(data);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching transcripts:', error);
+                });
+        }
+
+        function appendEntries(entries) {
+            const transcriptsContainer = document.getElementById('transcripts');
+            const translationsContainer = document.getElementById('translations');
+            entries.forEach(entry => {
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'entry';
+                entryDiv.textContent = entry.text;
+
+                if (entry.kind === "transcript") {
+                    transcriptsContainer.appendChild(entryDiv);
+                } else if (entry.kind === "translation") {
+                    translationsContainer.appendChild(entryDiv);
+                }
+
+                lastTimestamp = Math.max(lastTimestamp, entry.timestamp);
+            });
+
+            transcriptsContainer.scrollTop = transcriptsContainer.scrollHeight;
+            translationsContainer.scrollTop = translationsContainer.scrollHeight;
+        }
+
+        document.getElementById('settingsButton').addEventListener('click', () => {
+            const settingsDiv = document.getElementById('settings');
+
+            if (settingsDiv.style.display === 'flex') {
+                settingsDiv.style.display = 'none';
+            } else {
+                settingsDiv.style.display = 'flex';
+            }
+        });
+    </script>
+
+    <!-- Set talk title -->
+    <script>
+        const eventStartDate = new Date("2025-06-20T12:00:00");
+        const talkTiles = [
+            // from, to, title
+            // 20. junijs
+            ["2025-06-20T12:30:00", "2025-06-20T13:30:00", 'Diskusija "No sapņa līdz murgam – kāpēc jaunie skolotāji pamet darbu skolā?"'],
+            ["2025-06-20T14:00:00", "2025-06-20T15:00:00", 'Diskusija "Kāpēc jaunieši izvēlas vai neizvēlas studijas un karjeru STEAM un IT jomā?"'],
+            ["2025-06-20T15:30:00", "2025-06-20T16:30:00", 'Diskusija "STEMu tiešām zina, ja vispirms domā un dara"'],
+            ["2025-06-20T17:00:00", "2025-06-20T18:00:00", 'Diskusija "Apzinātība bez vīraka - izdzīvošanas prasme modernā pasaulē"'],
+            ["2025-06-20T18:30:00", "2025-06-20T19:30:00", 'Saruna "Apaļais galds: skolas uzdevumi"'],
+            ["2025-06-20T20:00:00", "2025-06-20T21:00:00", 'Diskusija "Izglītība pēc 50 – no stereotipiem uz iespējām"'],
+            ["2025-06-20T21:30:00", "2025-06-20T22:30:00", 'Diskusija "Jāsāk beidzot rakstīt! Radošā rakstniecība kā obligāts priekšmets skolā?"'],
+            // 21. junijs
+            ["2025-06-21T11:00:00", "2025-06-21T12:00:00", 'Diskusija un vingrošana "Aptaukošanās epidēmija sākas skolā – vai sporta stundas ir mūsu valsts vienīgā cerība?"'],
+            ["2025-06-21T12:30:00", "2025-06-21T13:30:00", 'Saruna "Mūžizglītība un pārkvalifikācija: kā atbalstīt vīriešus izglītībā?"'],
+            ["2025-06-21T14:00:00", "2025-06-21T15:00:00", 'Saruna "Prast naudu: kā aug finanšu pratība?"'],
+            ["2025-06-21T15:30:00", "2025-06-21T16:30:00", 'Karjeras detektīvs "Ja man vēlreiz būtu 17 gadi"'],
+            ["2025-06-21T17:00:00", "2025-06-21T18:00:00", 'Diskusija "Nākotnes skola: Latvija un Igaunija – līdzīgas vai dažādas?"'],
+            ["2025-06-21T18:30:00", "2025-06-21T19:30:00", 'Diskusija "Vai privātskolotājs ir kļuvis par Latvijas izglītības sistēmas neatņemamu sastāvdaļu?"'],
+            ["2025-06-21T20:00:00", "2025-06-21T21:00:00", 'Diskusija "Mākslīgā intelekta revolūcija izglītībā un darbavietā: vai esam gatavi rītdienai?"'],
+        ];
+
+        const now = new Date();
+
+        const currentTalk = talkTiles.find(([from, to]) => {
+            const fromDate = new Date(from);
+            const toDate = new Date(to);
+
+            return now >= fromDate && now <= toDate;
+        });
+
+        if (currentTalk && now > eventStartDate) {
+            const talkTitle = document.getElementById('talkTitle');
+
+            const startTime = new Date(currentTalk[0]);
+            const endTime = new Date(currentTalk[1]);
+
+            const startTimeStr = startTime.getHours().toString().padStart(2, '0') + ':' +
+                                 startTime.getMinutes().toString().padStart(2, '0');
+
+            const endTimeStr = endTime.getHours().toString().padStart(2, '0') + ':' +
+                               endTime.getMinutes().toString().padStart(2, '0');
+
+            talkTitle.textContent = `${startTimeStr} - ${endTimeStr} ${currentTalk[2]}`;
+        }
+    </script>
+
+    <!-- Set event schedule -->
+    <script>
+        if (now < eventStartDate) {
+
+            // Stop the refresh interval if the event hasn't started yet
+            //window.clearInterval(window.refreshInterval);
+
+            const entries = [];
+
+            // Month names for Latvian
+            const monthNames = ["janvārī", "februārī", "martā", "aprīlī", "maijā", "jūnijā",
+                                "jūlijā", "augustā", "septembrī", "oktobrī", "novembrī", "decembrī"];
+
+            let currentDay = null;
+
+            // Process each talk
+            talkTiles.forEach(([fromStr, toStr, title]) => {
+                const fromDate = new Date(fromStr);
+                const toDate = new Date(toStr);
+
+                const day = fromDate.getDate();
+                const month = fromDate.getMonth();
+
+                // If this is a new day, add a day header
+                if (currentDay !== `${day}-${month}`) {
+                    currentDay = `${day}-${month}`;
+                    entries.push({
+                        kind: "transcript",
+                        text: `${day}. ${monthNames[month]}:`,
+                        timestamp: Date.now() + 1
+                    });
+                }
+
+                // Format time
+                const startTime = `${fromDate.getHours().toString().padStart(2, '0')}:${fromDate.getMinutes().toString().padStart(2, '0')}`;
+                const endTime = `${toDate.getHours().toString().padStart(2, '0')}:${toDate.getMinutes().toString().padStart(2, '0')}`;
+
+                // Add talk entry
+                entries.push({
+                    kind: "transcript",
+                    text: `${startTime}-${endTime} ${title}`,
+                    timestamp: Date.now() + 2
+                });
+            });
+
+            appendEntries(entries);
+        }
+    </script>
+
+    <!-- Script for demo mode -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        if (urlParams.has("demo")) {
+            const sampleTexts = [
+                { kind: "transcript", text: "Lorēm ipsūm dolor siķ āmēt, consectetur ādipiscīng elīt. Drņec tempus, nībh nec rūtrūm mātņis, ērat sapīen ūllāmčorper quām, quīs mālēsūda enīm māurīs sed orši. Nūllām vīverrā porttiķor quām, āc solīcitūdīn diām vārius egēt." },
+                { kind: "translation", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus, nibh nec rutrum mattis, erat sapien ullamcorper quam, quis malesuada enim mauris sed orci. Nullam viverra porttitor quam, ac sollicitudin diam varius eget." }
+            ];
+
+            function addRandomEntry() {
+                const entry = { ...sampleTexts[Math.floor(Math.random() * sampleTexts.length)] };
+                const words = entry.text.split(" ");
+                for (let i = words.length - 1; i >= 0; i--) {
+                    if (Math.random() < 0.5) {
+                        words.splice(i, 1);
+                    }
+                }
+                entry.text = words.join(" ");
+                entry.timestamp = Date.now();
+                appendEntries([entry]);
+            }
+
+            (function loop() {
+                addRandomEntry();
+                setTimeout(loop, Math.random() * 1000 + 1500);
+            })();
+        }
+    </script>
+</body>
+</html>
