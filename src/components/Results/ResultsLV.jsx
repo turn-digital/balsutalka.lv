@@ -23,7 +23,7 @@ const ResultsLV = (props) => {
                     lapā</a>.
                 </li>
                 <li>Atvērtā koda kopiena ir izveidojusi <a target="_blank" href="https://github.com/chidiwilliams/buzz">runas
-                  atpazīšanas lietotni</a>, kas ļauj veidot subtitrus un tulkot atpazīto saturu audio un video datnēs,
+                  atpazīšanas lietotni "Buzz"</a>, kas ļauj veidot subtitrus un tulkot atpazīto saturu audio un video datnēs,
                   kā arī reāla laika runā. <br/>Video pamācība <a target="_blank"
                                                              href="https://www.youtube.com/watch?v=2ngQm06ZwmI">pieejama
                     šeit</a>.
