@@ -1,7 +1,7 @@
 const SUPABASE_URL = 'https://cttlejjchlpnxftedjun.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dGxlampjaGxwbnhmdGVkanVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NTk1MzYsImV4cCI6MjA3NDQzNTUzNn0.hryev2E6KcsiqeT6SRb4LPvIPea-KPR428PFK1FTs5c';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentClips = [];
 let currentClipIndex = 0;
@@ -42,7 +42,7 @@ function incrementTodayValidationCount() {
 
 async function loadClips() {
     try {
-        const { data: clips, error } = await supabase
+        const { data: clips, error } = await supabaseClient
             .from('clips_random')
             .select('*')
             .limit(5);
@@ -85,7 +85,7 @@ function displayCurrentClip() {
     setTimeout(() => {
         const textArea = container.querySelector('.sentence-input');
         if (textArea) {
-            textArea.focus();100
+            textArea.focus();
         }
     }, 100);
 
@@ -198,7 +198,7 @@ async function saveValidation(clipId) {
     saveBtn.textContent = 'Saglabā...';
 
     try {
-        const { error } = await supabase
+        const { error } = await supabaseClient
             .from('validations')
             .insert([
                 {
