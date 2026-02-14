@@ -77,7 +77,7 @@ function displayCurrentClip() {
     container.innerHTML = '';
 
     const clip = currentClips[currentClipIndex];
-    const audioUrl = `${SUPABASE_URL}/storage/v1/object/public/clips/${clip.clip_name}.mp3`;
+    const audioUrl = `https://hospitalu23.duckdns.org/local/balsu-talka/mp3s/${clip.clip_name}.mp3`;
     const clipHtml = createClipHtml(clip, audioUrl);
     container.appendChild(clipHtml);
 
@@ -117,15 +117,12 @@ function createClipHtml(clip, audioUrl) {
 
     clipDiv.innerHTML = `
         <div class="card-body">
-            <h5 class="card-title">Clip: ${clip.clip_name}</h5>
+            <div class="card-title">Ieraksts: ${clip.clip_name}</div>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 ${todayCount > 0 ?
                     `<p class="text-muted mb-0">Šodien pārbaudīti ${todayCount}</p>` :
                     `<p class="text-muted mb-0"></p>`
                 }
-                <small class="text-muted">
-                    <strong>Saīsnes:</strong> Ctrl+Space (atskaņot) | Ctrl+Enter (saglabāt)
-                </small>
             </div>
 
             <div class="mb-3">
@@ -148,6 +145,18 @@ function createClipHtml(clip, audioUrl) {
                     lang="lv"
                     spellcheck="true"
                 >${clip.sentence}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Dzimums:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input gender-radio" type="radio" name="gender-${clip.id}" id="gender-male-${clip.id}" value="male">
+                    <label class="form-check-label" for="gender-male-${clip.id}">Vīrietis</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input gender-radio" type="radio" name="gender-${clip.id}" id="gender-female-${clip.id}" value="female">
+                    <label class="form-check-label" for="gender-female-${clip.id}">Sieviete</label>
+                </div>
             </div>
 
             <div class="d-flex justify-content-between">
@@ -198,14 +207,18 @@ async function saveValidation(clipId) {
     saveBtn.textContent = 'Saglabā...';
 
     try {
+        const genderRadio = document.querySelector(`input[name="gender-${clipId}"]:checked`);
+        const insertData = {
+            clip_id: clipId,
+            sentence: textArea.value.trim()
+        };
+        if (genderRadio) {
+            insertData.gender = genderRadio.value;
+        }
+
         const { error } = await supabaseClient
             .from('validations')
-            .insert([
-                {
-                    clip_id: clipId,
-                    sentence: textArea.value.trim()
-                }
-            ]);
+            .insert([insertData]);
 
         if (error) {
             throw error;
@@ -269,6 +282,28 @@ document.addEventListener('keydown', (event) => {
         if (audioElement) {
             audioElement.currentTime = 0;
             audioElement.play();
+        }
+        return;
+    }
+
+    // Ctrl+V to select Vīrietis
+    if (event.ctrlKey && event.key === 'v') {
+        event.preventDefault();
+        const currentClip = currentClips[currentClipIndex];
+        if (currentClip) {
+            const radio = document.getElementById(`gender-male-${currentClip.id}`);
+            if (radio) radio.checked = true;
+        }
+        return;
+    }
+
+    // Ctrl+S to select Sieviete
+    if (event.ctrlKey && event.key === 's') {
+        event.preventDefault();
+        const currentClip = currentClips[currentClipIndex];
+        if (currentClip) {
+            const radio = document.getElementById(`gender-female-${currentClip.id}`);
+            if (radio) radio.checked = true;
         }
         return;
     }
