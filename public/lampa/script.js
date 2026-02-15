@@ -187,6 +187,7 @@ function createClipHtml(clip, audioUrl) {
                     </a>
                 </div>
             </div>
+            <div class="text-danger mt-2 d-none" id="sentence-error-${clip.id}"></div>
         </div>
     `;
 
@@ -198,10 +199,20 @@ async function saveValidation(clipId) {
     const saveBtn = textArea.closest('.card-body').querySelector('.save-btn');
     const statusElement = document.getElementById(`status-${clipId}`);
 
+    const errorDiv = document.getElementById(`sentence-error-${clipId}`);
+
     if (!textArea.value.trim()) {
         showError('Lūdzu ievadiet teikumu pirms saglabāšanas.');
         return;
     }
+
+    if (/[\d%]/.test(textArea.value)) {
+        errorDiv.textContent = 'Lūdzu pārrakstiet skaitļus vārdiem';
+        errorDiv.classList.remove('d-none');
+        return;
+    }
+
+    errorDiv.classList.add('d-none');
 
     saveBtn.disabled = true;
     saveBtn.textContent = 'Saglabā...';
@@ -282,6 +293,16 @@ document.addEventListener('keydown', (event) => {
         if (audioElement) {
             audioElement.currentTime = 0;
             audioElement.play();
+        }
+        return;
+    }
+
+    // Ctrl+Left to rewind audio by 2 seconds
+    if (event.ctrlKey && event.code === 'ArrowLeft') {
+        event.preventDefault();
+        const audioElement = document.querySelector('audio');
+        if (audioElement) {
+            audioElement.currentTime = Math.max(0, audioElement.currentTime - 2);
         }
         return;
     }
