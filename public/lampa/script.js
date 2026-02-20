@@ -433,6 +433,25 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
+    // Ctrl+1/2/3/4 to insert markings at cursor position
+    const markings = { '1': '[laugh]', '2': '[disfluency]', '3': '[unclear]', '4': '[noise]' };
+    if (event.ctrlKey && markings[event.key]) {
+        const textArea = document.querySelector('.sentence-input');
+        if (textArea) {
+            event.preventDefault();
+            const marking = markings[event.key];
+            const start = textArea.selectionStart;
+            const end = textArea.selectionEnd;
+            const value = textArea.value;
+            const insert = (start > 0 && value[start - 1] !== ' ' ? ' ' : '') + marking + (end < value.length && value[end] !== ' ' ? ' ' : '');
+            textArea.value = value.slice(0, start) + insert + value.slice(end);
+            const cursor = start + insert.length;
+            textArea.selectionStart = textArea.selectionEnd = cursor;
+            textArea.focus();
+        }
+        return;
+    }
+
     // Ctrl+Enter to save validation
     if (event.ctrlKey && event.key === 'Enter') {
         event.preventDefault();
