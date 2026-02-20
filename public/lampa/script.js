@@ -7,6 +7,47 @@ let currentClips = [];
 let currentClipIndex = 0;
 let validatedClipIds = new Set();
 let isFirstClip = true;
+let lastSavedValidation = null; // { id, clip, sentence, gender }
+let editingUpdateOf = null;     // ID of the validation being corrected
+
+// Validator name functions
+function getValidatorName() {
+    return localStorage.getItem('validator_name') || '';
+}
+
+function saveValidatorName() {
+    const input = document.getElementById('validator-name-input');
+    const name = input.value.trim();
+    if (!name) return;
+    localStorage.setItem('validator_name', name);
+    renderValidatorName();
+}
+
+function editValidatorName() {
+    const display = document.getElementById('validator-name-display');
+    const inputGroup = document.getElementById('validator-name-input-group');
+    const input = document.getElementById('validator-name-input');
+    display.classList.add('d-none');
+    inputGroup.classList.remove('d-none');
+    input.focus();
+}
+
+function renderValidatorName() {
+    const name = getValidatorName();
+    const display = document.getElementById('validator-name-display');
+    const inputGroup = document.getElementById('validator-name-input-group');
+    const nameText = document.getElementById('validator-name-text');
+    if (name) {
+        nameText.textContent = name;
+        display.classList.remove('d-none');
+        display.classList.add('d-flex');
+        inputGroup.classList.add('d-none');
+    } else {
+        display.classList.add('d-none');
+        display.classList.remove('d-flex');
+        inputGroup.classList.remove('d-none');
+    }
+}
 
 // Daily validation counter functions
 function getTodayDateString() {
@@ -175,6 +216,14 @@ function createClipHtml(clip, audioUrl) {
                     >
                         Izlaist
                     </button>
+                    ${lastSavedValidation && !editingUpdateOf ? `<button
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="loadPreviousValidation()"
+                        title="Ielādēt iepriekšējo validāciju labošanai"
+                    >
+                        <i class="bi bi-arrow-counterclockwise"></i> Labot iepriekšējo
+                    </button>` : ''}
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <small class="text-muted validation-status" id="status-${clip.id}">
@@ -226,14 +275,34 @@ async function saveValidation(clipId) {
         if (genderRadio) {
             insertData.gender = genderRadio.value;
         }
+        const validatorName = getValidatorName();
+        if (validatorName) {
+            insertData.validator_name = validatorName;
+        }
 
-        const { error } = await supabaseClient
+        if (editingUpdateOf) {
+            insertData.update_of = editingUpdateOf;
+        }
+
+        const { data: insertedRows, error } = await supabaseClient
             .from('validations')
-            .insert([insertData]);
+            .insert([insertData])
+            .select('id');
 
         if (error) {
             throw error;
         }
+
+        const insertedId = insertedRows?.[0]?.id ?? null;
+        const genderRadioForState = document.querySelector(`input[name="gender-${clipId}"]:checked`);
+        lastSavedValidation = {
+            id: insertedId,
+            clip: currentClips[currentClipIndex] ?? lastSavedValidation?.clip,
+            sentence: insertData.sentence,
+            gender: genderRadioForState?.value ?? null
+        };
+        const wasEditingPrevious = editingUpdateOf !== null;
+        editingUpdateOf = null;
 
         statusElement.textContent = 'Pārbaude saglabāta!';
         statusElement.className = 'text-success align-self-center validation-status';
@@ -244,10 +313,10 @@ async function saveValidation(clipId) {
         validatedClipIds.add(clipId);
 
         // Increment daily validation counter
-        const newCount = incrementTodayValidationCount();
+        incrementTodayValidationCount();
 
         setTimeout(() => {
-            currentClipIndex++;
+            if (!wasEditingPrevious) currentClipIndex++;
             displayCurrentClip();
         }, 1500);
 
@@ -270,6 +339,41 @@ function skipClip(clipId) {
         currentClipIndex++;
         displayCurrentClip();
     }, 500);
+}
+
+function loadPreviousValidation() {
+    if (!lastSavedValidation) return;
+
+    const { id, clip, sentence, gender } = lastSavedValidation;
+    editingUpdateOf = id;
+
+    const container = document.getElementById('clips-container');
+    container.innerHTML = '';
+
+    const audioUrl = `https://hospitalu23.duckdns.org/local/balsu-talka/mp3s/${clip.clip_name}.mp3`;
+    const clipHtml = createClipHtml(clip, audioUrl);
+    container.appendChild(clipHtml);
+
+    // Prefill with saved values
+    const textArea = document.getElementById(`sentence-${clip.id}`);
+    if (textArea) textArea.value = sentence;
+
+    if (gender) {
+        const radio = document.getElementById(`gender-${gender === 'male' ? 'male' : 'female'}-${clip.id}`);
+        if (radio) radio.checked = true;
+    }
+
+    // Mark card visually as edit mode — insert notice just before the action buttons
+    const card = container.querySelector('.clip-item');
+    if (card) {
+        const badge = document.createElement('div');
+        badge.className = 'alert alert-warning py-1 px-2 mb-2 mt-2 small';
+        badge.innerHTML = '<i class="bi bi-pencil-square"></i> Rediģējat iepriekšējo validāciju';
+        const errorDiv = card.querySelector('[id^="sentence-error-"]');
+        errorDiv.insertAdjacentElement('afterend', badge);
+    }
+
+    setTimeout(() => { if (textArea) textArea.focus(); }, 100);
 }
 
 function showError(message) {
@@ -341,5 +445,9 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    renderValidatorName();
+    document.getElementById('validator-name-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') saveValidatorName();
+    });
     loadClips();
 });

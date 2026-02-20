@@ -20,12 +20,32 @@
             <p class="mt-2">Ielādē ierakstus...</p>
         </div>
 
+        <div class="mb-3 d-flex align-items-center gap-2" id="validator-name-section">
+            <label class="form-label fw-semibold mb-0">Redaktors:</label>
+            <div id="validator-name-display" class="d-none align-items-center gap-1">
+                <span id="validator-name-text"></span>
+                <button type="button" class="btn btn-link p-0 text-secondary" onclick="editValidatorName()" title="Rediģēt">
+                    <i class="bi bi-pencil"></i>
+                </button>
+            </div>
+            <div id="validator-name-input-group" class="d-flex gap-2">
+                <input type="text" id="validator-name-input" class="form-control" style="max-width: 300px;" placeholder="Ievadiet savu vārdu">
+                <button type="button" class="btn btn-outline-primary" onclick="saveValidatorName()">Saglabāt</button>
+            </div>
+        </div>
+
         <div id="clips-container" class="d-none">
             <!-- Clips will be dynamically inserted here -->
         </div>
 
         <div id="error-message" class="alert alert-danger d-none" role="alert">
             <!-- Error messages will appear here -->
+        </div>
+
+        <div class="card-body pt-0">
+            <small class="text-muted">
+                <strong>Saīsnes:</strong> Ctrl+Space (atskaņot) | Ctrl+← (attīt 2s) | Ctrl+Enter (saglabāt) | Ctrl+V (vīrietis) | Ctrl+S (sieviete)
+            </small>
         </div>
     </div>
 
@@ -36,14 +56,12 @@
                 <ul class="mb-0">
                     <li class="mb-2">Skaitļi un simboli jāraksta vārdiem. Piemēram, "divdesmit procentu atlaide" vai "tiekamies deviņos trīsdesmit"</li>
                     <li class="mb-2">Pārteikšanās un liekvārdi jāmarķē ar defisi (-). Piemēram, "Man garšo saldējums un- un- un konfektes" vai "Viņu sauc Džo- Džona- Džonatans"</li>
-                    <li class="mb-2">Nevalodas skaņas, kā "ēē", "āā" vai "hmm" jāpieraksta kvadrātiekavās. Piemēram, "Suns, [ē] [hm] Reksis?"</li>
+                    <li class="mb-2">Smieklu skaņa jāmarķē ar <code>[laugh]</code>. Piemēram, "[laugh] šis bija labs joks", ja dzirdams, ka pirms pateiktā teikuma runātājs nosmejas</li>
+                    <li class="mb-2">Nevalodas skaņas, kā "ēē", "āā" vai "hmm" jāmarķē ar <code>[disfluency]</code>. Piemēram, "Suns, [disfluency] [disfluency] Reksis?", ja runātājs teica "Suns, ē hm Reksis?</li>
+                    <li class="mb-2">Vārdi vai vārdu virknes ko nevar saprast jāmarķē ar <code>[unclear]</code>. Piemēram, "Es atceros [unclear]", ja nevar saprast ko runātājs teica stāstot par to ko viņš atceras</li>
+                    <li class="mb-2">Dažādi trokšņi jāmarķē ar <code>[noise]</code>. Piemēram, "Mēs šodien bijām kafejnīcā [noise]", ja pēc vārda "kafejnīcā" ir dzirdams kāds troksnis.</li>
                     <li class="mb-0">Jāpieraksta viss kas dzirdams ierakstā tā kā tas dzirdams ierakstā. Nevajag labot slengu, piemēram "forši" vai "kūlīgi" jāsaglabā.</li>
                 </ul>
-            </div>
-            <div class="card-body">
-                <small class="text-muted">
-                    <strong>Saīsnes:</strong> Ctrl+Space (atskaņot) | Ctrl+← (attīt 2s) | Ctrl+Enter (saglabāt) | Ctrl+V (vīrietis) | Ctrl+S (sieviete)
-                </small>
             </div>
         </div>
     </div>
