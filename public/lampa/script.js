@@ -411,8 +411,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+V to select Vīrietis
-    if (event.ctrlKey && event.key === 'v') {
+    // Ctrl+Shift+V to select Vīrietis
+    if (event.ctrlKey && event.shiftKey && event.code === 'KeyV') {
         event.preventDefault();
         const currentClip = currentClips[currentClipIndex];
         if (currentClip) {
@@ -422,8 +422,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+S to select Sieviete
-    if (event.ctrlKey && event.key === 's') {
+    // Ctrl+Shift+S to select Sieviete
+    if (event.ctrlKey && event.shiftKey && event.code === 'KeyS') {
         event.preventDefault();
         const currentClip = currentClips[currentClipIndex];
         if (currentClip) {
@@ -434,12 +434,12 @@ document.addEventListener('keydown', (event) => {
     }
 
     // Ctrl+1/2/3/4 to insert markings at cursor position
-    const markings = { '1': '[laugh]', '2': '[disfluency]', '3': '[unclear]', '4': '[noise]' };
-    if (event.ctrlKey && markings[event.key]) {
+    const markings = { 'Digit1': '[laugh]', 'Digit2': '[disfluency]', 'Digit3': '[unclear]', 'Digit4': '[noise]' };
+    if (event.ctrlKey && event.shiftKey && markings[event.code]) {
         const textArea = document.querySelector('.sentence-input');
         if (textArea) {
             event.preventDefault();
-            const marking = markings[event.key];
+            const marking = markings[event.code];
             const start = textArea.selectionStart;
             const end = textArea.selectionEnd;
             const value = textArea.value;
