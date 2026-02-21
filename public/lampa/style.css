@@ -1,16 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Zilla+Slab:wght@400;600&display=swap');
+
+:root {
+    --color-primary: #164460;
+    --color-green: #58c8b2;
+    --color-snow: #eff2f3;
+    --color-cave: #303334;
+    --color-stone: #757575;
+    --color-white: #ffffff;
+}
+
 body {
-    background-color: #f8f9fa;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--color-snow);
+    font-family: 'Open Sans', sans-serif;
+    color: var(--color-cave);
+}
+
+h1 {
+    font-family: 'Zilla Slab', sans-serif;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+h4.card-title {
+    font-family: 'Zilla Slab', sans-serif;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(22, 68, 96, 0.08);
 }
 
 .clip-item {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #dee2e6;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(22, 68, 96, 0.08);
     transition: box-shadow 0.2s ease;
 }
 
 .clip-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(22, 68, 96, 0.14);
 }
 
 .sentence-input {
@@ -18,20 +50,67 @@ body {
     min-height: 80px;
     font-size: 1rem;
     line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
+    border-color: #c8d4da;
+    border-radius: 8px;
 }
 
 .sentence-input:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(22, 68, 96, 0.2);
+}
+
+.form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(22, 68, 96, 0.2);
 }
 
 audio {
+    border: 0!important;
     width: 100%;
+}
+
+/* Primary button style matching main site */
+.btn-outline-primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #1a5278;
+    border-color: #1a5278;
+    color: var(--color-white);
 }
 
 .save-btn {
     min-width: 140px;
     transition: all 0.2s ease;
+    background-color: var(--color-green);
+    border-color: var(--color-green);
+    color: var(--color-white);
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.save-btn:hover,
+.save-btn:focus {
+    background-color: #45b09c;
+    border-color: #45b09c;
+    color: var(--color-white);
 }
 
 .save-btn:disabled {
@@ -41,44 +120,69 @@ audio {
 .skip-btn {
     min-width: 100px;
     transition: all 0.2s ease;
+    border-radius: 8px;
 }
 
 .validation-status {
     font-style: italic;
+    color: var(--color-stone);
 }
 
 .spinner-border {
-    color: #0d6efd;
-}
-
-h1 {
-    color: #495057;
-    font-weight: 600;
-}
-
-.card-title {
-    color: #6c757d;
-    font-weight: 500;
-    font-size: 1.1rem;
+    color: var(--color-primary);
 }
 
 .form-label {
-    font-weight: 500;
-    color: #495057;
+    font-weight: 600;
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
 }
 
 .guidelines-link {
-    color: #6c757d;
+    color: var(--color-stone);
     font-size: 0.95rem;
     transition: color 0.2s ease;
     white-space: nowrap;
 }
 
 .guidelines-link:hover {
-    color: #0d6efd;
+    color: var(--color-primary);
 }
 
 .guidelines-link i {
     font-size: 1.1rem;
+}
+
+code {
+    color: var(--color-primary);
+    background-color: rgba(22, 68, 96, 0.08);
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(22, 68, 96, 0.04);
+}
+
+.table thead th {
+    color: var(--color-primary);
+    font-weight: 700;
+    border-bottom-color: rgba(22, 68, 96, 0.2);
+}
+
+.text-muted {
+    color: var(--color-stone) !important;
+}
+
+/* Site header bar */
+.site-header {
+    background-color: var(--color-white);
+    border-bottom: 1px solid rgba(22, 68, 96, 0.1);
+    padding: 12px 0;
+    margin-bottom: 0;
+}
+
+.site-header img {
+    height: 36px;
+    width: auto;
 }

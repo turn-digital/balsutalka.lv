@@ -10,26 +10,54 @@ let isFirstClip = true;
 let lastSavedValidation = null; // { id, clip, sentence, gender }
 let editingUpdateOf = null;     // ID of the validation being corrected
 
+// Guidelines read tracking
+function hasReadGuidelines() {
+    return localStorage.getItem('guidelines_read') === '1';
+}
+
+function markGuidelinesRead() {
+    localStorage.setItem('guidelines_read', '1');
+    // Re-render the current clip so action buttons appear
+    displayCurrentClip();
+}
+
 // Validator name functions
 function getValidatorName() {
     return localStorage.getItem('validator_name') || '';
 }
 
-function saveValidatorName() {
-    const input = document.getElementById('validator-name-input');
-    const name = input.value.trim();
+function getValidatorEmail() {
+    return localStorage.getItem('validator_email') || '';
+}
+
+async function saveValidatorName() {
+    const nameInput = document.getElementById('validator-name-input');
+    const emailInput = document.getElementById('validator-email-input');
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
     if (!name) return;
     localStorage.setItem('validator_name', name);
+    if (email) {
+        localStorage.setItem('validator_email', email);
+        try {
+            await supabaseClient.from('validator_emails').insert({ validator_name: name, validator_email: email });
+        } catch (e) {
+            // silently ignore insert errors
+        }
+    }
     renderValidatorName();
 }
 
 function editValidatorName() {
     const display = document.getElementById('validator-name-display');
     const inputGroup = document.getElementById('validator-name-input-group');
-    const input = document.getElementById('validator-name-input');
+    const nameInput = document.getElementById('validator-name-input');
+    const emailInput = document.getElementById('validator-email-input');
     display.classList.add('d-none');
     inputGroup.classList.remove('d-none');
-    input.focus();
+    nameInput.value = getValidatorName();
+    emailInput.value = getValidatorEmail();
+    nameInput.focus();
 }
 
 function renderValidatorName() {
@@ -37,6 +65,7 @@ function renderValidatorName() {
     const display = document.getElementById('validator-name-display');
     const inputGroup = document.getElementById('validator-name-input-group');
     const nameText = document.getElementById('validator-name-text');
+    const emailInput = document.getElementById('validator-email-input');
     if (name) {
         nameText.textContent = name;
         display.classList.remove('d-none');
@@ -46,6 +75,19 @@ function renderValidatorName() {
         display.classList.add('d-none');
         display.classList.remove('d-flex');
         inputGroup.classList.remove('d-none');
+        emailInput.classList.remove('d-none');
+    }
+}
+
+function renderTodayCount() {
+    const el = document.getElementById('today-count-display');
+    if (!el) return;
+    const count = getTodayValidationCount();
+    if (count > 0) {
+        el.textContent = `Šodien pārbaudīti ${count}`;
+        el.classList.remove('d-none');
+    } else {
+        el.classList.add('d-none');
     }
 }
 
@@ -154,18 +196,8 @@ function createClipHtml(clip, audioUrl) {
     clipDiv.className = 'clip-item card mb-4';
     clipDiv.setAttribute('data-clip-id', clip.id);
 
-    const todayCount = getTodayValidationCount();
-
     clipDiv.innerHTML = `
         <div class="card-body">
-            <div class="card-title">Ieraksts: ${clip.clip_name}</div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                ${todayCount > 0 ?
-                    `<p class="text-muted mb-0">Šodien pārbaudīti ${todayCount}</p>` :
-                    `<p class="text-muted mb-0"></p>`
-                }
-            </div>
-
             <div class="mb-3">
                 <label class="form-label">Audio:</label>
                 ${audioUrl ?
@@ -201,7 +233,8 @@ function createClipHtml(clip, audioUrl) {
             </div>
 
             <div class="d-flex justify-content-between">
-                <div class="d-flex gap-2">
+                <div class="d-flex gap-2 align-items-center">
+                    ${hasReadGuidelines() ? `
                     <button
                         type="button"
                         class="btn btn-primary save-btn"
@@ -224,6 +257,16 @@ function createClipHtml(clip, audioUrl) {
                     >
                         <i class="bi bi-arrow-counterclockwise"></i> Labot iepriekšējo
                     </button>` : ''}
+                    ` : `
+                    <span class="text-muted small">Lūdzu iepazīstieties ar pārbaudīšanas vadlīnijām, kas pieejamas zemāk</span>
+                    <button
+                        type="button"
+                        class="btn btn-outline-primary btn-sm"
+                        onclick="markGuidelinesRead()"
+                    >
+                        Izlasīju
+                    </button>
+                    `}
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <small class="text-muted validation-status" id="status-${clip.id}">
@@ -234,6 +277,9 @@ function createClipHtml(clip, audioUrl) {
                        title="Vadlīnijas">
                         <i class="bi bi-info-circle"></i> Vadlīnijas
                     </a>
+                    <button type="button" class="btn btn-link p-0 text-decoration-none text-secondary" onclick="toggleStats()" title="Statistika">
+                        <i class="bi bi-bar-chart"></i> Statistika
+                    </button>
                 </div>
             </div>
             <div class="text-danger mt-2 d-none" id="sentence-error-${clip.id}"></div>
@@ -314,6 +360,7 @@ async function saveValidation(clipId) {
 
         // Increment daily validation counter
         incrementTodayValidationCount();
+        renderTodayCount();
 
         setTimeout(() => {
             if (!wasEditingPrevious) currentClipIndex++;
@@ -390,8 +437,8 @@ function showError(message) {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (event) => {
-    // Ctrl+Space to play current clip from start
-    if (event.ctrlKey && event.code === 'Space') {
+    // Ctrl+Shift+Space to play current clip from start
+    if (event.ctrlKey && event.shiftKey && event.code === 'Space') {
         event.preventDefault();
         const audioElement = document.querySelector('audio');
         if (audioElement) {
@@ -401,8 +448,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+Left to rewind audio by 2 seconds
-    if (event.ctrlKey && event.code === 'ArrowLeft') {
+    // Ctrl+Shift+Left to rewind audio by 2 seconds
+    if (event.ctrlKey && event.shiftKey && event.code === 'ArrowLeft') {
         event.preventDefault();
         const audioElement = document.querySelector('audio');
         if (audioElement) {
@@ -452,8 +499,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+Enter to save validation
-    if (event.ctrlKey && event.key === 'Enter') {
+    // Ctrl+Shift+Enter to save validation
+    if (event.ctrlKey && event.shiftKey && event.key === 'Enter') {
         event.preventDefault();
         const currentClip = currentClips[currentClipIndex];
         if (currentClip) {
@@ -463,10 +510,170 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderValidatorName();
-    document.getElementById('validator-name-input').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') saveValidatorName();
+let statsLoaded = false;
+
+function toggleStats() {
+    const section = document.getElementById('stats-section');
+    const isHidden = section.classList.contains('d-none');
+    if (isHidden) {
+        if (!statsLoaded) {
+            statsLoaded = true;
+            loadStats().then(() => section.scrollIntoView({ behavior: 'smooth' }));
+        } else {
+            section.classList.remove('d-none');
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    } else {
+        section.classList.add('d-none');
+    }
+}
+
+async function loadStats() {
+    const section = document.getElementById('stats-section');
+    section.classList.remove('d-none');
+
+    const { data, error } = await supabaseClient
+        .from('validation_stats')
+        .select('validator_name, validated_count, validated_seconds')
+        .order('validated_count', { ascending: false });
+
+    document.getElementById('stats-loading').classList.add('d-none');
+
+    if (error || !data) return;
+
+    const tbody = document.getElementById('stats-tbody');
+    data.forEach(row => {
+        const tr = document.createElement('tr');
+        const secs = Math.round(row.validated_seconds || 0);
+        const mins = Math.floor(secs / 60);
+        const secsPart = secs % 60;
+        const duration = mins > 0 ? `${mins}m ${secsPart}s` : `${secs}s`;
+        tr.innerHTML = `<td>${row.validator_name}</td><td class="text-end">${row.validated_count}</td><td class="text-end">${duration}</td>`;
+        tbody.appendChild(tr);
     });
-    loadClips();
+
+    document.getElementById('stats-table').classList.remove('d-none');
+}
+
+// Admin check mode: ?check=ValidatorName
+async function loadCheckMode(validatorName) {
+    document.getElementById('loading').classList.add('d-none');
+
+    const { data, error } = await supabaseClient
+        .from('validations')
+        .select('id, sentence, gender, created_at, clip_id, clips(id, clip_name, sentence)')
+        .eq('validator_name', validatorName)
+        .order('id', { ascending: false })
+        .limit(10);
+
+    const container = document.getElementById('check-mode-container');
+    container.classList.remove('d-none');
+
+    if (error || !data || data.length === 0) {
+        container.innerHTML = `<div class="alert alert-warning">Nav atrasta neviena validācija lietotājam "<strong>${validatorName}</strong>".</div>`;
+        return;
+    }
+
+    const listItems = data.map(v => {
+        const clip = v.clips;
+        const date = new Date(v.created_at).toLocaleString('lv-LV');
+        const genderLabel = v.gender === 'male' ? 'V' : v.gender === 'female' ? 'S' : '?';
+        return `<li class="list-group-item list-group-item-action check-validation-item" role="button"
+                    data-validation-id="${v.id}"
+                    data-clip-id="${clip?.id ?? ''}"
+                    data-clip-name="${clip?.clip_name ?? ''}"
+                    data-original-sentence="${clip?.sentence ?? ''}"
+                    data-sentence="${v.sentence}"
+                    data-gender="${v.gender ?? ''}">
+            <div class="d-flex justify-content-between align-items-start">
+                <span class="text-truncate me-2" style="max-width:70%">${v.sentence}</span>
+                <small class="text-muted text-nowrap">${genderLabel} &middot; ${date}</small>
+            </div>
+        </li>`;
+    }).join('');
+
+    container.innerHTML = `
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title mb-3"><i class="bi bi-person-check"></i> Validācijas: <strong>${validatorName}</strong></h5>
+                <p class="text-muted small mb-2">Klikšķiniet uz ieraksta, lai skatītu audio un validāciju.</p>
+                <ul class="list-group list-group-flush" id="check-validation-list">${listItems}</ul>
+            </div>
+        </div>
+        <div id="check-clip-viewer" class="d-none"></div>
+    `;
+
+    container.querySelectorAll('.check-validation-item').forEach(item => {
+        item.addEventListener('click', () => {
+            container.querySelectorAll('.check-validation-item').forEach(el => el.classList.remove('active'));
+            item.classList.add('active');
+            showCheckClip(
+                item.dataset.clipId,
+                item.dataset.clipName,
+                item.dataset.originalSentence,
+                item.dataset.sentence,
+                item.dataset.gender
+            );
+        });
+    });
+}
+
+function showCheckClip(clipId, clipName, originalSentence, validatedSentence, gender) {
+    const viewer = document.getElementById('check-clip-viewer');
+    viewer.classList.remove('d-none');
+    const audioUrl = `https://hospitalu23.duckdns.org/local/balsu-talka/mp3s/${clipName}.mp3`;
+    const genderLabel = gender === 'male' ? 'Vīrietis' : gender === 'female' ? 'Sieviete' : '—';
+
+    const changed = originalSentence !== validatedSentence;
+    const diffHtml = changed
+        ? `<div class="mt-2"><small class="text-muted">Oriģinālais teikums:</small><div class="p-2 bg-light border rounded small mt-1">${originalSentence}</div></div>`
+        : '';
+
+    viewer.innerHTML = `
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Audio:</label>
+                    <audio controls class="form-control">
+                        <source src="${audioUrl}" type="audio/mp3">
+                    </audio>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Validētais teikums:</label>
+                    <div class="p-2 border rounded bg-light">${validatedSentence}</div>
+                    ${diffHtml}
+                </div>
+                <div>
+                    <label class="form-label">Dzimums:</label>
+                    <span class="ms-2">${genderLabel}</span>
+                </div>
+            </div>
+        </div>
+    `;
+    viewer.scrollIntoView({ behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const checkName = params.get('check');
+
+    if (checkName) {
+        // Admin check mode — skip normal clip loading
+        document.getElementById('validator-name-section').classList.add('d-none');
+        loadCheckMode(checkName);
+    } else {
+        renderValidatorName();
+        renderTodayCount();
+        document.getElementById('validator-name-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') saveValidatorName();
+        });
+        document.getElementById('validator-email-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') saveValidatorName();
+        });
+        loadClips();
+        if (params.has('stats')) {
+            statsLoaded = true;
+            loadStats();
+        }
+    }
 });
