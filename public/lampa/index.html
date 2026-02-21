@@ -49,7 +49,7 @@
         <div class="card-body pt-0">
             <small class="text-muted">
                 <strong>Saīsnes:</strong><br>
-                Ctrl+Shift+Space (atskaņot) | Ctrl+Shift+← (attīt 2s) | Ctrl+Shift+Enter (saglabāt) | Ctrl+Shift+V (vīrietis) | Ctrl+Shift+S (sieviete)<br>
+                <span class="mod-key">Ctrl</span>+Shift+Space (atskaņot) | <span class="mod-key">Ctrl</span>+Shift+← (attīt 2s) | <span class="mod-key">Ctrl</span>+Shift+Enter (saglabāt) | <span class="mod-key">Ctrl</span>+Shift+V (vīrietis) | <span class="mod-key">Ctrl</span>+Shift+S (sieviete)<br>
                 Ctrl+Shift+1 <code>[laugh]</code> | Ctrl+Shift+2 <code>[disfluency]</code> | Ctrl+Shift+3 <code>[unclear]</code> | Ctrl+Shift+4 <code>[noise]</code>
             </small>
         </div>
@@ -96,6 +96,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="/lampa/script.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if (/Mac/.test(navigator.platform)) {
+            document.querySelectorAll('.mod-key').forEach(el => el.textContent = 'Cmd');
+        }
+    </script>
 </body>
 </html>
