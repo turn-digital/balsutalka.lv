@@ -230,6 +230,10 @@ function createClipHtml(clip, audioUrl) {
                     <input class="form-check-input gender-radio" type="radio" name="gender-${clip.id}" id="gender-female-${clip.id}" value="female">
                     <label class="form-check-label" for="gender-female-${clip.id}">Sieviete</label>
                 </div>
+                <div class="form-check form-check-inline ms-3">
+                    <input class="form-check-input" type="checkbox" id="clip-invalid-${clip.id}">
+                    <label class="form-check-label" for="clip-invalid-${clip.id}">Ieraksts nav derīgs (piemēram nav latviski)</label>
+                </div>
             </div>
 
             <div class="d-flex justify-content-between">
@@ -314,12 +318,16 @@ async function saveValidation(clipId) {
 
     try {
         const genderRadio = document.querySelector(`input[name="gender-${clipId}"]:checked`);
+        const clipInvalidCheckbox = document.getElementById(`clip-invalid-${clipId}`);
         const insertData = {
             clip_id: clipId,
             sentence: textArea.value.trim()
         };
         if (genderRadio) {
             insertData.gender = genderRadio.value;
+        }
+        if (clipInvalidCheckbox?.checked) {
+            insertData.clip_is_invalid = true;
         }
         const validatorName = getValidatorName();
         if (validatorName) {
@@ -559,6 +567,12 @@ async function loadStats() {
     });
 
     document.getElementById('stats-table').classList.remove('d-none');
+
+    const now = new Date();
+    const dd = String(now.getDate()).padStart(2, '0');
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const yyyy = now.getFullYear();
+    document.getElementById('stats-updated').textContent = `Atjaunināts ${dd}.${mm}.${yyyy} 00:00`;
 }
 
 // Admin check mode: ?check=ValidatorName
