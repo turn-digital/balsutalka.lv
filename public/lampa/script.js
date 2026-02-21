@@ -436,9 +436,15 @@ function showError(message) {
 }
 
 // Keyboard shortcuts
+document.addEventListener('contextmenu', (event) => {
+    if (event.ctrlKey) event.preventDefault();
+});
+
 document.addEventListener('keydown', (event) => {
-    // Ctrl+Shift+Space to play current clip from start
-    if (event.ctrlKey && event.shiftKey && event.code === 'Space') {
+    const mod = event.ctrlKey || event.metaKey;
+
+    // Ctrl/Cmd+Shift+Space to play current clip from start
+    if (mod && event.shiftKey && event.code === 'Space') {
         event.preventDefault();
         const audioElement = document.querySelector('audio');
         if (audioElement) {
@@ -448,8 +454,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+Shift+Left to rewind audio by 2 seconds
-    if (event.ctrlKey && event.shiftKey && event.code === 'ArrowLeft') {
+    // Ctrl/Cmd+Shift+Left to rewind audio by 2 seconds
+    if (mod && event.shiftKey && event.code === 'ArrowLeft') {
         event.preventDefault();
         const audioElement = document.querySelector('audio');
         if (audioElement) {
@@ -458,8 +464,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+Shift+V to select Vīrietis
-    if (event.ctrlKey && event.shiftKey && event.code === 'KeyV') {
+    // Ctrl/Cmd+Shift+V to select Vīrietis
+    if (mod && event.shiftKey && event.code === 'KeyV') {
         event.preventDefault();
         const currentClip = currentClips[currentClipIndex];
         if (currentClip) {
@@ -469,8 +475,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+Shift+S to select Sieviete
-    if (event.ctrlKey && event.shiftKey && event.code === 'KeyS') {
+    // Ctrl/Cmd+Shift+S to select Sieviete
+    if (mod && event.shiftKey && event.code === 'KeyS') {
         event.preventDefault();
         const currentClip = currentClips[currentClipIndex];
         if (currentClip) {
@@ -480,9 +486,9 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+1/2/3/4 to insert markings at cursor position
+    // Ctrl/Cmd+Shift+1/2/3/4 to insert markings at cursor position
     const markings = { 'Digit1': '[laugh]', 'Digit2': '[disfluency]', 'Digit3': '[unclear]', 'Digit4': '[noise]' };
-    if (event.ctrlKey && event.shiftKey && markings[event.code]) {
+    if (mod && event.shiftKey && markings[event.code]) {
         const textArea = document.querySelector('.sentence-input');
         if (textArea) {
             event.preventDefault();
@@ -499,8 +505,8 @@ document.addEventListener('keydown', (event) => {
         return;
     }
 
-    // Ctrl+Shift+Enter to save validation
-    if (event.ctrlKey && event.shiftKey && event.key === 'Enter') {
+    // Ctrl/Cmd+Shift+Enter to save validation
+    if (mod && event.shiftKey && event.key === 'Enter') {
         event.preventDefault();
         const currentClip = currentClips[currentClipIndex];
         if (currentClip) {
