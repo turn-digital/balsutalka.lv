@@ -232,7 +232,7 @@ function createClipHtml(clip, audioUrl) {
                 </div>
                 <div class="form-check form-check-inline ms-3">
                     <input class="form-check-input" type="checkbox" id="clip-invalid-${clip.id}">
-                    <label class="form-check-label" for="clip-invalid-${clip.id}">Ieraksts nav derīgs (piemēram nav latviski)</label>
+                    <label class="form-check-label" for="clip-invalid-${clip.id}">Ieraksts nav derīgs (piemēram, nav latviski)</label>
                 </div>
             </div>
 
@@ -262,7 +262,7 @@ function createClipHtml(clip, audioUrl) {
                         <i class="bi bi-arrow-counterclockwise"></i> Labot iepriekšējo
                     </button>` : ''}
                     ` : `
-                    <span class="text-muted small">Lūdzu iepazīstieties ar pārbaudīšanas vadlīnijām, kas pieejamas zemāk</span>
+                    <span class="text-muted small">Lūdzu, iepazīstieties ar pārbaudīšanas vadlīnijām, kas pieejamas zemāk</span>
                     <button
                         type="button"
                         class="btn btn-outline-primary btn-sm"
