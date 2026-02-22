@@ -572,7 +572,7 @@ async function loadStats() {
     const dd = String(now.getDate()).padStart(2, '0');
     const mm = String(now.getMonth() + 1).padStart(2, '0');
     const yyyy = now.getFullYear();
-    document.getElementById('stats-updated').textContent = `Atjaunināts ${dd}.${mm}.${yyyy} 00:00`;
+    document.getElementById('stats-updated').textContent = `Atjaunināts ${dd}.${mm}.${yyyy} 02:15`;
 }
 
 // Admin check mode: ?check=ValidatorName
