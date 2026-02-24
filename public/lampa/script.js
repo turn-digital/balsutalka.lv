@@ -559,9 +559,10 @@ async function loadStats() {
     data.forEach(row => {
         const tr = document.createElement('tr');
         const secs = Math.round(row.validated_seconds || 0);
-        const mins = Math.floor(secs / 60);
+        const hours = Math.floor(secs / 3600);
+        const mins = Math.floor((secs % 3600) / 60);
         const secsPart = secs % 60;
-        const duration = mins > 0 ? `${mins}m ${secsPart}s` : `${secs}s`;
+        const duration = hours > 0 ? `${hours}h ${mins}m ${secsPart}s` : mins > 0 ? `${mins}m ${secsPart}s` : `${secs}s`;
         tr.innerHTML = `<td>${row.validator_name}</td><td class="text-end">${row.validated_count}</td><td class="text-end">${duration}</td>`;
         tbody.appendChild(tr);
     });
