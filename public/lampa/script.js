@@ -277,7 +277,7 @@ function createClipHtml(clip, audioUrl) {
                     </small>
                     <a href="https://commonvoice.mozilla.org/lv/guidelines?tab=spontaneous-speech#transcribe-the-audio-subheader-1"
                        target="_blank"
-                       class="guidelines-link text-decoration-none"
+                       class="guidelines-link text-decoration-none d-none"
                        title="Vadlīnijas">
                         <i class="bi bi-info-circle"></i> Vadlīnijas
                     </a>
