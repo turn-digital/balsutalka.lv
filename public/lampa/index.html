@@ -75,7 +75,15 @@
     <div id="stats-section" class="container mt-3 mb-4 d-none">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-3">Statistika</h4>
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h4 class="card-title mb-0">Statistika</h4>
+                    <div id="stats-month-nav" class="d-none d-flex align-items-center gap-2">
+                        <button id="stats-prev-month" class="btn btn-sm btn-outline-secondary">&laquo;</button>
+                        <span id="stats-month-label" class="fw-semibold"></span>
+                        <button id="stats-next-month" class="btn btn-sm btn-outline-secondary">&raquo;</button>
+                        <button id="stats-show-all" class="btn btn-sm btn-outline-primary">Kopā</button>
+                    </div>
+                </div>
                 <div id="stats-loading" class="text-center">
                     <div class="spinner-border spinner-border-sm" role="status"></div>
                     <span class="ms-2">Ielādē statistiku...</span>

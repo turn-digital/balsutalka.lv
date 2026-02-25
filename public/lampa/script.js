@@ -542,30 +542,106 @@ function toggleStats() {
     }
 }
 
+let statsAllData = null;
+let statsCurrentMonth = null; // null = show totals
+
+function formatDuration(secs) {
+    secs = Math.round(secs || 0);
+    const hours = Math.floor(secs / 3600);
+    const mins = Math.floor((secs % 3600) / 60);
+    const secsPart = secs % 60;
+    return hours > 0 ? `${hours}h ${mins}m ${secsPart}s` : mins > 0 ? `${mins}m ${secsPart}s` : `${secs}s`;
+}
+
+function renderStats() {
+    const tbody = document.getElementById('stats-tbody');
+    tbody.innerHTML = '';
+
+    let rows;
+    if (statsCurrentMonth === null) {
+        // Aggregate all months per validator
+        const map = {};
+        statsAllData.forEach(row => {
+            if (!map[row.validator_name]) map[row.validator_name] = { count: 0, seconds: 0 };
+            map[row.validator_name].count += Number(row.validated_count);
+            map[row.validator_name].seconds += Number(row.validated_seconds || 0);
+        });
+        rows = Object.entries(map)
+            .map(([name, v]) => ({ validator_name: name, validated_count: v.count, validated_seconds: v.seconds }))
+            .sort((a, b) => b.validated_count - a.validated_count);
+    } else {
+        rows = statsAllData
+            .filter(row => row.month === statsCurrentMonth)
+            .sort((a, b) => b.validated_count - a.validated_count);
+    }
+
+    rows.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${row.validator_name}</td><td class="text-end">${row.validated_count}</td><td class="text-end">${formatDuration(row.validated_seconds)}</td>`;
+        tbody.appendChild(tr);
+    });
+
+    // Update month nav label
+    const label = document.getElementById('stats-month-label');
+    const nextBtn = document.getElementById('stats-next-month');
+    if (statsCurrentMonth === null) {
+        label.textContent = 'Kopā';
+        nextBtn.disabled = true;
+    } else {
+        const [y, m] = statsCurrentMonth.split('-');
+        const monthNames = ['Janvāris','Februāris','Marts','Aprīlis','Maijs','Jūnijs','Jūlijs','Augusts','Septembris','Oktobris','Novembris','Decembris'];
+        label.textContent = `${monthNames[parseInt(m) - 1]} ${y}`;
+        // Disable next if statsCurrentMonth is the latest available month
+        const months = [...new Set(statsAllData.map(r => r.month))].sort();
+        const idx = months.indexOf(statsCurrentMonth);
+        nextBtn.disabled = idx >= months.length - 1;
+    }
+}
+
 async function loadStats() {
     const section = document.getElementById('stats-section');
     section.classList.remove('d-none');
 
     const { data, error } = await supabaseClient
         .from('validation_stats')
-        .select('validator_name, validated_count, validated_seconds')
-        .order('validated_count', { ascending: false });
+        .select('validator_name, month, validated_count, validated_seconds');
 
     document.getElementById('stats-loading').classList.add('d-none');
 
     if (error || !data) return;
 
-    const tbody = document.getElementById('stats-tbody');
-    data.forEach(row => {
-        const tr = document.createElement('tr');
-        const secs = Math.round(row.validated_seconds || 0);
-        const hours = Math.floor(secs / 3600);
-        const mins = Math.floor((secs % 3600) / 60);
-        const secsPart = secs % 60;
-        const duration = hours > 0 ? `${hours}h ${mins}m ${secsPart}s` : mins > 0 ? `${mins}m ${secsPart}s` : `${secs}s`;
-        tr.innerHTML = `<td>${row.validator_name}</td><td class="text-end">${row.validated_count}</td><td class="text-end">${duration}</td>`;
-        tbody.appendChild(tr);
-    });
+    statsAllData = data;
+    statsCurrentMonth = null;
+
+    // Wire up month navigation
+    const nav = document.getElementById('stats-month-nav');
+    nav.classList.remove('d-none');
+
+    document.getElementById('stats-prev-month').onclick = () => {
+        const months = [...new Set(statsAllData.map(r => r.month))].sort();
+        if (statsCurrentMonth === null) {
+            statsCurrentMonth = months[months.length - 1];
+        } else {
+            const idx = months.indexOf(statsCurrentMonth);
+            if (idx > 0) statsCurrentMonth = months[idx - 1];
+        }
+        renderStats();
+    };
+
+    document.getElementById('stats-next-month').onclick = () => {
+        const months = [...new Set(statsAllData.map(r => r.month))].sort();
+        const idx = months.indexOf(statsCurrentMonth);
+        if (idx < months.length - 1) statsCurrentMonth = months[idx + 1];
+        else statsCurrentMonth = null;
+        renderStats();
+    };
+
+    document.getElementById('stats-show-all').onclick = () => {
+        statsCurrentMonth = null;
+        renderStats();
+    };
+
+    renderStats();
 
     document.getElementById('stats-table').classList.remove('d-none');
 
