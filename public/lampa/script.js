@@ -575,11 +575,18 @@ function renderStats() {
             .sort((a, b) => b.validated_count - a.validated_count);
     }
 
+    let totalCount = 0, totalSeconds = 0;
     rows.forEach(row => {
         const tr = document.createElement('tr');
         tr.innerHTML = `<td>${row.validator_name}</td><td class="text-end">${row.validated_count}</td><td class="text-end">${formatDuration(row.validated_seconds)}</td>`;
         tbody.appendChild(tr);
+        totalCount += Number(row.validated_count);
+        totalSeconds += Number(row.validated_seconds || 0);
     });
+
+    const totalTr = document.createElement('tr');
+    totalTr.innerHTML = `<td><strong>Kopā:</strong></td><td class="text-end"><strong>${totalCount}</strong></td><td class="text-end"><strong>${formatDuration(totalSeconds)}</strong></td>`;
+    tbody.appendChild(totalTr);
 
     // Update month nav label
     const label = document.getElementById('stats-month-label');
