@@ -70,6 +70,31 @@ audio {
     width: 100%;
 }
 
+.waveform-container {
+    position: relative;
+    width: 100%;
+    height: 64px;
+    background: var(--color-snow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.waveform-canvas {
+    display: block;
+    width: 100%;
+}
+
+.waveform-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-stone);
+    font-size: 0.85rem;
+    background: var(--color-snow);
+}
+
 /* Primary button style matching main site */
 .btn-outline-primary {
     color: var(--color-primary);

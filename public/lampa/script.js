@@ -164,6 +164,11 @@ function displayCurrentClip() {
     const clipHtml = createClipHtml(clip, audioUrl);
     container.appendChild(clipHtml);
 
+    // Init waveform
+    if (audioUrl) {
+        initWaveform(audioUrl, clip.id);
+    }
+
     // Auto-focus the textarea
     setTimeout(() => {
         const textArea = container.querySelector('.sentence-input');
@@ -200,8 +205,14 @@ function createClipHtml(clip, audioUrl) {
         <div class="card-body">
             <div class="mb-3">
                 <label class="form-label">Audio:</label>
-                ${audioUrl ?
-                    `<audio controls class="form-control">
+                ${audioUrl ? `
+                    <div class="waveform-container mb-2" id="waveform-${clip.id}">
+                        <canvas class="waveform-canvas" id="waveform-canvas-${clip.id}"></canvas>
+                        <div class="waveform-loading" id="waveform-loading-${clip.id}">
+                            <span class="spinner-border spinner-border-sm me-1"></span>
+                        </div>
+                    </div>
+                    <audio controls class="form-control" id="audio-${clip.id}">
                         <source src="${audioUrl}" type="audio/mp3">
                         Your browser does not support the audio element.
                     </audio>` :
@@ -418,6 +429,11 @@ function loadPreviousValidation() {
         if (radio) radio.checked = true;
     }
 
+    // Init waveform for previous validation
+    if (audioUrl) {
+        initWaveform(audioUrl, clip.id);
+    }
+
     // Mark card visually as edit mode — insert notice just before the action buttons
     const card = container.querySelector('.clip-item');
     if (card) {
@@ -441,6 +457,92 @@ function showError(message) {
     setTimeout(() => {
         errorDiv.classList.add('d-none');
     }, 5000);
+}
+
+async function initWaveform(audioUrl, clipId) {
+    const canvas = document.getElementById(`waveform-canvas-${clipId}`);
+    const loadingEl = document.getElementById(`waveform-loading-${clipId}`);
+    const audio = document.getElementById(`audio-${clipId}`);
+    if (!canvas || !audio) return;
+
+    const H = 64;
+    canvas.height = H;
+
+    try {
+        const response = await fetch(audioUrl);
+        const arrayBuffer = await response.arrayBuffer();
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+        audioCtx.close();
+
+        const rawData = audioBuffer.getChannelData(0);
+        const duration = audioBuffer.duration;
+
+        function computeAmplitudes(W) {
+            const numBars = Math.floor(W / 3);
+            const blockSize = Math.floor(rawData.length / numBars);
+            const amps = new Float32Array(numBars);
+            for (let i = 0; i < numBars; i++) {
+                let sum = 0;
+                for (let j = 0; j < blockSize; j++) sum += Math.abs(rawData[i * blockSize + j]);
+                amps[i] = sum / blockSize;
+            }
+            return amps;
+        }
+
+        if (loadingEl) loadingEl.style.display = 'none';
+
+        const ctx = canvas.getContext('2d');
+        let W = 0;
+        let amplitudes = null;
+        let maxAmp = 1;
+
+        function resize(newW) {
+            if (newW === W) return;
+            W = newW;
+            canvas.width = W;
+            amplitudes = computeAmplitudes(W);
+            maxAmp = Math.max(...amplitudes) || 1;
+            draw(audio.currentTime);
+        }
+
+        function draw(currentTime) {
+            if (!W || !amplitudes) return;
+            ctx.clearRect(0, 0, W, H);
+            const progress = duration > 0 ? currentTime / duration : 0;
+            const playedX = Math.floor(progress * W);
+
+            for (let i = 0; i < amplitudes.length; i++) {
+                const x = i * 3;
+                const barH = Math.max(2, (amplitudes[i] / maxAmp) * (H - 8));
+                const y = (H - barH) / 2;
+                ctx.fillStyle = x < playedX ? '#164460' : '#c8d4da';
+                ctx.beginPath();
+                ctx.roundRect(x, y, 2, barH, 1);
+                ctx.fill();
+            }
+
+            ctx.fillStyle = '#58c8b2';
+            ctx.fillRect(playedX - 1, 0, 2, H);
+        }
+
+        audio.addEventListener('timeupdate', () => draw(audio.currentTime));
+        audio.addEventListener('seeked', () => draw(audio.currentTime));
+
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            audio.currentTime = ((e.clientX - rect.left) / W) * duration;
+        });
+        canvas.style.cursor = 'pointer';
+
+        new ResizeObserver(entries => {
+            const newW = Math.floor(entries[0].contentRect.width);
+            if (newW > 0) resize(newW);
+        }).observe(canvas.parentElement);
+
+    } catch (e) {
+        if (loadingEl) loadingEl.style.display = 'none';
+    }
 }
 
 // Keyboard shortcuts
@@ -752,7 +854,13 @@ function showCheckClip(clipId, clipName, originalSentence, validatedSentence, ge
             <div class="card-body">
                 <div class="mb-3">
                     <label class="form-label">Audio:</label>
-                    <audio controls class="form-control">
+                    <div class="waveform-container mb-2" id="waveform-check-${clipId}">
+                        <canvas class="waveform-canvas" id="waveform-canvas-check-${clipId}"></canvas>
+                        <div class="waveform-loading" id="waveform-loading-check-${clipId}">
+                            <span class="spinner-border spinner-border-sm me-1"></span>
+                        </div>
+                    </div>
+                    <audio controls class="form-control" id="audio-check-${clipId}">
                         <source src="${audioUrl}" type="audio/mp3">
                     </audio>
                 </div>
@@ -769,6 +877,7 @@ function showCheckClip(clipId, clipName, originalSentence, validatedSentence, ge
         </div>
     `;
     viewer.scrollIntoView({ behavior: 'smooth' });
+    initWaveform(audioUrl, `check-${clipId}`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
