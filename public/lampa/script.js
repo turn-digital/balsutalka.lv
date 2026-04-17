@@ -451,6 +451,20 @@ document.addEventListener('contextmenu', (event) => {
 document.addEventListener('keydown', (event) => {
     const mod = event.ctrlKey || event.metaKey;
 
+    // Esc to play/pause audio
+    if (event.code === 'Escape') {
+        const audioElement = document.querySelector('audio');
+        if (audioElement) {
+            event.preventDefault();
+            if (audioElement.paused) {
+                audioElement.play();
+            } else {
+                audioElement.pause();
+            }
+        }
+        return;
+    }
+
     // Ctrl/Cmd+Shift+Space to play current clip from start
     if (mod && event.shiftKey && event.code === 'Space') {
         event.preventDefault();
