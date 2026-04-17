@@ -509,6 +509,8 @@ async function initWaveform(audioUrl, clipId) {
         function draw(currentTime) {
             if (!W || !amplitudes) return;
             ctx.clearRect(0, 0, W, H);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, W, H);
             const progress = duration > 0 ? currentTime / duration : 0;
             const playedX = Math.floor(progress * W);
 
