@@ -584,6 +584,7 @@ document.addEventListener('keydown', (event) => {
         const audioElement = document.querySelector('audio');
         if (audioElement) {
             audioElement.currentTime = Math.max(0, audioElement.currentTime - 2);
+            if (audioElement.paused) audioElement.play();
         }
         return;
     }
