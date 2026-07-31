@@ -1,0 +1,224 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// Only the LV page puts this block under <Future />. Tighten Future's bottom padding
+// there so the gap matches the 40px column gap between the Future cards.
+.future:has(+ .validate-lampa) {
+  padding-bottom: 40px;
+
+  @include size-tablet() {
+    padding-bottom: 40px;
+  }
+}
+
+.validate-lampa {
+  position: relative;
+  padding-bottom: 32px;
+  scroll-margin-top: 24px;
+
+  [hidden] {
+    display: none !important;
+  }
+
+  &__card {
+    padding: 32px 24px;
+    background-color: $color-snow;
+    border-radius: 32px;
+
+    @include size-tablet() {
+      padding: 32px 48px;
+    }
+  }
+
+  // Keeps the card from resizing as clips of different sentence length load in.
+  &__state--voting {
+    min-height: 340px;
+
+    @include size-tablet() {
+      min-height: 300px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+
+    // Stacked layout: the CTA hugs the right edge of the card.
+    .validate-lampa__btn {
+      align-self: flex-end;
+    }
+
+    @include size-laptopS() {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    p {
+      margin-top: 0;
+    }
+
+    code {
+      padding: 2px 6px;
+      background-color: $color-white;
+      border-radius: 4px;
+      color: $color-primary;
+      font-family: monospace;
+      font-size: 14px;
+    }
+  }
+
+  &__guidelinesActions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+  }
+
+  &__votingHead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__waveform {
+    position: relative;
+    width: 100%;
+    height: 64px;
+    background-color: $color-white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__canvas {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__waveformLoading {
+    @include position-absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-white;
+    color: $color-stone;
+    font-size: 14px;
+  }
+
+  &__audio {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  &__sentence {
+    margin-top: 16px;
+    color: $color-cave;
+    font-size: 20px;
+    line-height: 32px;
+
+    @include size-tablet() {
+      font-size: 24px;
+      line-height: 40px;
+    }
+  }
+
+  &__status {
+    margin-top: 16px;
+    color: $color-stone;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__hint {
+    margin-top: 12px;
+    color: $color-stone;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  &__btn {
+    @include transition-fast;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 2px solid $color-primary;
+    border-radius: 32px;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    // Mirrors the Future block icons: green at rest, dark primary on hover.
+    &--green {
+      background-color: $color-green;
+      border-color: $color-green;
+      color: $color-white;
+
+      svg path {
+        @include transition-fast;
+        fill: $color-white;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: $color-primary;
+        border-color: $color-primary;
+      }
+    }
+
+    // Same colour pair as --green, kept hollow so the two vote buttons stay
+    // distinguishable. Label stays dark — green on the snow card is unreadable.
+    &--green-outline {
+      background-color: transparent;
+      border-color: $color-green;
+      color: $color-primary;
+
+      &:hover:not(:disabled) {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: $color-white;
+      }
+    }
+
+    &--link {
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      color: $color-primary;
+      font-size: 16px;
+      text-decoration: underline;
+
+      &:hover:not(:disabled) {
+        text-decoration: none;
+      }
+    }
+  }
+}

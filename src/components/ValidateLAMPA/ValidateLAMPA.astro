@@ -1,0 +1,500 @@
+---
+import Icons from "~components/Icons/Icons";
+import { t } from "i18next";
+---
+
+<section
+  class="validate-lampa"
+  id="validateLampa"
+  data-empty={t("index.validateEmpty")}
+  data-error={t("index.validateError")}
+  data-save-error={t("index.validateSaveError")}
+>
+  <div class="wrapper">
+    <div class="validate-lampa__card">
+      <div class="validate-lampa__state" id="validateLampaIntro">
+        <div class="validate-lampa__row">
+          <div class="validate-lampa__intro">
+            <h2 class="validate-lampa__subtitle subtitle">
+              {t("index.validateTitle")}
+            </h2>
+            <div class="validate-lampa__text text-editor">
+              <p>{t("index.validateIntro")}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="validate-lampa__btn validate-lampa__btn--green"
+            id="validateLampaShowGuidelines"
+          >
+            <Icons type={"checklist"} />
+            {t("index.validateGuidelinesCta")}
+          </button>
+        </div>
+      </div>
+
+      <div class="validate-lampa__state" id="validateLampaGuidelines" hidden>
+        <h2 class="validate-lampa__subtitle subtitle">
+          {t("index.validateGuidelinesTitle")}
+        </h2>
+        <div class="validate-lampa__text text-editor">
+          <ul>
+            <li>Skaitļi un simboli jāraksta vārdiem. Piemēram, "divdesmit procentu atlaide" vai "tiekamies deviņos trīsdesmit".</li>
+            <li>Pārteikšanās, nepabeigti vārdi jāmarķē ar defisi (-). Piemēram, "Viņu sauc Džo- Džona- Džonatans".</li>
+            <li>Jāpieraksta visi vārdu atkārtojumi. Piemēram, “Man garšo saldējums un un un konfektes".</li>
+            <li>Smiekli jāmarķē ar <code>[laugh]</code>. Piemēram, "[laugh] šis bija labs joks", ja dzirdams, ka pirms pateiktā teikuma runātājs nosmejas.</li>
+            <li>Nevalodiskas skaņas, kā "ēē", "āā" vai "hmm" jāmarķē ar <code>[disfluency]</code>. Piemēram, "Suns, [disfluency] [disfluency] Reksis?", ja runātājs teica "Suns, ē hm Reksis?".</li>
+            <li>Vārdi vai vārdu virknes, ko nevar saprast, jāmarķē ar <code>[unclear]</code>. Piemēram, "Es atceros [unclear]", ja nevar saprast, ko runātājs teica, stāstot par to, ko viņš atceras.</li>
+            <li>Dažādi trokšņi jāmarķē ar <code>[noise]</code>. Piemēram, "Mēs šodien bijām kafejnīcā [noise]", ja pēc vārda "kafejnīcā" ir dzirdams kāds troksnis.</li>
+            <li>Jāpieraksta viss tieši tā, kā tas dzirdams ierakstā, cik iespējams, ievērojot pareizrakstības normas:
+              <ul>
+                <li>nevajag labot sarunvalodas vārdus, piemēram, "forši" vai "kūlīgi" jāsaglabā,</li>
+                <li>jāsaglabā neatbilstoši lietoti vārdi un vārdformas, piemēram, “Bet nevis tāpēc, <b>kad</b> virtuālam asistentam ir piegriezies”, “risinājums <b>šajai</b> problēmai”, “tas <b>bij</b> interesanti”, “viņi sāka runāt <b>pa</b> kaut kādām lietām”.</li>
+              </ul>
+            </li>
+            <li>Pieturzīmes (t.sk. komati) jālieto atbilstoši latviešu valodas interpunkcijas likumiem:
+              <ul>
+                <li>ja doma nav pabeigta, teikuma beigās liekama daudzpunkte,</li>
+                <li>teikuma beigu pieturzīme atbilst intonācijai, piemēram, punkts stāstījuma teikuma beigās “Bet man ir jautājums.”</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="validate-lampa__guidelinesActions">
+          <button
+            type="button"
+            class="validate-lampa__btn validate-lampa__btn--green"
+            id="validateLampaStart"
+          >
+            {t("index.validateStart")}
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="validate-lampa__state validate-lampa__state--voting"
+        id="validateLampaVoting"
+        hidden
+      >
+        <div class="validate-lampa__votingHead">
+          <h2 class="validate-lampa__subtitle subtitle">
+            {t("index.validateTitle")}
+          </h2>
+          <button
+            type="button"
+            class="validate-lampa__btn validate-lampa__btn--link"
+            id="validateLampaBackToGuidelines"
+          >
+            {t("index.validateShowGuidelines")}
+          </button>
+        </div>
+
+        <div class="validate-lampa__player" id="validateLampaPlayer" hidden>
+          <div class="validate-lampa__waveform" id="validateLampaWaveform">
+            <canvas class="validate-lampa__canvas" id="validateLampaCanvas"></canvas>
+            <div class="validate-lampa__waveformLoading" id="validateLampaWaveformLoading">
+              {t("index.validateLoading")}
+            </div>
+          </div>
+          <audio class="validate-lampa__audio" id="validateLampaAudio" controls preload="auto"></audio>
+          <p class="validate-lampa__sentence" id="validateLampaSentence"></p>
+        </div>
+
+        <p class="validate-lampa__status" id="validateLampaStatus">
+          {t("index.validateLoading")}
+        </p>
+
+        <div class="validate-lampa__actions" id="validateLampaActions" hidden>
+          <button
+            type="button"
+            class="validate-lampa__btn validate-lampa__btn--green"
+            id="validateLampaApprove"
+            disabled
+          >
+            {t("index.validateApprove")}
+          </button>
+          <button
+            type="button"
+            class="validate-lampa__btn validate-lampa__btn--green-outline"
+            id="validateLampaReject"
+            disabled
+          >
+            {t("index.validateReject")}
+          </button>
+        </div>
+
+        <p class="validate-lampa__hint" id="validateLampaHint" hidden>
+          {t("index.validateListenFirst")}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const SUPABASE_URL = "https://cttlejjchlpnxftedjun.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dGxlampjaGxwbnhmdGVkanVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NTk1MzYsImV4cCI6MjA3NDQzNTUzNn0.hryev2E6KcsiqeT6SRb4LPvIPea-KPR428PFK1FTs5c";
+  const AUDIO_BASE = "https://hospitalu23.duckdns.org/local/balsu-talka/mp3s/";
+
+  const LS_GUIDELINES = "bt_validation_guidelines_seen";
+  const LS_VOTER_HASH = "bt_voter_hash";
+
+  const root = document.getElementById("validateLampa");
+
+  if (root) {
+    const el = (id: string) => document.getElementById(id);
+
+    const introEl = el("validateLampaIntro");
+    const guidelinesEl = el("validateLampaGuidelines");
+    const votingEl = el("validateLampaVoting");
+    const playerEl = el("validateLampaPlayer");
+    const statusEl = el("validateLampaStatus");
+    const hintEl = el("validateLampaHint");
+    const sentenceEl = el("validateLampaSentence");
+    const audio = el("validateLampaAudio");
+    const canvas = el("validateLampaCanvas");
+    const waveformLoadingEl = el("validateLampaWaveformLoading");
+    const actionsEl = el("validateLampaActions");
+    const approveBtn = el("validateLampaApprove");
+    const rejectBtn = el("validateLampaReject");
+
+    const texts = {
+      loading: statusEl.textContent.trim(),
+      empty: root.dataset.empty,
+      error: root.dataset.error,
+      saveError: root.dataset.saveError,
+    };
+
+    let queue = [];
+    let current = null;
+    let loading = false;
+    // Autoplay is only allowed after a user gesture — true once the visitor has
+    // clicked anything inside the block (so not on a cold reload into voting).
+    let userInteracted = false;
+
+    /* ---------- storage helpers ---------- */
+
+    function safeGet(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function safeSet(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        /* private mode — vote still gets sent, just not attributable across reloads */
+      }
+    }
+
+    function getVoterHash() {
+      let hash = safeGet(LS_VOTER_HASH);
+      if (!hash) {
+        hash =
+          typeof crypto !== "undefined" && crypto.randomUUID
+            ? crypto.randomUUID()
+            : "v-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+        safeSet(LS_VOTER_HASH, hash);
+      }
+      return hash;
+    }
+
+    /* ---------- state switching ---------- */
+
+    function scrollBlockIntoView() {
+      root.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function showState(name) {
+      introEl.hidden = name !== "intro";
+      guidelinesEl.hidden = name !== "guidelines";
+      votingEl.hidden = name !== "voting";
+      if (name !== "voting") audio.pause();
+    }
+
+    // Bring the block to the top of the viewport the first time the visitor
+    // scrolls down to it, so the whole card is in view before they start.
+    // Only armed when the block starts below the fold — otherwise it is already
+    // on screen at load and snapping would hijack the landing view.
+    const scrollObserver = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return;
+        scrollObserver.disconnect();
+        scrollBlockIntoView();
+      },
+      { threshold: 0.4 }
+    );
+
+    if (root.getBoundingClientRect().top > window.innerHeight) {
+      scrollObserver.observe(root);
+    }
+
+    // Capture phase: this has to run before the buttons' own handlers, otherwise
+    // the very first click (a vote, for a returning visitor) renders the next clip
+    // while userInteracted is still false and autoplay is skipped.
+    root.addEventListener(
+      "click",
+      () => {
+        userInteracted = true;
+        scrollObserver.disconnect();
+      },
+      true
+    );
+
+    /* ---------- waveform (ported from public/lampa/script.js) ---------- */
+
+    const BAR_GAP = 3;
+    const WAVE_H = 64;
+
+    let audioCtx = null;
+    let waveAbort = null;
+    let amplitudes = null;
+    let maxAmp = 1;
+    let rawData = null;
+    let waveDuration = 0;
+    let waveWidth = 0;
+    const canvasCtx = canvas.getContext("2d");
+
+    canvas.height = WAVE_H;
+
+    function computeAmplitudes(width) {
+      const numBars = Math.floor(width / BAR_GAP);
+      if (!rawData || numBars <= 0) return null;
+      const blockSize = Math.floor(rawData.length / numBars);
+      const amps = new Float32Array(numBars);
+      for (let i = 0; i < numBars; i++) {
+        let sum = 0;
+        for (let j = 0; j < blockSize; j++) sum += Math.abs(rawData[i * blockSize + j]);
+        amps[i] = sum / blockSize;
+      }
+      return amps;
+    }
+
+    function drawWaveform() {
+      if (!waveWidth || !amplitudes) return;
+      canvasCtx.clearRect(0, 0, waveWidth, WAVE_H);
+      canvasCtx.fillStyle = "#ffffff";
+      canvasCtx.fillRect(0, 0, waveWidth, WAVE_H);
+
+      const progress = waveDuration > 0 ? audio.currentTime / waveDuration : 0;
+      const playedX = Math.floor(progress * waveWidth);
+
+      for (let i = 0; i < amplitudes.length; i++) {
+        const x = i * BAR_GAP;
+        const barH = Math.max(2, (amplitudes[i] / maxAmp) * (WAVE_H - 8));
+        const y = (WAVE_H - barH) / 2;
+        canvasCtx.fillStyle = x < playedX ? "#164460" : "#c8d4da";
+        canvasCtx.beginPath();
+        canvasCtx.roundRect(x, y, 2, barH, 1);
+        canvasCtx.fill();
+      }
+
+      canvasCtx.fillStyle = "#58c8b2";
+      canvasCtx.fillRect(playedX - 1, 0, 2, WAVE_H);
+    }
+
+    function resizeWaveform(width) {
+      if (!width || width === waveWidth) return;
+      waveWidth = width;
+      canvas.width = width;
+      amplitudes = computeAmplitudes(width);
+      maxAmp = amplitudes ? Math.max(...amplitudes) || 1 : 1;
+      drawWaveform();
+    }
+
+    function clearWaveform() {
+      amplitudes = null;
+      rawData = null;
+      maxAmp = 1;
+      waveDuration = 0;
+      if (waveWidth) canvasCtx.clearRect(0, 0, waveWidth, WAVE_H);
+      waveformLoadingEl.hidden = false;
+    }
+
+    async function loadWaveform(url) {
+      if (waveAbort) waveAbort.abort();
+      waveAbort = new AbortController();
+      clearWaveform();
+
+      try {
+        const response = await fetch(url, { signal: waveAbort.signal });
+        const arrayBuffer = await response.arrayBuffer();
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+
+        rawData = audioBuffer.getChannelData(0);
+        waveDuration = audioBuffer.duration;
+        waveformLoadingEl.hidden = true;
+
+        const width = Math.floor(canvas.parentElement.getBoundingClientRect().width);
+        waveWidth = 0;
+        resizeWaveform(width);
+      } catch (e) {
+        if (e.name !== "AbortError") waveformLoadingEl.hidden = true;
+      }
+    }
+
+    audio.addEventListener("timeupdate", drawWaveform);
+    audio.addEventListener("seeked", drawWaveform);
+
+    canvas.addEventListener("click", (event) => {
+      if (!waveDuration || !waveWidth) return;
+      const rect = canvas.getBoundingClientRect();
+      audio.currentTime = ((event.clientX - rect.left) / waveWidth) * waveDuration;
+    });
+
+    new ResizeObserver((entries) => {
+      const width = Math.floor(entries[0].contentRect.width);
+      if (width > 0 && rawData) resizeWaveform(width);
+    }).observe(canvas.parentElement);
+
+    /* ---------- voting ---------- */
+
+    function setVotingEnabled(enabled) {
+      approveBtn.disabled = !enabled;
+      rejectBtn.disabled = !enabled;
+      hintEl.hidden = enabled;
+    }
+
+    // No clip on screen (loading / empty / error) — hide the vote controls altogether
+    // instead of showing them greyed out next to a message.
+    function setControlsVisible(visible) {
+      actionsEl.hidden = !visible;
+      if (!visible) hintEl.hidden = true;
+    }
+
+    audio.addEventListener("ended", () => setVotingEnabled(true));
+
+    function showStatus(message) {
+      statusEl.textContent = message;
+      statusEl.hidden = !message;
+    }
+
+    async function loadBatch() {
+      const url =
+        SUPABASE_URL +
+        "/rest/v1/validations_for_voting?select=id,clip_id,sentence,clip_name";
+
+      const response = await fetch(url, {
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + SUPABASE_ANON_KEY,
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to load clips: " + response.status);
+      queue = await response.json();
+    }
+
+    function renderClip(clip) {
+      current = clip;
+      sentenceEl.textContent = clip.sentence;
+      setVotingEnabled(false);
+      audio.pause();
+      audio.src = AUDIO_BASE + encodeURIComponent(clip.clip_name) + ".mp3";
+      audio.load();
+      playerEl.hidden = false;
+      setControlsVisible(true);
+      showStatus("");
+      loadWaveform(audio.src);
+      if (userInteracted) audio.play().catch(() => {});
+    }
+
+    async function nextClip() {
+      if (loading) return;
+      loading = true;
+      setVotingEnabled(false);
+
+      try {
+        if (!queue.length) {
+          playerEl.hidden = true;
+          setControlsVisible(false);
+          showStatus(texts.loading);
+          await loadBatch();
+        }
+
+        if (!queue.length) {
+          playerEl.hidden = true;
+          setControlsVisible(false);
+          current = null;
+          showStatus(texts.empty);
+          return;
+        }
+
+        renderClip(queue.shift());
+      } catch (e) {
+        playerEl.hidden = true;
+        setControlsVisible(false);
+        current = null;
+        showStatus(texts.error);
+      } finally {
+        loading = false;
+      }
+    }
+
+    async function sendVote(validationId, isApprove) {
+      const response = await fetch(SUPABASE_URL + "/rest/v1/validation_votes", {
+        method: "POST",
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + SUPABASE_ANON_KEY,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify({
+          validation_id: validationId,
+          vote_is_approve: isApprove,
+          voter_hash: getVoterHash(),
+        }),
+      });
+
+      if (!response.ok) throw new Error("Failed to save vote: " + response.status);
+    }
+
+    function vote(isApprove) {
+      if (!current) return;
+      const validationId = current.id;
+
+      nextClip();
+
+      sendVote(validationId, isApprove).catch(() => {
+        showStatus(texts.saveError);
+      });
+    }
+
+    approveBtn.addEventListener("click", () => vote(true));
+    rejectBtn.addEventListener("click", () => vote(false));
+
+    /* ---------- navigation ---------- */
+
+    el("validateLampaShowGuidelines").addEventListener("click", () => {
+      showState("guidelines");
+      scrollBlockIntoView();
+    });
+
+    el("validateLampaBackToGuidelines").addEventListener("click", () => {
+      showState("guidelines");
+      scrollBlockIntoView();
+    });
+
+    el("validateLampaStart").addEventListener("click", () => {
+      safeSet(LS_GUIDELINES, "1");
+      getVoterHash();
+      showState("voting");
+      scrollBlockIntoView();
+      if (!current) nextClip();
+    });
+
+    if (safeGet(LS_GUIDELINES) === "1") {
+      getVoterHash();
+      showState("voting");
+      nextClip();
+    } else {
+      showState("intro");
+    }
+  }
+</script>
