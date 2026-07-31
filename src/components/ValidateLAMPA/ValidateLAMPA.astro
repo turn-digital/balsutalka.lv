@@ -1,5 +1,4 @@
 ---
-import Icons from "~components/Icons/Icons";
 import { t } from "i18next";
 ---
 
@@ -27,7 +26,12 @@ import { t } from "i18next";
             class="validate-lampa__btn validate-lampa__btn--green"
             id="validateLampaShowGuidelines"
           >
-            <Icons type={"checklist"} />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6 21C5.45 21 4.979 20.804 4.587 20.412C4.195 20.02 3.99934 19.5493 4 19V5C4 4.45 4.196 3.979 4.588 3.587C4.98 3.195 5.45067 2.99934 6 3H12.175C12.4417 3 12.696 3.05 12.938 3.15C13.18 3.25 13.3923 3.39167 13.575 3.575L17.425 7.425C17.6083 7.60767 17.75 7.82033 17.85 8.063C17.95 8.30567 18 8.55967 18 8.825V19C18 19.55 17.804 20.021 17.412 20.413C17.02 20.805 16.5493 21.0007 16 21H6ZM12 8V5H6V19H16V9H13C12.7167 9 12.4793 8.904 12.288 8.712C12.0967 8.52 12.0007 8.28267 12 8ZM8 12H14V13.5H8V12ZM8 15H14V16.5H8V15Z"
+                fill="currentColor"
+              />
+            </svg>
             {t("index.validateGuidelinesCta")}
           </button>
         </div>
@@ -140,34 +144,47 @@ import { t } from "i18next";
   const LS_GUIDELINES = "bt_validation_guidelines_seen";
   const LS_VOTER_HASH = "bt_voter_hash";
 
+  interface Clip {
+    id: number;
+    clip_id: number;
+    sentence: string;
+    clip_name: string;
+  }
+
   const root = document.getElementById("validateLampa");
 
   if (root) {
-    const el = (id: string) => document.getElementById(id);
+    // Narrowed alias — hoisted function declarations below lose the `if (root)` narrowing.
+    const section = root;
 
-    const introEl = el("validateLampaIntro");
-    const guidelinesEl = el("validateLampaGuidelines");
-    const votingEl = el("validateLampaVoting");
-    const playerEl = el("validateLampaPlayer");
-    const statusEl = el("validateLampaStatus");
-    const hintEl = el("validateLampaHint");
-    const sentenceEl = el("validateLampaSentence");
-    const audio = el("validateLampaAudio");
-    const canvas = el("validateLampaCanvas");
-    const waveformLoadingEl = el("validateLampaWaveformLoading");
-    const actionsEl = el("validateLampaActions");
-    const approveBtn = el("validateLampaApprove");
-    const rejectBtn = el("validateLampaReject");
+    // Every id below is rendered by this component, so the lookup cannot miss.
+    const el = <T extends HTMLElement>(id: string) =>
+      document.getElementById(id) as T;
+
+    const introEl = el<HTMLDivElement>("validateLampaIntro");
+    const guidelinesEl = el<HTMLDivElement>("validateLampaGuidelines");
+    const votingEl = el<HTMLDivElement>("validateLampaVoting");
+    const playerEl = el<HTMLDivElement>("validateLampaPlayer");
+    const statusEl = el<HTMLParagraphElement>("validateLampaStatus");
+    const hintEl = el<HTMLParagraphElement>("validateLampaHint");
+    const sentenceEl = el<HTMLParagraphElement>("validateLampaSentence");
+    const audio = el<HTMLAudioElement>("validateLampaAudio");
+    const canvas = el<HTMLCanvasElement>("validateLampaCanvas");
+    const waveformEl = el<HTMLDivElement>("validateLampaWaveform");
+    const waveformLoadingEl = el<HTMLDivElement>("validateLampaWaveformLoading");
+    const actionsEl = el<HTMLDivElement>("validateLampaActions");
+    const approveBtn = el<HTMLButtonElement>("validateLampaApprove");
+    const rejectBtn = el<HTMLButtonElement>("validateLampaReject");
 
     const texts = {
-      loading: statusEl.textContent.trim(),
-      empty: root.dataset.empty,
-      error: root.dataset.error,
-      saveError: root.dataset.saveError,
+      loading: statusEl.textContent?.trim() ?? "",
+      empty: section.dataset.empty ?? "",
+      error: section.dataset.error ?? "",
+      saveError: section.dataset.saveError ?? "",
     };
 
-    let queue = [];
-    let current = null;
+    let queue: Clip[] = [];
+    let current: Clip | null = null;
     let loading = false;
     // Autoplay is only allowed after a user gesture — true once the visitor has
     // clicked anything inside the block (so not on a cold reload into voting).
@@ -175,7 +192,7 @@ import { t } from "i18next";
 
     /* ---------- storage helpers ---------- */
 
-    function safeGet(key) {
+    function safeGet(key: string) {
       try {
         return localStorage.getItem(key);
       } catch (e) {
@@ -183,7 +200,7 @@ import { t } from "i18next";
       }
     }
 
-    function safeSet(key, value) {
+    function safeSet(key: string, value: string) {
       try {
         localStorage.setItem(key, value);
       } catch (e) {
@@ -206,10 +223,10 @@ import { t } from "i18next";
     /* ---------- state switching ---------- */
 
     function scrollBlockIntoView() {
-      root.scrollIntoView({ behavior: "smooth", block: "start" });
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    function showState(name) {
+    function showState(name: "intro" | "guidelines" | "voting") {
       introEl.hidden = name !== "intro";
       guidelinesEl.hidden = name !== "guidelines";
       votingEl.hidden = name !== "voting";
@@ -229,14 +246,14 @@ import { t } from "i18next";
       { threshold: 0.4 }
     );
 
-    if (root.getBoundingClientRect().top > window.innerHeight) {
-      scrollObserver.observe(root);
+    if (section.getBoundingClientRect().top > window.innerHeight) {
+      scrollObserver.observe(section);
     }
 
     // Capture phase: this has to run before the buttons' own handlers, otherwise
     // the very first click (a vote, for a returning visitor) renders the next clip
     // while userInteracted is still false and autoplay is skipped.
-    root.addEventListener(
+    section.addEventListener(
       "click",
       () => {
         userInteracted = true;
@@ -250,18 +267,18 @@ import { t } from "i18next";
     const BAR_GAP = 3;
     const WAVE_H = 64;
 
-    let audioCtx = null;
-    let waveAbort = null;
-    let amplitudes = null;
+    let audioCtx: AudioContext | null = null;
+    let waveAbort: AbortController | null = null;
+    let amplitudes: Float32Array | null = null;
     let maxAmp = 1;
-    let rawData = null;
+    let rawData: Float32Array | null = null;
     let waveDuration = 0;
     let waveWidth = 0;
-    const canvasCtx = canvas.getContext("2d");
+    const canvasCtx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     canvas.height = WAVE_H;
 
-    function computeAmplitudes(width) {
+    function computeAmplitudes(width: number) {
       const numBars = Math.floor(width / BAR_GAP);
       if (!rawData || numBars <= 0) return null;
       const blockSize = Math.floor(rawData.length / numBars);
@@ -297,7 +314,7 @@ import { t } from "i18next";
       canvasCtx.fillRect(playedX - 1, 0, 2, WAVE_H);
     }
 
-    function resizeWaveform(width) {
+    function resizeWaveform(width: number) {
       if (!width || width === waveWidth) return;
       waveWidth = width;
       canvas.width = width;
@@ -315,7 +332,7 @@ import { t } from "i18next";
       waveformLoadingEl.hidden = false;
     }
 
-    async function loadWaveform(url) {
+    async function loadWaveform(url: string) {
       if (waveAbort) waveAbort.abort();
       waveAbort = new AbortController();
       clearWaveform();
@@ -323,18 +340,22 @@ import { t } from "i18next";
       try {
         const response = await fetch(url, { signal: waveAbort.signal });
         const arrayBuffer = await response.arrayBuffer();
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (!audioCtx) {
+          const Ctx =
+            window.AudioContext || (window as any).webkitAudioContext;
+          audioCtx = new Ctx();
+        }
         const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
 
         rawData = audioBuffer.getChannelData(0);
         waveDuration = audioBuffer.duration;
         waveformLoadingEl.hidden = true;
 
-        const width = Math.floor(canvas.parentElement.getBoundingClientRect().width);
+        const width = Math.floor(waveformEl.getBoundingClientRect().width);
         waveWidth = 0;
         resizeWaveform(width);
       } catch (e) {
-        if (e.name !== "AbortError") waveformLoadingEl.hidden = true;
+        if ((e as Error).name !== "AbortError") waveformLoadingEl.hidden = true;
       }
     }
 
@@ -350,11 +371,11 @@ import { t } from "i18next";
     new ResizeObserver((entries) => {
       const width = Math.floor(entries[0].contentRect.width);
       if (width > 0 && rawData) resizeWaveform(width);
-    }).observe(canvas.parentElement);
+    }).observe(waveformEl);
 
     /* ---------- voting ---------- */
 
-    function setVotingEnabled(enabled) {
+    function setVotingEnabled(enabled: boolean) {
       approveBtn.disabled = !enabled;
       rejectBtn.disabled = !enabled;
       hintEl.hidden = enabled;
@@ -362,14 +383,14 @@ import { t } from "i18next";
 
     // No clip on screen (loading / empty / error) — hide the vote controls altogether
     // instead of showing them greyed out next to a message.
-    function setControlsVisible(visible) {
+    function setControlsVisible(visible: boolean) {
       actionsEl.hidden = !visible;
       if (!visible) hintEl.hidden = true;
     }
 
     audio.addEventListener("ended", () => setVotingEnabled(true));
 
-    function showStatus(message) {
+    function showStatus(message: string) {
       statusEl.textContent = message;
       statusEl.hidden = !message;
     }
@@ -390,7 +411,7 @@ import { t } from "i18next";
       queue = await response.json();
     }
 
-    function renderClip(clip) {
+    function renderClip(clip: Clip) {
       current = clip;
       sentenceEl.textContent = clip.sentence;
       setVotingEnabled(false);
@@ -425,7 +446,8 @@ import { t } from "i18next";
           return;
         }
 
-        renderClip(queue.shift());
+        const next = queue.shift();
+        if (next) renderClip(next);
       } catch (e) {
         playerEl.hidden = true;
         setControlsVisible(false);
@@ -436,7 +458,7 @@ import { t } from "i18next";
       }
     }
 
-    async function sendVote(validationId, isApprove) {
+    async function sendVote(validationId: number, isApprove: boolean) {
       const response = await fetch(SUPABASE_URL + "/rest/v1/validation_votes", {
         method: "POST",
         headers: {
@@ -455,7 +477,7 @@ import { t } from "i18next";
       if (!response.ok) throw new Error("Failed to save vote: " + response.status);
     }
 
-    function vote(isApprove) {
+    function vote(isApprove: boolean) {
       if (!current) return;
       const validationId = current.id;
 

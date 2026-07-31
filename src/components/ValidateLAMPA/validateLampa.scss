@@ -181,12 +181,7 @@
     &--green {
       background-color: $color-green;
       border-color: $color-green;
-      color: $color-white;
-
-      svg path {
-        @include transition-fast;
-        fill: $color-white;
-      }
+      color: $color-white; // the inline SVG fills with currentColor
 
       &:hover:not(:disabled) {
         background-color: $color-primary;
