@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ieraksti savu balsi — LU 107</title>
+    <meta name="description" content="Ieraksti īsu audio sveicienu Latvijas Universitātes 107. jubilejai.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/lu107/style.css">
+    <link rel="icon" type="image/png" href="/Favicon.png">
+</head>
+<body>
+<main class="recorder-shell" id="recorder-shell">
+  <div class="layout" id="layout">
+
+    <!-- Instructions (shown only when ?instructions=1) -->
+    <section class="instruction-card" id="instruction-card" hidden>
+        <p class="section-label">Ko darīt?</p>
+        <ol class="instruction-steps">
+            <li>Nospied <strong>mikrofona pogu</strong> un atļauj piekļuvi mikrofonam.</li>
+            <li>Runā skaidri un dabiski — pietiek ar dažiem teikumiem.</li>
+            <li>Noklausies ierakstu un nosūti to vai ieraksti no jauna.</li>
+        </ol>
+        <div class="prompt-box">
+            <p class="prompt-label">Tavs uzdevums</p>
+            <p class="prompt-text" id="prompt-text"></p>
+            <button type="button" class="link-button" id="prompt-shuffle">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+                Cits uzdevums
+            </button>
+        </div>
+    </section>
+
+    <!-- Recorder -->
+    <section class="recorder-card" id="recorder-card">
+        <div class="mic-area">
+            <button type="button" class="mic-button" id="mic-button" aria-label="Sākt ierakstu">
+                <svg class="icon-mic" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg>
+                <svg class="icon-stop" viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+            </button>
+            <p class="mic-hint" id="mic-hint">Nospied, lai sāktu ierakstu</p>
+            <div class="timer-row">
+                <span class="rec-dot" id="rec-dot" aria-hidden="true"></span>
+                <span class="timer" id="timer">0:00</span>
+                <span class="timer-max" id="timer-max"></span>
+            </div>
+            <canvas class="level-meter" id="level-meter" width="600" height="56" aria-hidden="true"></canvas>
+        </div>
+
+        <!-- Playback / review -->
+        <div class="review" id="review" hidden>
+            <audio id="review-audio" controls preload="metadata"></audio>
+            <div class="review-actions">
+                <button type="button" class="button button-outline" id="retry-button">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+                    Ierakstīt vēlreiz
+                </button>
+                <button type="button" class="button button-gold" id="submit-button">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+                    Nosūtīt ierakstu
+                </button>
+            </div>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+
+        <!-- Success -->
+        <div class="done" id="done" hidden>
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.3"/><path d="m9 11 3 3L22 4"/></svg>
+            <h3>Paldies!</h3>
+            <p>Tavs ieraksts ir saglabāts un palīdzēs latviešu valodas tehnoloģijām.</p>
+            <button type="button" class="button button-outline" id="again-button">Ierakstīt vēl vienu</button>
+        </div>
+    </section>
+
+  </div>
+
+    <p class="fineprint" id="fineprint">
+        Ieraksts tiek saglabāts Balsu talkas projekta vajadzībām — latviešu valodas runas tehnoloģiju attīstībai.
+    </p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/lu107/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+/* LU-107 audio recorder — visual language borrowed from https://dhc.lu.lv/LU107/ */
+
+:root {
+    --lu-blue: #002d74;
+    --lu-blue-dark: #001f50;
+    --lu-gold: #ffb60f;
+    --lu-gray: #b1b3b3;
+    --cream: #f5f7fb;
+    --ink: #222223;
+    --muted: #405466;
+    --panel: #edf0f1;
+    --border: #c7cfdb;
+    --font-display: "Cinzel", Georgia, "Times New Roman", serif;
+    --font-body: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+/* The UA [hidden] rule loses to our display declarations, so restate it. */
+[hidden] { display: none !important; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: transparent; /* blends into the host page inside the iframe */
+    -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.recorder-shell {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 18px;
+}
+
+/* ---------- Side-by-side layout ---------- */
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+/* With the instructions hidden the recorder stands alone, centred. */
+.layout.single-column {
+    grid-template-columns: minmax(0, 560px);
+    justify-content: center;
+}
+
+/* ---------- Instructions ---------- */
+
+.instruction-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    padding: 32px;
+}
+
+.section-label {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8a6100;
+}
+
+.instruction-steps {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.instruction-steps li + li { margin-top: 8px; }
+
+.instruction-steps { margin-bottom: 32px; }
+
+.prompt-box {
+    margin-top: auto;
+    padding: 22px;
+    background: #fff;
+    border-left: 5px solid var(--lu-gold);
+}
+
+.prompt-label {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.prompt-text {
+    margin: 0;
+    font: 400 clamp(20px, 2.2vw, 28px)/1.3 Georgia, serif;
+    color: var(--lu-blue);
+}
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 0 0 6px;
+    border: 0;
+    border-bottom: 1px solid #82909b;
+    background: none;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--lu-blue);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.link-button:hover { color: var(--lu-blue-dark); border-color: var(--lu-gold); }
+
+/* ---------- Recorder card ---------- */
+
+.recorder-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 390px;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 32px;
+}
+
+.mic-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.mic-button {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 104px;
+    height: 104px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--lu-blue);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mic-button:hover:not(:disabled) { transform: scale(1.04); }
+.mic-button:active:not(:disabled) { transform: scale(0.97); }
+.mic-button:focus-visible { outline: 3px solid var(--lu-gold); outline-offset: 4px; }
+.mic-button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.mic-button .icon-stop { display: none; }
+
+.mic-button.is-recording {
+    background: #c0271a;
+    box-shadow: 0 0 0 0 rgb(192 39 26 / 45%);
+    animation: pulse 1.6s infinite;
+}
+
+.mic-button.is-recording .icon-mic { display: none; }
+.mic-button.is-recording .icon-stop { display: block; }
+
+@keyframes pulse {
+    70% { box-shadow: 0 0 0 22px rgb(192 39 26 / 0%); }
+    100% { box-shadow: 0 0 0 0 rgb(192 39 26 / 0%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mic-button { transition: none; }
+    .mic-button.is-recording { animation: none; }
+}
+
+.mic-hint {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+    text-align: center;
+}
+
+.timer-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-variant-numeric: tabular-nums;
+}
+
+.rec-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #c0271a;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.recording .rec-dot { opacity: 1; animation: blink 1.2s steps(2, start) infinite; }
+
+@keyframes blink { 50% { opacity: 0.2; } }
+
+.timer {
+    font: 400 26px/1 Georgia, serif;
+    color: var(--lu-blue);
+}
+
+.timer-max { font-size: 14px; color: var(--lu-gray); }
+
+.level-meter {
+    width: 100%;
+    max-width: 420px;
+    height: 56px;
+}
+
+/* ---------- Review ---------- */
+
+.review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review audio {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 20px;
+}
+
+.review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 17px 21px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button:hover:not(:disabled) { transform: translateY(-2px); }
+.button:disabled { opacity: 0.58; cursor: wait; transform: none; }
+.button:focus-visible { outline: 3px solid var(--lu-gold); outline-offset: 3px; }
+
+.button svg { flex: none; width: 18px; height: 18px; }
+
+.button-gold {
+    background: var(--lu-gold);
+    color: var(--ink);
+}
+
+.button-outline {
+    background: #fff;
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.button-outline:hover:not(:disabled) { background: var(--lu-blue); border-color: var(--lu-blue); color: #fff; }
+
+/* ---------- Status & done ---------- */
+
+.status {
+    margin: 16px 0 0;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* Collapse when empty so the card contents stay truly centred. */
+.status:empty { display: none; }
+
+.status.is-error { color: #c0271a; }
+.status.is-success { color: #1a7a3c; }
+
+.done {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    color: var(--lu-blue);
+}
+
+.done h3 { font: 400 34px/1.15 Georgia, serif; }
+.done p { margin: 0; color: var(--muted); font-size: 16px; }
+.done .button { margin-top: 10px; }
+
+.fineprint {
+    margin: 18px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--muted);
+}
+
+@media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .layout.single-column { grid-template-columns: 1fr; }
+    .recorder-card { min-height: 0; }
+}
+
+@media (max-width: 480px) {
+    .recorder-shell { padding: 12px; }
+    .instruction-card, .recorder-card { padding: 22px 18px; }
+    .review-actions .button { flex: 1 1 100%; justify-content: center; }
+}
