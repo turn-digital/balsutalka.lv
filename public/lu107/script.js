@@ -13,8 +13,8 @@
 /* Add / edit freely — one of these is picked at random when instructions
    are shown. Keep them short enough to read at a glance. */
 const PROMPTS = [
-    'Ieraksti īsu sveicienu Latvijas Universitātei',
-    'Ieraksti īsu atmiņu par kādu īpašu notikumu Latvijas Universitātē',
+    'Izstāsti īsu sveicienu Latvijas Universitātei',
+    'Izstāsti īsu atmiņu par kādu īpašu notikumu Latvijas Universitātē',
     'Pastāsti, ar ko Latvijas Universitāte Tev saistās vispirms',
     'Novēli kaut ko Latvijas Universitātes studentiem nākamajos simts gados',
     'Pastāsti par pasniedzēju vai kursabiedru, kuru atceries vislabāk',
