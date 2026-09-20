@@ -84,5 +84,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/lu107/script.js"></script>
+<script>
+if (window.parent !== window) {
+  const send = () => parent.postMessage(
+    { type: 'lu107-embed-height', height: document.documentElement.scrollHeight },
+    '*'   // height is not sensitive; the parent verifies our origin
+  );
+  new ResizeObserver(send).observe(document.body);
+  addEventListener('load', send);
+}
+</script>
 </body>
 </html>
