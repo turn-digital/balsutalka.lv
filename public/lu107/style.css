@@ -313,6 +313,17 @@ h1, h2, h3 {
 .done p { margin: 0; color: var(--muted); font-size: 16px; }
 .done .button { margin-top: 10px; }
 
+.stats {
+    margin: 18px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--lu-blue);
+    font-weight: 600;
+}
+
+.stats + .fineprint { margin-top: 8px; }
+
 .fineprint {
     margin: 18px 0 0;
     font-size: 13px;

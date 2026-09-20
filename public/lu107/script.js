@@ -74,7 +74,8 @@ const el = {
     submitButton: document.getElementById('submit-button'),
     status: document.getElementById('status'),
     done: document.getElementById('done'),
-    againButton: document.getElementById('again-button')
+    againButton: document.getElementById('again-button'),
+    stats: document.getElementById('stats')
 };
 
 /* ---------- Helpers ---------- */
@@ -375,6 +376,7 @@ async function submitRecording() {
         if (insertError) console.error('Metadata insert failed:', insertError);
 
         showDone();
+        loadStats();
     } catch (error) {
         el.submitButton.disabled = false;
         el.retryButton.disabled = false;
@@ -412,6 +414,56 @@ function resetRecorder(newPrompt) {
     reportHeight();
 }
 
+/* ---------- Public statistics ---------- */
+
+/* Latvian picks the singular for 1, 21, 31 … but not for 11. */
+function isLatvianSingular(count) {
+    return count % 10 === 1 && count % 100 !== 11;
+}
+
+function statsSentence(recordings, totalSeconds) {
+    const countPart = isLatvianSingular(recordings)
+        ? `Ierunāts ${recordings} sveiciens un atbilde uz jautājumu`
+        : `Ierunāti ${recordings} sveicieni un atbildes uz jautājumiem`;
+
+    if (totalSeconds < 60) return `${countPart}, kopējais ierakstu ilgums: mazāk par minūti`;
+
+    const minutes = Math.round(totalSeconds / 60);
+    const minutePart = isLatvianSingular(minutes) ? 'minūte' : 'minūtes';
+    return `${countPart}, kopējais ierakstu ilgums: ${minutes} ${minutePart}`;
+}
+
+/* Prefers an aggregate RPC (`lu107_stats`, see README) and falls back to
+   summing the durations here when it is not available. */
+async function fetchStats() {
+    const { data, error } = await supabaseClient.rpc('lu107_stats');
+    if (!error && data) {
+        const row = Array.isArray(data) ? data[0] : data;
+        if (row) return { recordings: Number(row.recordings) || 0, totalSeconds: Number(row.total_seconds) || 0 };
+    }
+
+    const { data: rows, count, error: selectError } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('duration_seconds', { count: 'exact' });
+    if (selectError) throw selectError;
+
+    const totalSeconds = (rows || []).reduce((sum, row) => sum + (Number(row.duration_seconds) || 0), 0);
+    return { recordings: count || (rows || []).length, totalSeconds };
+}
+
+async function loadStats() {
+    try {
+        const { recordings, totalSeconds } = await fetchStats();
+        if (!recordings) return;
+        el.stats.textContent = statsSentence(recordings, totalSeconds);
+        el.stats.hidden = false;
+        reportHeight();
+    } catch (error) {
+        // Statistics are decoration — a failure must not disturb recording.
+        console.error('Stats load failed:', error);
+    }
+}
+
 /* ---------- Wiring ---------- */
 
 el.timerMax.textContent = `/ ${formatTime(maxSeconds)}`;
@@ -433,6 +485,8 @@ el.micButton.addEventListener('click', () => {
 el.retryButton.addEventListener('click', () => resetRecorder(false));
 el.submitButton.addEventListener('click', submitRecording);
 el.againButton.addEventListener('click', () => resetRecorder(true));
+
+loadStats();
 
 window.addEventListener('resize', reportHeight);
 window.addEventListener('load', reportHeight);
