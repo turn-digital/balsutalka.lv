@@ -37,7 +37,7 @@ h1, h2, h3 {
 .recorder-shell {
     max-width: 1340px;
     margin: 0 auto;
-    padding: 18px;
+    padding: 0; /* embedded in an iframe - the host page owns the outer spacing */
 }
 
 /* ---------- Side-by-side layout ---------- */
@@ -333,7 +333,6 @@ h1, h2, h3 {
 }
 
 @media (max-width: 480px) {
-    .recorder-shell { padding: 12px; }
     .instruction-card, .recorder-card { padding: 22px 18px; }
     .review-actions .button { flex: 1 1 100%; justify-content: center; }
 }
